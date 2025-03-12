@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bc24yxgjcdudu"]
+
+[ext_resource type="Texture2D" uid="uid://cvuqeimrmhvcp" path="res://planet.png" id="1_l3vtf"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_7y413"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.90735e-06, -19.25)
+scale = Vector2(63, 87.5)
+texture = SubResource("ImageTexture_7y413")
+
+[node name="Planet" type="Sprite2D" parent="."]
+position = Vector2(4, 3)
+texture = ExtResource("1_l3vtf")
