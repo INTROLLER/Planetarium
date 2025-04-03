@@ -9,8 +9,6 @@ radius = 20.3466
 [node name="Node2D" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(0, 8)
-scale = Vector2(0.251844, 0.251844)
 script = ExtResource("1_7y413")
 
 [node name="Planet" type="Sprite2D" parent="CharacterBody2D"]
@@ -21,5 +19,3 @@ texture = ExtResource("1_l3vtf")
 scale = Vector2(50, 50)
 shape = SubResource("CircleShape2D_skb6d")
 one_way_collision_margin = 0.0
-
-[node name="Camera2D" type="Camera2D" parent="."]
