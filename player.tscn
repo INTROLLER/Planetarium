@@ -1,21 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://ctfxvyae31vua"]
+[gd_scene load_steps=6 format=3 uid="uid://ctfxvyae31vua"]
 
 [ext_resource type="Script" uid="uid://d16boak2hqf2b" path="res://movement.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://cvuqeimrmhvcp" path="res://planet.png" id="2_i3pqv"]
-[ext_resource type="Script" uid="uid://cftcpapvbopp3" path="res://rotation.gd" id="3_i3pqv"]
+[ext_resource type="PackedScene" uid="uid://ddv5yudm0moyn" path="res://rotatable.tscn" id="3_i3pqv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4flbx"]
+radius = 8.76068
+
+[sub_resource type="GDScript" id="GDScript_onrkg"]
+script/source = "extends Sprite2D
+"
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_onrkg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(4.08, 4.08)
+scale = Vector2(4.68, 4.68)
 shape = SubResource("CircleShape2D_4flbx")
 
 [node name="Planet" type="Sprite2D" parent="."]
 scale = Vector2(0.0400104, 0.0400104)
 texture = ExtResource("2_i3pqv")
-script = ExtResource("3_i3pqv")
+script = SubResource("GDScript_onrkg")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+
+[node name="RigidBody2D" parent="." instance=ExtResource("3_i3pqv")]
+position = Vector2(69, 0)
