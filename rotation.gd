@@ -1,4 +1,4 @@
 extends Sprite2D
 
-func _process(delta):
+func _physics_process(delta):
   rotation += delta * 0.5
