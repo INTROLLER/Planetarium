@@ -24,7 +24,10 @@ texture = ExtResource("2_i3pqv")
 script = SubResource("GDScript_onrkg")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(4, 4)
+scale = Vector2(28.6869, 10.0107)
+zoom = Vector2(3, 3)
 
 [node name="RigidBody2D" parent="." instance=ExtResource("3_i3pqv")]
 position = Vector2(69, 0)
+
+[node name="RigidBody2D2" parent="." instance=ExtResource("3_i3pqv")]
