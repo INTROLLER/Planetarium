@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddv5yudm0moyn"]
+
+[ext_resource type="Script" uid="uid://vbt7pnni7qq5" path="res://orbitable.gd" id="1_guwr3"]
+[ext_resource type="Texture2D" uid="uid://cx7k4ol2r57ip" path="res://textures/temp.png" id="2_t5pkl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_46egq"]
+radius = 8.0
+
+[node name="Orbitable" type="RigidBody2D"]
+mass = 0.001
+contact_monitor = true
+script = ExtResource("1_guwr3")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.333672, 0.333672)
+texture = ExtResource("2_t5pkl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_46egq")
+disabled = true
