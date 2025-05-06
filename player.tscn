@@ -6,31 +6,39 @@
 [ext_resource type="Resource" uid="uid://nbf2mrm3ettv" path="res://inventory/items/Temp.tres" id="3_1jxqw"]
 [ext_resource type="Script" uid="uid://c3vquimqfc68" path="res://inventory/hotbar.gd" id="3_2hs0m"]
 [ext_resource type="Resource" uid="uid://mhofp38wljwk" path="res://inventory/items/earth.tres" id="4_2hs0m"]
+[ext_resource type="PackedScene" uid="uid://gme3ac4yxmxd" path="res://inventory/inv_ui.tscn" id="7_1jxqw"]
 
-[sub_resource type="Resource" id="Resource_1jxqw"]
+[sub_resource type="Resource" id="Resource_2hs0m"]
 script = ExtResource("3_2hs0m")
-items = Array[ExtResource("2_sweqy")]([ExtResource("3_1jxqw"), ExtResource("4_2hs0m"), ExtResource("3_1jxqw")])
+items = Array[ExtResource("2_sweqy")]([ExtResource("3_1jxqw"), ExtResource("4_2hs0m")])
 metadata/_custom_type_script = "uid://c3vquimqfc68"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4flbx"]
 radius = 5.55966
 
-[sub_resource type="GDScript" id="GDScript_onrkg"]
-script/source = "extends Sprite2D
-"
-
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_onrkg")
-hotbar = SubResource("Resource_1jxqw")
+hotbar = SubResource("Resource_2hs0m")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Hitbox" type="CollisionShape2D" parent="."]
 scale = Vector2(4.68, 4.68)
 shape = SubResource("CircleShape2D_4flbx")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_i3pqv")
-script = SubResource("GDScript_onrkg")
 
 [node name="Camera" type="Camera2D" parent="."]
 scale = Vector2(28.6869, 10.0107)
 zoom = Vector2(0.8, 0.8)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Inv_UI" parent="CanvasLayer" instance=ExtResource("7_1jxqw")]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -662.0
+offset_top = -12.0
+offset_right = -662.0
+offset_bottom = -12.0
+pivot_offset = Vector2(662.059, 14.5362)

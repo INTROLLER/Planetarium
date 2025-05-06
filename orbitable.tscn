@@ -15,6 +15,6 @@ script = ExtResource("1_guwr3")
 scale = Vector2(0.333672, 0.333672)
 texture = ExtResource("2_t5pkl")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_46egq")
 disabled = true

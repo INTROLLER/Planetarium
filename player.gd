@@ -20,7 +20,6 @@ func _ready():
 		add_child(orbitable)
 
 func player_movement(input, delta):
-
 	if input: velocity = velocity.move_toward(input * SPEED , delta * ACCELERATION)
 
 	else: velocity = velocity.move_toward(Vector2(0,0), delta * FRICTION)
