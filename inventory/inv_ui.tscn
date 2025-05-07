@@ -1,9 +1,12 @@
-[gd_scene load_steps=28 format=4 uid="uid://gme3ac4yxmxd"]
+[gd_scene load_steps=34 format=4 uid="uid://gme3ac4yxmxd"]
 
 [ext_resource type="FontFile" uid="uid://be36mubdtlm2a" path="res://textures/CalSans-Regular.ttf" id="1_qwu3r"]
 [ext_resource type="Texture2D" uid="uid://cx7k4ol2r57ip" path="res://textures/temp.png" id="2_dn3an"]
 [ext_resource type="Script" uid="uid://ij6j54anp6sf" path="res://inventory/close_button.gd" id="2_r1b7r"]
 [ext_resource type="Texture2D" uid="uid://daakno4rkhack" path="res://textures/close_80dp_FFFFFF_FILL1_wght700_GRAD0_opsz48.png" id="3_r1b7r"]
+[ext_resource type="Texture2D" uid="uid://bptde43qc4xh6" path="res://textures/swords_100dp_EA3323_FILL1_wght300_GRAD0_opsz48.png" id="5_ars6i"]
+[ext_resource type="Texture2D" uid="uid://dkwx2deytaajo" path="res://textures/favorite_100dp_27C533_FILL1_wght700_GRAD0_opsz48.png" id="6_qwu3r"]
+[ext_resource type="PackedScene" uid="uid://df0f3mehsoh1y" path="res://inventory/item_slot.tscn" id="7_sjsia"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r1b7r"]
 content_margin_left = 0.0
@@ -92,7 +95,9 @@ data = PackedByteArray("AAEAAAAQAQAABAAAR0RFRrL7toEAAAI8AAACjEdQT1Oa9mMfAABw0AAA
 font_name = "Rubik Medium"
 style_name = "Medium"
 font_weight = 500
+subpixel_positioning = 0
 msdf_pixel_range = 8
+msdf_size = 128
 cache/0/16/0/ascent = 15.0
 cache/0/16/0/descent = 4.0
 cache/0/16/0/underline_position = 1.35938
@@ -105,87 +110,87 @@ cache/0/14/0/underline_thickness = 0.703125
 cache/0/14/0/scale = 1.0
 cache/0/14/0/textures/0/offsets = PackedInt32Array(21, 0, 235, 7, 156, 7, 100, 15)
 cache/0/14/0/textures/0/image = SubResource("Image_ars6i")
-cache/0/14/0/glyphs/928/advance = Vector2(3.75, 16.5938)
+cache/0/14/0/glyphs/928/advance = Vector2(4, 17)
 cache/0/14/0/glyphs/928/offset = Vector2(-1, -4)
 cache/0/14/0/glyphs/928/size = Vector2(5, 5)
 cache/0/14/0/glyphs/928/uv_rect = Rect2(1, 1, 5, 5)
 cache/0/14/0/glyphs/928/texture_idx = 0
-cache/0/14/0/glyphs/24/advance = Vector2(8.70313, 16.5938)
+cache/0/14/0/glyphs/24/advance = Vector2(9, 17)
 cache/0/14/0/glyphs/24/offset = Vector2(0, -12)
 cache/0/14/0/glyphs/24/size = Vector2(10, 13)
 cache/0/14/0/glyphs/24/uv_rect = Rect2(1, 8, 10, 13)
 cache/0/14/0/glyphs/24/texture_idx = 0
-cache/0/14/0/glyphs/217/advance = Vector2(8.59375, 16.5938)
+cache/0/14/0/glyphs/217/advance = Vector2(9, 17)
 cache/0/14/0/glyphs/217/offset = Vector2(-1, -9)
 cache/0/14/0/glyphs/217/size = Vector2(10, 13)
 cache/0/14/0/glyphs/217/uv_rect = Rect2(13, 8, 10, 13)
 cache/0/14/0/glyphs/217/texture_idx = 0
-cache/0/14/0/glyphs/234/advance = Vector2(8.6875, 16.5938)
+cache/0/14/0/glyphs/234/advance = Vector2(9, 17)
 cache/0/14/0/glyphs/234/offset = Vector2(-1, -9)
 cache/0/14/0/glyphs/234/size = Vector2(10, 10)
 cache/0/14/0/glyphs/234/uv_rect = Rect2(25, 8, 10, 10)
 cache/0/14/0/glyphs/234/texture_idx = 0
-cache/0/14/0/glyphs/171/advance = Vector2(3.70313, 16.5938)
+cache/0/14/0/glyphs/171/advance = Vector2(4, 17)
 cache/0/14/0/glyphs/171/offset = Vector2(-1, -12)
 cache/0/14/0/glyphs/171/size = Vector2(5, 13)
 cache/0/14/0/glyphs/171/uv_rect = Rect2(37, 8, 5, 13)
 cache/0/14/0/glyphs/171/texture_idx = 0
-cache/0/14/0/glyphs/215/advance = Vector2(8.59375, 16.5938)
+cache/0/14/0/glyphs/215/advance = Vector2(9, 17)
 cache/0/14/0/glyphs/215/offset = Vector2(-1, -9)
 cache/0/14/0/glyphs/215/size = Vector2(10, 13)
 cache/0/14/0/glyphs/215/uv_rect = Rect2(44, 8, 10, 13)
 cache/0/14/0/glyphs/215/texture_idx = 0
-cache/0/14/0/glyphs/20/advance = Vector2(9.84375, 16.5938)
+cache/0/14/0/glyphs/20/advance = Vector2(10, 17)
 cache/0/14/0/glyphs/20/offset = Vector2(0, -12)
 cache/0/14/0/glyphs/20/size = Vector2(11, 13)
 cache/0/14/0/glyphs/20/uv_rect = Rect2(56, 8, 11, 13)
 cache/0/14/0/glyphs/20/texture_idx = 0
-cache/0/14/0/glyphs/152/advance = Vector2(8.07813, 16.5938)
+cache/0/14/0/glyphs/152/advance = Vector2(8, 17)
 cache/0/14/0/glyphs/152/offset = Vector2(-1, -9)
 cache/0/14/0/glyphs/152/size = Vector2(10, 10)
 cache/0/14/0/glyphs/152/uv_rect = Rect2(69, 8, 10, 10)
 cache/0/14/0/glyphs/152/texture_idx = 0
-cache/0/14/0/glyphs/189/advance = Vector2(3.70313, 16.5938)
+cache/0/14/0/glyphs/189/advance = Vector2(4, 17)
 cache/0/14/0/glyphs/189/offset = Vector2(-1, -12)
 cache/0/14/0/glyphs/189/size = Vector2(5, 13)
 cache/0/14/0/glyphs/189/uv_rect = Rect2(81, 8, 5, 13)
 cache/0/14/0/glyphs/189/texture_idx = 0
-cache/0/14/0/glyphs/230/advance = Vector2(6, 16.5938)
+cache/0/14/0/glyphs/230/advance = Vector2(6, 17)
 cache/0/14/0/glyphs/230/offset = Vector2(-1, -12)
 cache/0/14/0/glyphs/230/size = Vector2(8, 13)
 cache/0/14/0/glyphs/230/uv_rect = Rect2(88, 8, 8, 13)
 cache/0/14/0/glyphs/230/texture_idx = 0
-cache/0/14/0/glyphs/402654112/advance = Vector2(3.75, 16.5938)
+cache/0/14/0/glyphs/402654112/advance = Vector2(4, 17)
 cache/0/14/0/glyphs/402654112/offset = Vector2(0, -4)
 cache/0/14/0/glyphs/402654112/size = Vector2(5, 5)
 cache/0/14/0/glyphs/402654112/uv_rect = Rect2(8, 1, 5, 5)
 cache/0/14/0/glyphs/402654112/texture_idx = 0
-cache/0/14/0/glyphs/268436384/advance = Vector2(3.75, 16.5938)
+cache/0/14/0/glyphs/268436384/advance = Vector2(4, 17)
 cache/0/14/0/glyphs/268436384/offset = Vector2(0, -4)
 cache/0/14/0/glyphs/268436384/size = Vector2(5, 5)
 cache/0/14/0/glyphs/268436384/uv_rect = Rect2(15, 1, 5, 5)
 cache/0/14/0/glyphs/268436384/texture_idx = 0
-cache/0/14/0/glyphs/402653401/advance = Vector2(8.59375, 16.5938)
+cache/0/14/0/glyphs/402653401/advance = Vector2(9, 17)
 cache/0/14/0/glyphs/402653401/offset = Vector2(0, -9)
 cache/0/14/0/glyphs/402653401/size = Vector2(10, 13)
 cache/0/14/0/glyphs/402653401/uv_rect = Rect2(98, 8, 10, 13)
 cache/0/14/0/glyphs/402653401/texture_idx = 0
-cache/0/14/0/glyphs/134217962/advance = Vector2(8.6875, 16.5938)
+cache/0/14/0/glyphs/134217962/advance = Vector2(9, 17)
 cache/0/14/0/glyphs/134217962/offset = Vector2(0, -9)
 cache/0/14/0/glyphs/134217962/size = Vector2(10, 10)
 cache/0/14/0/glyphs/134217962/uv_rect = Rect2(110, 8, 10, 10)
 cache/0/14/0/glyphs/134217962/texture_idx = 0
-cache/0/14/0/glyphs/402653399/advance = Vector2(8.59375, 16.5938)
+cache/0/14/0/glyphs/402653399/advance = Vector2(9, 17)
 cache/0/14/0/glyphs/402653399/offset = Vector2(0, -9)
 cache/0/14/0/glyphs/402653399/size = Vector2(10, 13)
 cache/0/14/0/glyphs/402653399/uv_rect = Rect2(122, 8, 10, 13)
 cache/0/14/0/glyphs/402653399/texture_idx = 0
-cache/0/14/0/glyphs/402653336/advance = Vector2(8.07813, 16.5938)
+cache/0/14/0/glyphs/402653336/advance = Vector2(8, 17)
 cache/0/14/0/glyphs/402653336/offset = Vector2(0, -9)
 cache/0/14/0/glyphs/402653336/size = Vector2(10, 10)
 cache/0/14/0/glyphs/402653336/uv_rect = Rect2(134, 8, 10, 10)
 cache/0/14/0/glyphs/402653336/texture_idx = 0
-cache/0/14/0/glyphs/402653414/advance = Vector2(6, 16.5938)
+cache/0/14/0/glyphs/402653414/advance = Vector2(6, 17)
 cache/0/14/0/glyphs/402653414/offset = Vector2(-1, -12)
 cache/0/14/0/glyphs/402653414/size = Vector2(9, 13)
 cache/0/14/0/glyphs/402653414/uv_rect = Rect2(146, 8, 9, 13)
@@ -237,6 +242,18 @@ font_color = Color(0, 0, 0, 1)
 shadow_size = 0
 shadow_color = Color(0.682353, 0.682353, 0.682353, 0)
 shadow_offset = Vector2(1.1, 1.1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_sjsia"]
+font = ExtResource("1_qwu3r")
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_rjf2a"]
+font = ExtResource("1_qwu3r")
+font_color = Color(0.917647, 0.2, 0.137255, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ye6km"]
+font = ExtResource("1_qwu3r")
+font_color = Color(0.152941, 0.772549, 0.2, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ars6i"]
 
@@ -302,7 +319,7 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[node name="Inv_UI" type="Control"]
+[node name="InvUI" type="Control"]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -325,8 +342,8 @@ theme = SubResource("Theme_ars6i")
 layout_mode = 0
 offset_left = 17.0
 offset_top = -133.0
-offset_right = 515.0
-offset_bottom = 154.0
+offset_right = 530.0
+offset_bottom = 148.0
 scale = Vector2(2.64, 1)
 theme_override_styles/panel = SubResource("StyleBoxFlat_qwu3r")
 
@@ -393,6 +410,7 @@ theme_override_constants/margin_bottom = 5
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_constants/separation = 5
+alignment = 1
 
 [node name="Title" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -409,13 +427,55 @@ texture = ExtResource("2_dn3an")
 expand_mode = 1
 
 [node name="RarityInfo" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+texture_filter = 2
 layout_mode = 2
+text = "Common"
+label_settings = SubResource("LabelSettings_sjsia")
+horizontal_alignment = 1
 
-[node name="HealthInfo" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
 
-[node name="DamageInfo" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="DamageIcon" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+texture_filter = 2
+custom_minimum_size = Vector2(17, 17)
 layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+texture = ExtResource("5_ars6i")
+expand_mode = 1
+
+[node name="DamageInfo" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+texture_filter = 2
+layout_mode = 2
+text = "20"
+label_settings = SubResource("LabelSettings_rjf2a")
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HealthIcon" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+texture_filter = 2
+custom_minimum_size = Vector2(17, 17)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+texture = ExtResource("6_qwu3r")
+expand_mode = 1
+
+[node name="DamageInfo" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+texture_filter = 2
+layout_mode = 2
+text = "20"
+label_settings = SubResource("LabelSettings_ye6km")
+horizontal_alignment = 1
 
 [node name="EquipBtn" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)
@@ -478,4 +538,23 @@ size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_ye6km")
 
 [node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/h_separation = 75
+theme_override_constants/v_separation = 6
+columns = 5
+
+[node name="ItemSlot5" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("7_sjsia")]
+layout_mode = 2
+
+[node name="ItemSlot" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("7_sjsia")]
+layout_mode = 2
+
+[node name="ItemSlot2" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("7_sjsia")]
+layout_mode = 2
+
+[node name="ItemSlot3" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("7_sjsia")]
+layout_mode = 2
+
+[node name="ItemSlot4" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("7_sjsia")]
 layout_mode = 2
