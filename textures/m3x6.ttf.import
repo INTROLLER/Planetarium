@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://cxdqc5nwicj0n"
-path="res://.godot/imported/Rubik-Bold.ttf-e53f6f38befdef87b9fb6d1349e8b7e3.fontdata"
+uid="uid://dsp32swvcuixe"
+path="res://.godot/imported/m3x6.ttf-b0c5ee752c7b7fad95258937c7244b5e.fontdata"
 
 [deps]
 
-source_file="res://textures/Rubik-Bold.ttf"
-dest_files=["res://.godot/imported/Rubik-Bold.ttf-e53f6f38befdef87b9fb6d1349e8b7e3.fontdata"]
+source_file="res://textures/m3x6.ttf"
+dest_files=["res://.godot/imported/m3x6.ttf-b0c5ee752c7b7fad95258937c7244b5e.fontdata"]
 
 [params]
 

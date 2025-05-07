@@ -10,7 +10,7 @@
 
 [sub_resource type="Resource" id="Resource_2hs0m"]
 script = ExtResource("3_2hs0m")
-items = Array[ExtResource("2_sweqy")]([ExtResource("3_1jxqw"), ExtResource("4_2hs0m")])
+items = Array[ExtResource("2_sweqy")]([ExtResource("3_1jxqw"), ExtResource("4_2hs0m"), ExtResource("4_2hs0m"), ExtResource("3_1jxqw")])
 metadata/_custom_type_script = "uid://c3vquimqfc68"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4flbx"]
@@ -35,8 +35,6 @@ zoom = Vector2(0.8, 0.8)
 
 [node name="Inv_UI" parent="CanvasLayer" instance=ExtResource("7_1jxqw")]
 anchors_preset = -1
-anchor_left = 0.5
-anchor_right = 0.5
 offset_left = -662.0
 offset_top = -12.0
 offset_right = -662.0

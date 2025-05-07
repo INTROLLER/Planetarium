@@ -22,6 +22,7 @@ window/size/viewport_height=225
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [input]
 
@@ -70,4 +71,4 @@ attack={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-textures/decals/filter=0
+textures/decals/filter=5

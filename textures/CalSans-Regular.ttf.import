@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://bhpifyv3q7mhk"
-path="res://.godot/imported/Rubik-Light.ttf-35e5656b3380d984a9f75cf85afa3499.fontdata"
+uid="uid://be36mubdtlm2a"
+path="res://.godot/imported/CalSans-Regular.ttf-896a3aa9f58c7684ebcc418cbaaac2fa.fontdata"
 
 [deps]
 
-source_file="res://textures/Rubik-Light.ttf"
-dest_files=["res://.godot/imported/Rubik-Light.ttf-35e5656b3380d984a9f75cf85afa3499.fontdata"]
+source_file="res://textures/CalSans-Regular.ttf"
+dest_files=["res://.godot/imported/CalSans-Regular.ttf-896a3aa9f58c7684ebcc418cbaaac2fa.fontdata"]
 
 [params]
 
