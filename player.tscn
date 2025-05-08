@@ -1,23 +1,30 @@
-[gd_scene load_steps=10 format=3 uid="uid://ctfxvyae31vua"]
+[gd_scene load_steps=12 format=3 uid="uid://ctfxvyae31vua"]
 
 [ext_resource type="Script" uid="uid://d16boak2hqf2b" path="res://player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://dphxovtr4etll" path="res://textures/earth.png" id="2_i3pqv"]
 [ext_resource type="Script" uid="uid://bt8rljbrigpwk" path="res://inventory/inv_item.gd" id="2_sweqy"]
 [ext_resource type="Resource" uid="uid://nbf2mrm3ettv" path="res://inventory/items/Temp.tres" id="3_1jxqw"]
 [ext_resource type="Script" uid="uid://c3vquimqfc68" path="res://inventory/hotbar.gd" id="3_2hs0m"]
+[ext_resource type="Script" uid="uid://dyvbg107h4ufy" path="res://inventory/inv.gd" id="3_dw050"]
 [ext_resource type="Resource" uid="uid://mhofp38wljwk" path="res://inventory/items/earth.tres" id="4_2hs0m"]
 [ext_resource type="PackedScene" uid="uid://gme3ac4yxmxd" path="res://inventory/inv_ui.tscn" id="7_1jxqw"]
 
+[sub_resource type="Resource" id="Resource_b26j0"]
+script = ExtResource("3_dw050")
+items = Array[ExtResource("2_sweqy")]([ExtResource("3_1jxqw"), ExtResource("3_1jxqw"), ExtResource("4_2hs0m")])
+metadata/_custom_type_script = "uid://dyvbg107h4ufy"
+
 [sub_resource type="Resource" id="Resource_2hs0m"]
 script = ExtResource("3_2hs0m")
-items = Array[ExtResource("2_sweqy")]([ExtResource("3_1jxqw"), ExtResource("4_2hs0m"), ExtResource("4_2hs0m"), ExtResource("3_1jxqw")])
+items = Array[ExtResource("2_sweqy")]([ExtResource("3_1jxqw"), ExtResource("4_2hs0m"), ExtResource("4_2hs0m"), ExtResource("3_1jxqw"), ExtResource("3_1jxqw")])
 metadata/_custom_type_script = "uid://c3vquimqfc68"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4flbx"]
 radius = 5.55966
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_onrkg")
+inv = SubResource("Resource_b26j0")
 hotbar = SubResource("Resource_2hs0m")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
@@ -33,7 +40,7 @@ zoom = Vector2(0.8, 0.8)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Inv_UI" parent="CanvasLayer" instance=ExtResource("7_1jxqw")]
+[node name="InvUI" parent="CanvasLayer" instance=ExtResource("7_1jxqw")]
 anchors_preset = -1
 offset_left = -662.0
 offset_top = -12.0

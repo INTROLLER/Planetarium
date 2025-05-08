@@ -2,15 +2,24 @@ extends RigidBody2D
 
 var d = 0
 const SPEED = 2 # angular speed (rad/s)
+var max_amount = 0
+var start_angle = 0
 
 @export var index: int
 
 @onready var parent = get_parent()
 @onready var parent_col_shape = parent.get_node("Hitbox")
 @onready var RADIUS = parent_col_shape.shape.radius * parent_col_shape.scale[0] + $Hitbox.shape.radius * $Hitbox.scale[0] * 2
-@onready var max_amount = parent.hotbar.items.size()
-@onready var start_angle = ((2 * PI) / max_amount) * index
 @onready var current_radius = RADIUS
+
+func _ready() -> void:
+	for i in parent.hotbar.items.size():
+		var item = parent.hotbar.items[i]
+		if item == null:
+			continue
+		max_amount += 1
+		
+	start_angle = ((2 * PI) / max_amount) * index
 
 func _physics_process(delta):
 	var input = Input.is_physical_key_pressed(KEY_SPACE)

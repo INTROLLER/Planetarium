@@ -1,8 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://df0f3mehsoh1y"]
 
-[ext_resource type="Script" uid="uid://dd2r4thv2cni5" path="res://inventory/item_slot.gd" id="1_32yy5"]
+[ext_resource type="Script" uid="uid://dku12k8gudlm2" path="res://inventory/item_slot.gd" id="1_32yy5"]
 [ext_resource type="Texture2D" uid="uid://cx7k4ol2r57ip" path="res://textures/temp.png" id="1_xs2ts"]
-[ext_resource type="Script" uid="uid://ccs3lahd54dvl" path="res://inventory/panel_container.gd" id="2_32yy5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8kgv2"]
 bg_color = Color(0.526315, 0.984434, 0.735147, 1)
@@ -15,6 +14,9 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xs2ts"]
+size = Vector2(70, 70)
 
 [node name="ItemSlot" type="Control"]
 layout_mode = 3
@@ -34,7 +36,6 @@ offset_right = 77.0
 offset_bottom = 77.0
 mouse_default_cursor_shape = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_8kgv2")
-script = ExtResource("2_32yy5")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
@@ -54,3 +55,12 @@ size_flags_horizontal = 4
 size_flags_vertical = 2
 texture = ExtResource("1_xs2ts")
 expand_mode = 1
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(41, 41)
+shape = SubResource("RectangleShape2D_xs2ts")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="input_event" from="Area2D" to="Area2D" method="_on_input_event"]

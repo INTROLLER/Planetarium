@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://gme3ac4yxmxd"]
+[gd_scene load_steps=33 format=4 uid="uid://gme3ac4yxmxd"]
 
 [ext_resource type="FontFile" uid="uid://be36mubdtlm2a" path="res://textures/CalSans-Regular.ttf" id="1_qwu3r"]
 [ext_resource type="Texture2D" uid="uid://cx7k4ol2r57ip" path="res://textures/temp.png" id="2_dn3an"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://daakno4rkhack" path="res://textures/close_80dp_FFFFFF_FILL1_wght700_GRAD0_opsz48.png" id="3_r1b7r"]
 [ext_resource type="Texture2D" uid="uid://bptde43qc4xh6" path="res://textures/swords_100dp_EA3323_FILL1_wght300_GRAD0_opsz48.png" id="5_ars6i"]
 [ext_resource type="Texture2D" uid="uid://dkwx2deytaajo" path="res://textures/favorite_100dp_27C533_FILL1_wght700_GRAD0_opsz48.png" id="6_qwu3r"]
-[ext_resource type="PackedScene" uid="uid://df0f3mehsoh1y" path="res://inventory/item_slot.tscn" id="7_sjsia"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r1b7r"]
 content_margin_left = 0.0
@@ -426,7 +425,7 @@ size_flags_vertical = 4
 texture = ExtResource("2_dn3an")
 expand_mode = 1
 
-[node name="RarityInfo" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Rarity" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 texture_filter = 2
 layout_mode = 2
 text = "Common"
@@ -449,7 +448,7 @@ size_flags_stretch_ratio = 0.0
 texture = ExtResource("5_ars6i")
 expand_mode = 1
 
-[node name="DamageInfo" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Damage" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 texture_filter = 2
 layout_mode = 2
 text = "20"
@@ -470,7 +469,7 @@ size_flags_vertical = 4
 texture = ExtResource("6_qwu3r")
 expand_mode = 1
 
-[node name="DamageInfo" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="Health" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
 texture_filter = 2
 layout_mode = 2
 text = "20"
@@ -537,24 +536,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_ye6km")
 
-[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer"]
+[node name="InvContainer" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_constants/h_separation = 75
 theme_override_constants/v_separation = 6
 columns = 5
-
-[node name="ItemSlot5" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("7_sjsia")]
-layout_mode = 2
-
-[node name="ItemSlot" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("7_sjsia")]
-layout_mode = 2
-
-[node name="ItemSlot2" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("7_sjsia")]
-layout_mode = 2
-
-[node name="ItemSlot3" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("7_sjsia")]
-layout_mode = 2
-
-[node name="ItemSlot4" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("7_sjsia")]
-layout_mode = 2
