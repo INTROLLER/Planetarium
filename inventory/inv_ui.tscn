@@ -334,21 +334,21 @@ outline_size = 2
 outline_color = Color(5.41471e-08, 0.281997, 1.44392e-07, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7can1"]
-bg_color = Color(1, 0.469605, 0.400494, 1)
+bg_color = Color(0.999998, 0.124937, 0.082945, 1)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5r18x"]
-bg_color = Color(0.862338, 0.00971177, 2.59906e-06, 1)
+bg_color = Color(0.718652, 0.00558337, 3.17663e-06, 1)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j1ede"]
-bg_color = Color(1, 0.273989, 0.21327, 1)
+bg_color = Color(1, 0.3241, 0.258944, 1)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3

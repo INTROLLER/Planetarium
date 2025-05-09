@@ -32,13 +32,15 @@ func equip():
 	
 func upd_visuals():
 	if item.equiped == true:
-		add_theme_stylebox_override("normal", create_stylebox("#ff6400"))
-		add_theme_stylebox_override("hover", create_stylebox("#ff7f2c"))
-		add_theme_stylebox_override("pressed", create_stylebox("#d65400"))
+		get_node("Label").label_settings.outline_color = "#1d2a3b"
+		add_theme_stylebox_override("normal", create_stylebox("#6aa7de"))
+		add_theme_stylebox_override("hover", create_stylebox("#7bc1ff"))
+		add_theme_stylebox_override("pressed", create_stylebox("#558ec1"))
 	else:
-		add_theme_stylebox_override("normal", create_stylebox("#00ed00"))
-		add_theme_stylebox_override("hover", create_stylebox("#68ff61"))
-		add_theme_stylebox_override("pressed", create_stylebox("#14c015"))
+		get_node("Label").label_settings.outline_color = "#004800"
+		add_theme_stylebox_override("normal", create_stylebox("#45de45"))
+		add_theme_stylebox_override("hover", create_stylebox("#45ff45"))
+		add_theme_stylebox_override("pressed", create_stylebox("#35bb35"))
 
 func create_stylebox(color: String):
 	var new_stylebox = StyleBoxFlat.new()
