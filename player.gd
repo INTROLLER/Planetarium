@@ -5,28 +5,41 @@ const JUMP_VELOCITY = 400
 const ACCELERATION = 2000
 const FRICTION = 300
 
+var orbitables := []
+
 @export var inv: Inv
-@export var hotbar: Hotbar
+@export var loadout: Loadout
 @onready var planet_sprite = get_node("Sprite")
 @onready var orbitable_scene = preload("res://orbitable.tscn")
 @onready var item_slot_scene = preload("res://inventory/item_slot.tscn")
  
 func _ready():
-	for i in hotbar.items.size():
-		var item = hotbar.items[i]
-		if item == null:
-			continue
-			
-		var orbitable = orbitable_scene.instantiate()
-		orbitable.get_node("Sprite").texture = item.texture
-		orbitable.index = i
-		add_child(orbitable)
+	upd_loadout()
+	var next_id = 1
 	for i in inv.items.size():
 		var item = inv.items[i]
 		var item_slot = item_slot_scene.instantiate()
-		item_slot.index = i
-		item_slot.find_child("Texture").texture = item.texture
-		get_node("CanvasLayer/InvUI").find_child("InvContainer").add_child(item_slot)
+		item.id = next_id
+		item_slot.item = item
+		item_slot.find_child("Texture").texture = item.data.texture
+		get_node("CanvasLayer/InvUi").find_child("InvContainer").add_child(item_slot)
+		next_id += 1
+		
+func upd_loadout():
+	for o in orbitables:
+		remove_child(o)
+	orbitables.clear()
+	for i in loadout.items.size():
+		var item = loadout.items[i]
+		if item == null:
+			continue
+		var orbitable = orbitable_scene.instantiate()
+		orbitable.get_node("Sprite").texture = item.data.texture
+		orbitable.index = i
+		add_child(orbitable)
+		orbitables.append(orbitable)
+	for o in orbitables:
+		o.upd()
 
 func player_movement(input, delta):
 	if input: velocity = velocity.move_toward(input * SPEED , delta * ACCELERATION)

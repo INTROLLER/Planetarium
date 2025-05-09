@@ -1,3 +1,5 @@
 extends Control
 
-@export var index: int
+@export var id: int
+@export var item: Item
+@export var focused := false

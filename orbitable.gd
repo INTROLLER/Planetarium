@@ -13,13 +13,17 @@ var start_angle = 0
 @onready var current_radius = RADIUS
 
 func _ready() -> void:
-	for i in parent.hotbar.items.size():
-		var item = parent.hotbar.items[i]
+	upd()
+
+func upd():
+	for i in parent.loadout.items.size():
+		var item = parent.loadout.items[i]
 		if item == null:
 			continue
 		max_amount += 1
 		
 	start_angle = ((2 * PI) / max_amount) * index
+	max_amount = 0
 
 func _physics_process(delta):
 	var input = Input.is_physical_key_pressed(KEY_SPACE)
