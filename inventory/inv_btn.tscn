@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://8vt1sje368pq"]
+[gd_scene load_steps=10 format=3 uid="uid://8vt1sje368pq"]
 
 [ext_resource type="Texture2D" uid="uid://cwx40nlctglx" path="res://textures/backpack_100dp_FFFFFF_FILL1_wght400_GRAD0_opsz48.png" id="1_ax334"]
 [ext_resource type="Script" uid="uid://cj8uf0x4j7hbp" path="res://inventory/inv_button.gd" id="1_mu37r"]
 [ext_resource type="FontFile" uid="uid://be36mubdtlm2a" path="res://textures/CalSans-Regular.ttf" id="2_mu37r"]
+[ext_resource type="Script" uid="uid://bg6u48nolcgmh" path="res://animation_component.gd" id="4_ou6ds"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ax334"]
 
@@ -67,6 +68,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
@@ -76,6 +78,7 @@ theme_override_constants/margin_bottom = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 theme_override_constants/separation = 1
 
 [node name="TextureRect" type="TextureRect" parent="Button/MarginContainer/VBoxContainer"]
@@ -84,6 +87,7 @@ custom_minimum_size = Vector2(15, 15)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 texture = ExtResource("1_ax334")
 expand_mode = 1
 
@@ -94,3 +98,11 @@ size_flags_horizontal = 4
 text = "Inventory"
 label_settings = SubResource("LabelSettings_pl5up")
 horizontal_alignment = 1
+
+[node name="AnimationComponent" type="Node" parent="Button"]
+script = ExtResource("4_ou6ds")
+from_center = true
+hover_scale = Vector2(1.05, 1.05)
+click_scale = Vector2(0.95, 0.95)
+time = 0.08
+metadata/_custom_type_script = "uid://bg6u48nolcgmh"

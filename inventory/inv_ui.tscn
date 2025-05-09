@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://gme3ac4yxmxd"]
+[gd_scene load_steps=37 format=4 uid="uid://gme3ac4yxmxd"]
 
 [ext_resource type="FontFile" uid="uid://be36mubdtlm2a" path="res://textures/CalSans-Regular.ttf" id="1_qwu3r"]
 [ext_resource type="Texture2D" uid="uid://cx7k4ol2r57ip" path="res://textures/temp.png" id="2_dn3an"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bptde43qc4xh6" path="res://textures/swords_100dp_EA3323_FILL1_wght300_GRAD0_opsz48.png" id="5_ars6i"]
 [ext_resource type="Texture2D" uid="uid://dkwx2deytaajo" path="res://textures/favorite_100dp_27C533_FILL1_wght700_GRAD0_opsz48.png" id="6_qwu3r"]
 [ext_resource type="Script" uid="uid://ifconsgttwtb" path="res://inventory/equip_btn.gd" id="7_sjsia"]
+[ext_resource type="Script" uid="uid://bg6u48nolcgmh" path="res://animation_component.gd" id="8_rjf2a"]
 [ext_resource type="Script" uid="uid://c4121kwpk3cx3" path="res://inventory/del_btn.gd" id="8_ye6km"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r1b7r"]
@@ -561,6 +562,14 @@ grow_vertical = 2
 text = "Equip"
 label_settings = SubResource("LabelSettings_qwu3r")
 
+[node name="AnimationComponent" type="Node" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoCont/EquipBtn"]
+script = ExtResource("8_rjf2a")
+from_center = true
+hover_scale = Vector2(1.05, 1.05)
+click_scale = Vector2(0.95, 0.95)
+time = 0.1
+metadata/_custom_type_script = "uid://bg6u48nolcgmh"
+
 [node name="DelBtn" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoCont"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
@@ -589,6 +598,14 @@ grow_vertical = 2
 scale = Vector2(1.00378, 1.00619)
 text = "Delete"
 label_settings = SubResource("LabelSettings_ars6i")
+
+[node name="AnimationComponent" type="Node" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoCont/DelBtn"]
+script = ExtResource("8_rjf2a")
+from_center = true
+hover_scale = Vector2(1.05, 1.05)
+click_scale = Vector2(0.95, 0.95)
+time = 0.08
+metadata/_custom_type_script = "uid://bg6u48nolcgmh"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2

@@ -24,6 +24,10 @@ window/size/window_height_override=720
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[gui]
+
+common/snap_controls_to_pixels=false
+
 [input]
 
 ui_left={
