@@ -19,6 +19,7 @@ func _gui_input(event: InputEvent) -> void:
 			invUi.find_child("EquipBtn").find_child("Label").text = "Unequip"
 		else:
 			invUi.find_child("EquipBtn").find_child("Label").text = "Equip"
+		invUi.find_child("EquipBtn").upd_visuals()
 		var slots = find_parent("InvUi").find_child("InvContainer").get_children()
 		for slot in slots:
 			slot.focused = false
