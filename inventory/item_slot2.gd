@@ -1,5 +1,8 @@
 extends PanelContainer
 
+var stylebox_def = preload("res://inventory/slot_default.tres")
+var stylebox_foc = preload("res://inventory/slot_focused.tres")
+
 @onready var parent = get_parent()
 
 func _gui_input(event: InputEvent) -> void:
@@ -23,12 +26,6 @@ func _gui_input(event: InputEvent) -> void:
 		var slots = find_parent("InvUi").find_child("InvContainer").get_children()
 		for slot in slots:
 			slot.focused = false
+			slot.add_theme_stylebox_override("panel", stylebox_def)
 		parent.focused = true
-
-func _process(delta: float) -> void:
-	var stylebox_def = preload("res://inventory/slot_default.tres")
-	var stylebox_foc = preload("res://inventory/slot_focused.tres")
-	if parent.focused:
 		add_theme_stylebox_override("panel", stylebox_foc)
-	else:
-		add_theme_stylebox_override("panel", stylebox_def)

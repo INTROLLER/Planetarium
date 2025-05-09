@@ -438,6 +438,14 @@ scale = Vector2(0.15, 0.15)
 texture = ExtResource("3_r1b7r")
 centered = false
 
+[node name="AnimationComponent" type="Node" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/CloseButton"]
+script = ExtResource("8_rjf2a")
+from_center = true
+hover_scale = Vector2(1.07, 1.07)
+click_scale = Vector2(0.93, 0.93)
+time = 0.08
+metadata/_custom_type_script = "uid://bg6u48nolcgmh"
+
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -567,7 +575,7 @@ script = ExtResource("8_rjf2a")
 from_center = true
 hover_scale = Vector2(1.05, 1.05)
 click_scale = Vector2(0.95, 0.95)
-time = 0.1
+time = 0.08
 metadata/_custom_type_script = "uid://bg6u48nolcgmh"
 
 [node name="DelBtn" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoCont"]
