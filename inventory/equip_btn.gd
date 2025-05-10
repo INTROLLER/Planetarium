@@ -35,12 +35,12 @@ func upd_visuals():
 		get_node("Label").label_settings.outline_color = "#1d2a3b"
 		add_theme_stylebox_override("normal", create_stylebox("#6aa7de"))
 		add_theme_stylebox_override("hover", create_stylebox("#7bc1ff"))
-		add_theme_stylebox_override("pressed", create_stylebox("#558ec1"))
+		add_theme_stylebox_override("pressed", create_stylebox("#5d9bd3"))
 	else:
 		get_node("Label").label_settings.outline_color = "#004800"
-		add_theme_stylebox_override("normal", create_stylebox("#45de45"))
-		add_theme_stylebox_override("hover", create_stylebox("#45ff45"))
-		add_theme_stylebox_override("pressed", create_stylebox("#35bb35"))
+		add_theme_stylebox_override("normal", create_stylebox("#39ea39"))
+		add_theme_stylebox_override("hover", create_stylebox("#3cff3c"))
+		add_theme_stylebox_override("pressed", create_stylebox("#31df31"))
 
 func create_stylebox(color: String):
 	var new_stylebox = StyleBoxFlat.new()

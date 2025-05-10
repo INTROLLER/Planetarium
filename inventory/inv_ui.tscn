@@ -292,11 +292,15 @@ shadow_offset = Vector2(0, 0)
 font = ExtResource("1_qwu3r")
 font_size = 8
 font_color = Color(0, 0, 0, 1)
+shadow_size = 0
+shadow_offset = Vector2(0, 0)
 
 [sub_resource type="LabelSettings" id="LabelSettings_rjf2a"]
 font = ExtResource("1_qwu3r")
 font_size = 8
 font_color = Color(0.917647, 0.2, 0.137255, 1)
+shadow_size = 0
+shadow_offset = Vector2(0, 0)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ye6km"]
 font = ExtResource("1_qwu3r")
@@ -306,7 +310,7 @@ font_color = Color(0.152941, 0.772549, 0.2, 1)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ars6i"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kkt2u"]
-bg_color = Color(0.407559, 0.998611, 0.381509, 1)
+bg_color = Color(0.235294, 1, 0.235294, 1)
 border_color = Color(0, 0.282353, 0, 1)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
@@ -314,14 +318,14 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cp3x1"]
-bg_color = Color(0.0797865, 0.751799, 0.082262, 1)
+bg_color = Color(0.192157, 0.87451, 0.192157, 1)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ulw2a"]
-bg_color = Color(9.2411e-06, 0.927874, 1.92523e-06, 1)
+bg_color = Color(0.223529, 0.917647, 0.223529, 1)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
@@ -334,21 +338,21 @@ outline_size = 2
 outline_color = Color(5.41471e-08, 0.281997, 1.44392e-07, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7can1"]
-bg_color = Color(0.999998, 0.124937, 0.082945, 1)
+bg_color = Color(1, 0, 0, 1)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5r18x"]
-bg_color = Color(0.718652, 0.00558337, 3.17663e-06, 1)
+bg_color = Color(0.876381, 0.00871884, 5.29438e-06, 1)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j1ede"]
-bg_color = Color(1, 0.3241, 0.258944, 1)
+bg_color = Color(0.999999, 0.212682, 0.159697, 1)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
@@ -505,7 +509,7 @@ size_flags_stretch_ratio = 0.0
 
 [node name="DamageIcon" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoCont/HBoxContainer"]
 texture_filter = 2
-custom_minimum_size = Vector2(8, 8)
+custom_minimum_size = Vector2(9, 9)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
@@ -514,7 +518,6 @@ texture = ExtResource("5_ars6i")
 expand_mode = 1
 
 [node name="Damage" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoCont/HBoxContainer"]
-texture_filter = 2
 layout_mode = 2
 text = "..."
 label_settings = SubResource("LabelSettings_rjf2a")
@@ -527,7 +530,7 @@ size_flags_vertical = 4
 
 [node name="HealthIcon" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoCont/HBoxContainer2"]
 texture_filter = 2
-custom_minimum_size = Vector2(8, 8)
+custom_minimum_size = Vector2(9, 9)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
@@ -535,8 +538,8 @@ texture = ExtResource("6_qwu3r")
 expand_mode = 1
 
 [node name="Health" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoCont/HBoxContainer2"]
-texture_filter = 2
 layout_mode = 2
+size_flags_horizontal = 4
 text = "..."
 label_settings = SubResource("LabelSettings_ye6km")
 horizontal_alignment = 1
@@ -633,4 +636,4 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/h_separation = 28
 theme_override_constants/v_separation = 6
-columns = 5
+columns = 7

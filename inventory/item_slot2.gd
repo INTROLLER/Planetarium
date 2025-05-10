@@ -26,6 +26,6 @@ func _gui_input(event: InputEvent) -> void:
 		var slots = find_parent("InvUi").find_child("InvContainer").get_children()
 		for slot in slots:
 			slot.focused = false
-			slot.add_theme_stylebox_override("panel", stylebox_def)
+			slot.get_child(0).add_theme_stylebox_override("panel", stylebox_def)
 		parent.focused = true
 		add_theme_stylebox_override("panel", stylebox_foc)
