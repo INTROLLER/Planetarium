@@ -8,6 +8,10 @@
 
 [node name="Node2D" type="Node2D"]
 
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+energy = 0.48
+blend_mode = 1
+
 [node name="Player" parent="." instance=ExtResource("1_f3sb7")]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -22,7 +26,13 @@ position = Vector2(80, 48)
 scale = Vector2(3.20001, 3.20001)
 shape = SubResource("RectangleShape2D_f3sb7")
 
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-color = Color(0, 0, 0, 1)
-energy = 0.2
-blend_mode = 1
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.136826, 0.136826, 0.136826, 1)

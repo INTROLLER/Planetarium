@@ -7,8 +7,8 @@
 radius = 8.0
 
 [sub_resource type="Gradient" id="Gradient_guwr3"]
-offsets = PackedFloat32Array(0, 0.715232)
-colors = PackedColorArray(0.720467, 0.720468, 0.720467, 1, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0, 0.714286)
+colors = PackedColorArray(0.427493, 0.427493, 0.427493, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_t5pkl"]
 gradient = SubResource("Gradient_guwr3")
@@ -30,3 +30,4 @@ disabled = true
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 texture = SubResource("GradientTexture2D_t5pkl")
+texture_scale = 2.0
