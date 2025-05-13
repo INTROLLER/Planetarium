@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://8vt1sje368pq"]
+[gd_scene load_steps=8 format=3 uid="uid://8vt1sje368pq"]
 
 [ext_resource type="Texture2D" uid="uid://cwx40nlctglx" path="res://textures/backpack_100dp_FFFFFF_FILL1_wght400_GRAD0_opsz48.png" id="1_ax334"]
 [ext_resource type="Script" uid="uid://cj8uf0x4j7hbp" path="res://inventory/inv_button.gd" id="1_mu37r"]
-[ext_resource type="FontFile" uid="uid://be36mubdtlm2a" path="res://textures/CalSans-Regular.ttf" id="2_mu37r"]
 [ext_resource type="Script" uid="uid://bg6u48nolcgmh" path="res://animation_component.gd" id="4_ou6ds"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ax334"]
@@ -42,10 +41,6 @@ corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
-
-[sub_resource type="LabelSettings" id="LabelSettings_pl5up"]
-font = ExtResource("2_mu37r")
-font_size = 3
 
 [node name="InvBtn" type="Control"]
 layout_mode = 3
@@ -98,21 +93,13 @@ theme_override_constants/separation = 1
 
 [node name="TextureRect" type="TextureRect" parent="Button/MarginContainer/VBoxContainer"]
 texture_filter = 2
-custom_minimum_size = Vector2(13, 13)
+custom_minimum_size = Vector2(17, 17)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
 texture = ExtResource("1_ax334")
 expand_mode = 1
-
-[node name="Label" type="Label" parent="Button/MarginContainer/VBoxContainer"]
-texture_filter = 2
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Inventory"
-label_settings = SubResource("LabelSettings_pl5up")
-horizontal_alignment = 1
 
 [node name="AnimationComponent" type="Node" parent="Button"]
 script = ExtResource("4_ou6ds")

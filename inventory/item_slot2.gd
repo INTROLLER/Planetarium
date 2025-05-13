@@ -16,8 +16,10 @@ func _gui_input(event: InputEvent) -> void:
 		invUi.find_child("Rarity").text = get_parent().item.data.rarity
 		invUi.find_child("EquipBtn").item = parent.item
 		invUi.find_child("DelBtn").item = parent.item
-		if !invUi.find_child("EquipBtn").visible:
-			invUi.find_child("EquipBtn").visible = true
+		if invUi.find_child("InfoBox").first_time:
+			for node in invUi.find_child("InfoBox").get_children():
+				node.visible = true
+			invUi.find_child("InfoBox").first_time = false
 		if parent.item.equiped:
 			invUi.find_child("EquipBtn").find_child("Label").text = "Unequip"
 		else:

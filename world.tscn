@@ -1,10 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://bc24yxgjcdudu"]
+[gd_scene load_steps=7 format=3 uid="uid://bc24yxgjcdudu"]
 
 [ext_resource type="PackedScene" uid="uid://ctfxvyae31vua" path="res://player.tscn" id="1_f3sb7"]
+[ext_resource type="Shader" uid="uid://c83lg7d23cw6n" path="res://starfield.gdshader" id="3_tlwt5"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_f3sb7"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_tlwt5"]
+noise_type = 0
+frequency = 0.3219
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f3sb7"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_aqk2v"]
+noise = SubResource("FastNoiseLite_tlwt5")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aqk2v"]
+shader = ExtResource("3_tlwt5")
+shader_parameter/resolution = Vector2(600, 400)
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_aqk2v")
+shader_parameter/density = 20.0
+shader_parameter/blink_speed = 2.0
+
+[sub_resource type="Environment" id="Environment_fj7yv"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -14,25 +27,17 @@ blend_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("1_f3sb7")]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_ignore_camera_zoom = true
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(80, 48)
-scale = Vector2(63.02, 63.02)
-texture = SubResource("CanvasTexture_f3sb7")
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = 1
+motion_mirroring = Vector2(400, 225)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(80, 48)
-scale = Vector2(3.20001, 3.20001)
-shape = SubResource("RectangleShape2D_f3sb7")
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground/ParallaxLayer"]
+material = SubResource("ShaderMaterial_aqk2v")
+offset_right = 400.0
+offset_bottom = 225.0
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = -1
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.136826, 0.136826, 0.136826, 1)
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fj7yv")

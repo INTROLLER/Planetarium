@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddv5yudm0moyn"]
+[gd_scene load_steps=6 format=3 uid="uid://ddv5yudm0moyn"]
 
 [ext_resource type="Script" uid="uid://vbt7pnni7qq5" path="res://orbitable.gd" id="1_guwr3"]
 [ext_resource type="Texture2D" uid="uid://cx7k4ol2r57ip" path="res://textures/temp.png" id="2_t5pkl"]
@@ -6,7 +6,16 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_46egq"]
 radius = 8.0
 
-[node name="Orbitable" type="RigidBody2D"]
+[sub_resource type="Gradient" id="Gradient_guwr3"]
+offsets = PackedFloat32Array(0, 0.583851)
+colors = PackedColorArray(0.427493, 0.427493, 0.427493, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_t5pkl"]
+gradient = SubResource("Gradient_guwr3")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Orbitable" type="CharacterBody2D"]
 script = ExtResource("1_guwr3")
 
 [node name="Sprite" type="Sprite2D" parent="."]
@@ -16,3 +25,6 @@ texture = ExtResource("2_t5pkl")
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_46egq")
 disabled = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture = SubResource("GradientTexture2D_t5pkl")

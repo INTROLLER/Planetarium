@@ -1,11 +1,12 @@
-[gd_scene load_steps=37 format=4 uid="uid://gme3ac4yxmxd"]
+[gd_scene load_steps=39 format=4 uid="uid://gme3ac4yxmxd"]
 
 [ext_resource type="FontFile" uid="uid://be36mubdtlm2a" path="res://textures/CalSans-Regular.ttf" id="1_qwu3r"]
 [ext_resource type="Texture2D" uid="uid://cx7k4ol2r57ip" path="res://textures/temp.png" id="2_dn3an"]
 [ext_resource type="Script" uid="uid://ij6j54anp6sf" path="res://inventory/close_button.gd" id="2_r1b7r"]
 [ext_resource type="Texture2D" uid="uid://daakno4rkhack" path="res://textures/close_80dp_FFFFFF_FILL1_wght700_GRAD0_opsz48.png" id="3_r1b7r"]
-[ext_resource type="Texture2D" uid="uid://bptde43qc4xh6" path="res://textures/swords_100dp_EA3323_FILL1_wght300_GRAD0_opsz48.png" id="5_ars6i"]
+[ext_resource type="Script" uid="uid://d03geirceoqaq" path="res://inventory/info_box.gd" id="5_7can1"]
 [ext_resource type="Texture2D" uid="uid://dkwx2deytaajo" path="res://textures/favorite_100dp_27C533_FILL1_wght700_GRAD0_opsz48.png" id="6_qwu3r"]
+[ext_resource type="Texture2D" uid="uid://1abydkmf1bb" path="res://textures/bomb_100dp_EA3323_FILL1_wght400_GRAD0_opsz48.png" id="6_rjf2a"]
 [ext_resource type="Script" uid="uid://ifconsgttwtb" path="res://inventory/equip_btn.gd" id="7_sjsia"]
 [ext_resource type="Script" uid="uid://bg6u48nolcgmh" path="res://animation_component.gd" id="8_rjf2a"]
 [ext_resource type="Script" uid="uid://c4121kwpk3cx3" path="res://inventory/del_btn.gd" id="8_ye6km"]
@@ -288,6 +289,8 @@ shadow_size = 0
 shadow_color = Color(0.682353, 0.682353, 0.682353, 0)
 shadow_offset = Vector2(0, 0)
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rjf2a"]
+
 [sub_resource type="LabelSettings" id="LabelSettings_sjsia"]
 font = ExtResource("1_qwu3r")
 font_size = 8
@@ -470,22 +473,23 @@ theme_override_constants/margin_top = 3
 theme_override_constants/margin_right = 3
 theme_override_constants/margin_bottom = 3
 
-[node name="InfoCont" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer"]
+[node name="InfoBox" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer"]
 custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 2
 alignment = 1
+script = ExtResource("5_7can1")
 
-[node name="Title" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoCont"]
+[node name="Title" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox"]
 texture_filter = 2
 layout_mode = 2
 text = "..."
 label_settings = SubResource("LabelSettings_dn3an")
 horizontal_alignment = 1
 
-[node name="Texture" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoCont"]
+[node name="Texture" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox"]
 texture_filter = 1
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
@@ -494,41 +498,42 @@ size_flags_vertical = 4
 texture = ExtResource("2_dn3an")
 expand_mode = 1
 
-[node name="Rarity" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoCont"]
+[node name="Rarity" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox"]
 texture_filter = 2
+material = SubResource("CanvasItemMaterial_rjf2a")
 layout_mode = 2
 text = "..."
 label_settings = SubResource("LabelSettings_sjsia")
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoCont"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.0
 
-[node name="DamageIcon" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoCont/HBoxContainer"]
+[node name="DamageIcon" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox/HBoxContainer"]
 texture_filter = 2
 custom_minimum_size = Vector2(9, 9)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.0
-texture = ExtResource("5_ars6i")
+texture = ExtResource("6_rjf2a")
 expand_mode = 1
 
-[node name="Damage" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoCont/HBoxContainer"]
+[node name="Damage" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox/HBoxContainer"]
 layout_mode = 2
 text = "..."
 label_settings = SubResource("LabelSettings_rjf2a")
 horizontal_alignment = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoCont"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="HealthIcon" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoCont/HBoxContainer2"]
+[node name="HealthIcon" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox/HBoxContainer2"]
 texture_filter = 2
 custom_minimum_size = Vector2(9, 9)
 layout_mode = 2
@@ -537,16 +542,17 @@ size_flags_vertical = 4
 texture = ExtResource("6_qwu3r")
 expand_mode = 1
 
-[node name="Health" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoCont/HBoxContainer2"]
+[node name="Health" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "..."
 label_settings = SubResource("LabelSettings_ye6km")
 horizontal_alignment = 1
 
-[node name="EquipBtn" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoCont"]
-custom_minimum_size = Vector2(0, 10)
+[node name="EquipBtn" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox"]
+custom_minimum_size = Vector2(45, 10)
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 4
 focus_mode = 0
 mouse_default_cursor_shape = 2
@@ -556,7 +562,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_cp3x1")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ulw2a")
 script = ExtResource("7_sjsia")
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoCont/EquipBtn"]
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox/EquipBtn"]
 texture_filter = 2
 layout_mode = 1
 anchors_preset = 8
@@ -573,7 +579,7 @@ grow_vertical = 2
 text = "Equip"
 label_settings = SubResource("LabelSettings_qwu3r")
 
-[node name="AnimationComponent" type="Node" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoCont/EquipBtn"]
+[node name="AnimationComponent" type="Node" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox/EquipBtn"]
 script = ExtResource("8_rjf2a")
 from_center = true
 hover_scale = Vector2(1.05, 1.05)
@@ -581,9 +587,10 @@ click_scale = Vector2(0.95, 0.95)
 time = 0.08
 metadata/_custom_type_script = "uid://bg6u48nolcgmh"
 
-[node name="DelBtn" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoCont"]
-custom_minimum_size = Vector2(0, 10)
+[node name="DelBtn" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox"]
+custom_minimum_size = Vector2(45, 10)
 layout_mode = 2
+size_flags_vertical = 4
 focus_mode = 0
 mouse_default_cursor_shape = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ars6i")
@@ -592,7 +599,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_5r18x")
 theme_override_styles/normal = SubResource("StyleBoxFlat_j1ede")
 script = ExtResource("8_ye6km")
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoCont/DelBtn"]
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox/DelBtn"]
 texture_filter = 2
 layout_mode = 1
 anchors_preset = 8
@@ -610,7 +617,7 @@ scale = Vector2(1.00378, 1.00619)
 text = "Delete"
 label_settings = SubResource("LabelSettings_ars6i")
 
-[node name="AnimationComponent" type="Node" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoCont/DelBtn"]
+[node name="AnimationComponent" type="Node" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox/DelBtn"]
 script = ExtResource("8_rjf2a")
 from_center = true
 hover_scale = Vector2(1.05, 1.05)

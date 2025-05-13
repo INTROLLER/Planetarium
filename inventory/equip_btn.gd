@@ -32,10 +32,10 @@ func equip():
 	
 func upd_visuals():
 	if item.equiped == true:
-		get_node("Label").label_settings.outline_color = "#1d2a3b"
-		add_theme_stylebox_override("normal", create_stylebox("#6aa7de"))
-		add_theme_stylebox_override("hover", create_stylebox("#7bc1ff"))
-		add_theme_stylebox_override("pressed", create_stylebox("#5d9bd3"))
+		get_node("Label").label_settings.outline_color = "#503100"
+		add_theme_stylebox_override("normal", create_stylebox("#ff9b00"))
+		add_theme_stylebox_override("hover", create_stylebox("#ffb037"))
+		add_theme_stylebox_override("pressed", create_stylebox("#f09200"))
 	else:
 		get_node("Label").label_settings.outline_color = "#004800"
 		add_theme_stylebox_override("normal", create_stylebox("#39ea39"))
