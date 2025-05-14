@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cawnmfdc5od1e"
-path="res://.godot/imported/swords_100dp_FFFFFF_FILL1_wght600_GRAD0_opsz48.png-2f25dcdf072d03c197b3f220643fc736.ctex"
+uid="uid://c6vs4saceh6pn"
+path="res://.godot/imported/damage.png-40231f62cad15c85714f939024f0455a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/swords_100dp_FFFFFF_FILL1_wght600_GRAD0_opsz48.png"
-dest_files=["res://.godot/imported/swords_100dp_FFFFFF_FILL1_wght600_GRAD0_opsz48.png-2f25dcdf072d03c197b3f220643fc736.ctex"]
+source_file="res://textures/damage.png"
+dest_files=["res://.godot/imported/damage.png-40231f62cad15c85714f939024f0455a.ctex"]
 
 [params]
 

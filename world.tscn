@@ -21,10 +21,6 @@ shader_parameter/blink_speed = 2.0
 
 [node name="Node2D" type="Node2D"]
 
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-energy = 0.48
-blend_mode = 1
-
 [node name="Player" parent="." instance=ExtResource("1_f3sb7")]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]

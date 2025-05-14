@@ -25,5 +25,8 @@ void fragment() {
 	// Combine star presence with blinking
 	float result = star * blink;
 
-	COLOR = vec4(vec3(result), 1.0);
+	vec3 background_color = vec3(0.02, 0.05, 0.1); // soft blueish background
+	vec3 star_color = vec3(result);
+	vec3 final_color = mix(background_color, star_color, result);
+	COLOR = vec4(final_color, 1.0);
 }

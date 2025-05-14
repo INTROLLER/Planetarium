@@ -9,6 +9,6 @@ func _ready() -> void:
 
 func close():
 	tween = inventory.get_tree().create_tween()
-	tween.tween_property(inventory, "position", Vector2(68.5, -148.0), 0.1)
+	tween.tween_property(inventory, "scale", Vector2(0, 0), 0.1)
 	await tween.finished
 	inventory.visible = false
