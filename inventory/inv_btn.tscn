@@ -1,57 +1,45 @@
-[gd_scene load_steps=8 format=3 uid="uid://8vt1sje368pq"]
+[gd_scene load_steps=9 format=3 uid="uid://8vt1sje368pq"]
 
-[ext_resource type="Texture2D" uid="uid://cwx40nlctglx" path="res://textures/backpack_100dp_FFFFFF_FILL1_wght400_GRAD0_opsz48.png" id="1_ax334"]
 [ext_resource type="Script" uid="uid://cj8uf0x4j7hbp" path="res://inventory/inv_button.gd" id="1_mu37r"]
+[ext_resource type="Script" uid="uid://b5ayiqob6n2l8" path="res://inventory/inv_btn.gd" id="1_ou6ds"]
+[ext_resource type="Texture2D" uid="uid://64ykjae4bb6" path="res://textures/backpack.png" id="3_ou6ds"]
 [ext_resource type="Script" uid="uid://bg6u48nolcgmh" path="res://animation_component.gd" id="4_ou6ds"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ax334"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mu37r"]
-bg_color = Color(0.215902, 0.215902, 0.215902, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
+bg_color = Color(0, 0, 0, 0.32549)
 border_color = Color(0.0980392, 0.0980392, 0.0980392, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
+corner_radius_top_left = 11
+corner_radius_top_right = 11
+corner_radius_bottom_right = 11
+corner_radius_bottom_left = 11
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ou6ds"]
-bg_color = Color(0.144063, 0.144063, 0.144063, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
+bg_color = Color(0, 0, 0, 0.815686)
 border_color = Color(0.0980392, 0.0980392, 0.0980392, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
+corner_radius_top_left = 11
+corner_radius_top_right = 11
+corner_radius_bottom_right = 11
+corner_radius_bottom_left = 11
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ax334"]
-bg_color = Color(0.14902, 0.14902, 0.14902, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
+bg_color = Color(0, 0, 0, 0.521569)
 border_color = Color(0.0980392, 0.0980392, 0.0980392, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
+corner_radius_top_left = 11
+corner_radius_top_right = 11
+corner_radius_bottom_right = 11
+corner_radius_bottom_left = 11
 
 [node name="InvBtn" type="Control"]
 layout_mode = 3
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 2.0
-offset_top = -11.5
-offset_right = 25.0
-offset_bottom = 11.5
-grow_vertical = 2
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -22.0
+offset_right = 22.0
+grow_vertical = 0
+script = ExtResource("1_ou6ds")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
@@ -84,21 +72,14 @@ theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Button/MarginContainer"]
+[node name="TextureRect" type="TextureRect" parent="Button/MarginContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(14, 14)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
-theme_override_constants/separation = 1
-
-[node name="TextureRect" type="TextureRect" parent="Button/MarginContainer/VBoxContainer"]
-texture_filter = 2
-custom_minimum_size = Vector2(17, 17)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-mouse_filter = 2
-texture = ExtResource("1_ax334")
+texture = ExtResource("3_ou6ds")
 expand_mode = 1
 
 [node name="AnimationComponent" type="Node" parent="Button"]

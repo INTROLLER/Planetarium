@@ -1,0 +1,187 @@
+[gd_scene load_steps=18 format=3 uid="uid://cvexah02vnv8b"]
+
+[ext_resource type="Script" uid="uid://c5q328wunayf7" path="res://inventory/hotbar/hotbar_tooltip.gd" id="1_eeshk"]
+[ext_resource type="FontFile" uid="uid://be36mubdtlm2a" path="res://textures/CalSans-Regular.ttf" id="2_eg57s"]
+[ext_resource type="Script" uid="uid://bf2a2ar2vwoq6" path="res://inventory/hotbar/tooltip_unequip_btn.gd" id="3_kqmu3"]
+[ext_resource type="Script" uid="uid://bg6u48nolcgmh" path="res://animation_component.gd" id="4_kmrdg"]
+[ext_resource type="Script" uid="uid://c3y8x5jyw7whx" path="res://inventory/hotbar/tooltip_close_btn.gd" id="5_id2pe"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6bi4o"]
+bg_color = Color(0, 0, 0, 0.407843)
+border_color = Color(1, 1, 1, 0.313726)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="LabelSettings" id="LabelSettings_5f4s0"]
+font = ExtResource("2_eg57s")
+font_size = 10
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6bi4o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wgp04"]
+bg_color = Color(1, 0.690196, 0.215686, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uek41"]
+bg_color = Color(0.941176, 0.572549, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qgmf4"]
+bg_color = Color(1, 0.607843, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="LabelSettings" id="LabelSettings_6bi4o"]
+font = ExtResource("2_eg57s")
+font_size = 6
+outline_size = 2
+outline_color = Color(0.313726, 0.192157, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5f4s0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yxfwx"]
+bg_color = Color(0.999999, 0.212682, 0.159697, 1)
+border_color = Color(0.760155, 4.89249e-05, 0.00217965, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_itgas"]
+bg_color = Color(0.876381, 0.00871884, 5.29438e-06, 1)
+border_color = Color(0.760784, 0, 0.00392157, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_74yjl"]
+bg_color = Color(1, 0, 0, 1)
+border_color = Color(0.760784, 0, 0.00392157, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="LabelSettings" id="LabelSettings_wgp04"]
+font = ExtResource("2_eg57s")
+font_size = 6
+outline_size = 2
+outline_color = Color(0.321569, 0, 0, 1)
+
+[node name="HotbarTooltip" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -346.0
+offset_bottom = -182.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eeshk")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6bi4o")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Title" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "..."
+label_settings = SubResource("LabelSettings_5f4s0")
+
+[node name="UnequipBtn" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(50, 11)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6bi4o")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wgp04")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_uek41")
+theme_override_styles/normal = SubResource("StyleBoxFlat_qgmf4")
+script = ExtResource("3_kqmu3")
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/UnequipBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.5
+offset_top = -4.0
+offset_right = 11.5
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Unequip"
+label_settings = SubResource("LabelSettings_6bi4o")
+
+[node name="AnimationComponent" type="Node" parent="PanelContainer/MarginContainer/VBoxContainer/UnequipBtn"]
+script = ExtResource("4_kmrdg")
+from_center = true
+hover_scale = Vector2(1.04, 1.04)
+click_scale = Vector2(0.96, 0.96)
+time = 0.08
+metadata/_custom_type_script = "uid://bg6u48nolcgmh"
+
+[node name="CloseBtn" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(50, 11)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5f4s0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yxfwx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_itgas")
+theme_override_styles/normal = SubResource("StyleBoxFlat_74yjl")
+script = ExtResource("5_id2pe")
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/CloseBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.5
+offset_top = -4.0
+offset_right = 7.5
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Close"
+label_settings = SubResource("LabelSettings_wgp04")
+
+[node name="AnimationComponent" type="Node" parent="PanelContainer/MarginContainer/VBoxContainer/CloseBtn"]
+script = ExtResource("4_kmrdg")
+from_center = true
+hover_scale = Vector2(1.04, 1.04)
+click_scale = Vector2(0.96, 0.96)
+time = 0.08
+metadata/_custom_type_script = "uid://bg6u48nolcgmh"

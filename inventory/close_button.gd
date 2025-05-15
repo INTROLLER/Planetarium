@@ -1,10 +1,14 @@
 extends Button
 
 var tween: Tween
-
-@onready var inventory = find_parent("InvUi")
+var inventory: Node
+var player: Node
+var hotbar: Node
 
 func _ready() -> void:
+	inventory = find_parent("InvUi")
+	player = find_parent("Player")
+	hotbar = player.find_child("HotbarUi")
 	pressed.connect(close)
 
 func close():
@@ -12,3 +16,4 @@ func close():
 	tween.tween_property(inventory, "scale", Vector2(0, 0), 0.1)
 	await tween.finished
 	inventory.visible = false
+	hotbar.visible = true

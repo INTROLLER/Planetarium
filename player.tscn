@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ctfxvyae31vua"]
+[gd_scene load_steps=20 format=3 uid="uid://ctfxvyae31vua"]
 
 [ext_resource type="Script" uid="uid://d16boak2hqf2b" path="res://player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://dphxovtr4etll" path="res://textures/earth.png" id="2_i3pqv"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" uid="uid://c3vquimqfc68" path="res://inventory/loadout.gd" id="5_1jxqw"]
 [ext_resource type="PackedScene" uid="uid://gme3ac4yxmxd" path="res://inventory/inv_ui.tscn" id="7_1jxqw"]
 [ext_resource type="PackedScene" uid="uid://8vt1sje368pq" path="res://inventory/inv_btn.tscn" id="9_b26j0"]
+[ext_resource type="PackedScene" uid="uid://wjfubbekevf7" path="res://inventory/hotbar/hotbar_ui.tscn" id="10_n7ghd"]
+[ext_resource type="PackedScene" uid="uid://cvexah02vnv8b" path="res://inventory/hotbar/hotbar_tooltip.tscn" id="11_nvl01"]
 
 [sub_resource type="Resource" id="Resource_dw050"]
 script = ExtResource("2_sweqy")
@@ -66,6 +68,7 @@ scale = Vector2(4.68, 4.68)
 shape = SubResource("CircleShape2D_4flbx")
 
 [node name="Sprite" type="Sprite2D" parent="."]
+texture_filter = 1
 texture = ExtResource("2_i3pqv")
 
 [node name="Camera" type="Camera2D" parent="."]
@@ -75,6 +78,10 @@ zoom = Vector2(0.5, 0.5)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="InvUi" parent="CanvasLayer" instance=ExtResource("7_1jxqw")]
-z_index = 0
 
 [node name="UiLayout" parent="CanvasLayer" instance=ExtResource("9_b26j0")]
+
+[node name="HotbarUi" parent="CanvasLayer" instance=ExtResource("10_n7ghd")]
+
+[node name="HotbarTooltip" parent="CanvasLayer" instance=ExtResource("11_nvl01")]
+visible = false

@@ -17,3 +17,12 @@ func unequip(item):
 		if slot == item:
 			items[i] = null
 			return
+
+
+func sort():
+	for i in range(0, items.size() - 1):
+		var slot = items[i]
+		var next_slot = items[i + 1]
+		if slot == null and next_slot != null:
+			items[i] = next_slot
+			items[i + 1] = null

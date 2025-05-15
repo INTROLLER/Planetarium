@@ -1,8 +1,9 @@
-[gd_scene load_steps=40 format=3 uid="uid://gme3ac4yxmxd"]
+[gd_scene load_steps=38 format=3 uid="uid://gme3ac4yxmxd"]
 
 [ext_resource type="FontFile" uid="uid://be36mubdtlm2a" path="res://textures/CalSans-Regular.ttf" id="1_qwu3r"]
 [ext_resource type="Script" uid="uid://ij6j54anp6sf" path="res://inventory/close_button.gd" id="2_r1b7r"]
 [ext_resource type="Texture2D" uid="uid://daakno4rkhack" path="res://textures/close_80dp_FFFFFF_FILL1_wght700_GRAD0_opsz48.png" id="3_r1b7r"]
+[ext_resource type="Texture2D" uid="uid://1et435lscxmc" path="res://textures/no_image.png" id="5_rjf2a"]
 [ext_resource type="Texture2D" uid="uid://c6vs4saceh6pn" path="res://textures/damage.png" id="7_5r18x"]
 [ext_resource type="Script" uid="uid://ifconsgttwtb" path="res://inventory/equip_btn.gd" id="7_sjsia"]
 [ext_resource type="Script" uid="uid://bg6u48nolcgmh" path="res://animation_component.gd" id="8_rjf2a"]
@@ -26,12 +27,8 @@ PanelContainer/styles/panel = SubResource("StyleBoxFlat_r1b7r")
 VBoxContainer/constants/separation = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qwu3r"]
-bg_color = Color(0.147672, 0.147672, 0.147672, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.099986, 0.099986, 0.099986, 1)
+bg_color = Color(0, 0, 0, 0.407843)
+border_color = Color(1, 1, 1, 0.0666667)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
@@ -76,23 +73,8 @@ corner_radius_bottom_left = 2
 shadow_color = Color(0.360784, 0, 0, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sjsia"]
-bg_color = Color(0.281187, 0.281187, 0.281187, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.176419, 0.176419, 0.176419, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d50yw"]
-bg_color = Color(0.152941, 0.152941, 0.152941, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
+bg_color = Color(0, 0, 0, 0)
+border_color = Color(1, 1, 1, 0.313726)
 
 [sub_resource type="LabelSettings" id="LabelSettings_dn3an"]
 line_spacing = 2.0
@@ -103,26 +85,12 @@ shadow_size = 0
 shadow_color = Color(0.682353, 0.682353, 0.682353, 0)
 shadow_offset = Vector2(0, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_usrr7"]
-bg_color = Color(1, 1, 1, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.560784, 0.560784, 0.560784, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_rjf2a"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hnlxl"]
-bg_color = Color(0.152941, 0.152941, 0.152941, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
+[sub_resource type="LabelSettings" id="LabelSettings_7can1"]
+font = ExtResource("1_qwu3r")
+font_size = 7
+font_color = Color(1, 1, 1, 0)
+outline_size = 2
+outline_color = Color(0.202473, 0.194978, 0.00496011, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_sjsia"]
 font = ExtResource("1_qwu3r")
@@ -130,6 +98,7 @@ font_size = 7
 font_color = Color(0, 0, 0, 1)
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 0
+shadow_color = Color(1, 1, 0, 0)
 shadow_offset = Vector2(0, 0)
 
 [sub_resource type="Gradient" id="Gradient_7can1"]
@@ -141,24 +110,29 @@ gradient = SubResource("Gradient_7can1")
 fill_from = Vector2(0, 0.5)
 fill_to = Vector2(1, 0.5)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0anuv"]
-bg_color = Color(0.152941, 0.152941, 0.152941, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d50yw"]
+bg_color = Color(0.259294, 0.259294, 0.259294, 0.407843)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
 [sub_resource type="LabelSettings" id="LabelSettings_rjf2a"]
 font = ExtResource("1_qwu3r")
 font_size = 6
+outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_suagj"]
-bg_color = Color(0.152941, 0.152941, 0.152941, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0anuv"]
+bg_color = Color(0.258824, 0.258824, 0.258824, 0.407843)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
 [sub_resource type="LabelSettings" id="LabelSettings_ye6km"]
 font = ExtResource("1_qwu3r")
 font_size = 6
-outline_color = Color(0.0784314, 0.407843, 0.0980392, 0)
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ars6i"]
 
@@ -193,8 +167,8 @@ outline_size = 2
 outline_color = Color(5.41471e-08, 0.281997, 1.44392e-07, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7can1"]
-bg_color = Color(1, 0, 0, 1)
-border_color = Color(0.760784, 0, 0.00392157, 1)
+bg_color = Color(0.999999, 0.212682, 0.159697, 1)
+border_color = Color(0.760155, 4.89249e-05, 0.00217965, 1)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
@@ -209,8 +183,8 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j1ede"]
-bg_color = Color(0.999999, 0.212682, 0.159697, 1)
-border_color = Color(0.760155, 4.89249e-05, 0.00217965, 1)
+bg_color = Color(1, 0, 0, 1)
+border_color = Color(0.760784, 0, 0.00392157, 1)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
@@ -223,12 +197,8 @@ outline_size = 2
 outline_color = Color(0.32045, 3.06834e-07, 1.20327e-07, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ye6km"]
-bg_color = Color(0.282353, 0.282353, 0.282353, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.176471, 0.176471, 0.176471, 1)
+bg_color = Color(0, 0, 0, 0)
+border_color = Color(1, 1, 1, 0.313726)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
@@ -278,17 +248,18 @@ alignment = 1
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
 texture_filter = 2
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
+size_flags_horizontal = 6
 text = "Inventory"
 label_settings = SubResource("LabelSettings_r1b7r")
 horizontal_alignment = 1
 
 [node name="CloseButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+z_index = 1
+z_as_relative = false
 texture_filter = 2
 custom_minimum_size = Vector2(14, 14)
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 8
 size_flags_vertical = 0
 focus_mode = 0
 mouse_default_cursor_shape = 2
@@ -337,20 +308,10 @@ custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/separation = 3
+theme_override_constants/separation = 4
 alignment = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox"]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_d50yw")
-
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox/PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 2
-theme_override_constants/margin_top = 2
-theme_override_constants/margin_right = 2
-
-[node name="Title" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox/PanelContainer/MarginContainer"]
+[node name="Title" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox"]
 texture_filter = 2
 layout_mode = 2
 size_flags_horizontal = 4
@@ -358,38 +319,29 @@ text = "..."
 label_settings = SubResource("LabelSettings_dn3an")
 horizontal_alignment = 1
 
-[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox"]
-layout_mode = 2
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_usrr7")
-
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox/PanelContainer2"]
-layout_mode = 2
-theme_override_constants/margin_left = 3
-theme_override_constants/margin_top = 3
-theme_override_constants/margin_right = 3
-theme_override_constants/margin_bottom = 3
-
-[node name="Texture" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox/PanelContainer2/MarginContainer"]
+[node name="Texture" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox"]
 texture_filter = 1
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = SubResource("CurveTexture_rjf2a")
+texture = ExtResource("5_rjf2a")
 expand_mode = 1
 
-[node name="PanelContainer3" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox"]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_hnlxl")
-
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox/PanelContainer3"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox"]
 layout_mode = 2
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 
-[node name="Rarity" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox/PanelContainer3/MarginContainer"]
+[node name="RarityOut" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox/MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "..."
+label_settings = SubResource("LabelSettings_7can1")
+
+[node name="Rarity" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox/MarginContainer"]
 clip_children = 1
 texture_filter = 2
 texture_repeat = 1
@@ -398,7 +350,7 @@ text = "..."
 label_settings = SubResource("LabelSettings_sjsia")
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox/PanelContainer3/MarginContainer/Rarity"]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox/MarginContainer/Rarity"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -414,13 +366,13 @@ theme_override_constants/separation = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox/VBoxContainer"]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_0anuv")
+theme_override_styles/panel = SubResource("StyleBoxFlat_d50yw")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox/VBoxContainer/PanelContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 2
+theme_override_constants/margin_left = 3
 theme_override_constants/margin_top = 2
-theme_override_constants/margin_right = 2
+theme_override_constants/margin_right = 3
 theme_override_constants/margin_bottom = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox/VBoxContainer/PanelContainer/MarginContainer"]
@@ -447,21 +399,21 @@ horizontal_alignment = 1
 
 [node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox/VBoxContainer"]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_suagj")
+theme_override_styles/panel = SubResource("StyleBoxFlat_0anuv")
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox/VBoxContainer/PanelContainer2"]
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox/VBoxContainer/PanelContainer2"]
 layout_mode = 2
-theme_override_constants/margin_left = 2
+theme_override_constants/margin_left = 3
 theme_override_constants/margin_top = 2
-theme_override_constants/margin_right = 2
+theme_override_constants/margin_right = 3
 theme_override_constants/margin_bottom = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox/VBoxContainer/PanelContainer2/MarginContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox/VBoxContainer/PanelContainer2/MarginContainer2"]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 3
 
-[node name="HealthIcon" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox/VBoxContainer/PanelContainer2/MarginContainer/HBoxContainer2"]
+[node name="HealthIcon" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox/VBoxContainer/PanelContainer2/MarginContainer2/HBoxContainer2"]
 texture_filter = 1
 custom_minimum_size = Vector2(8, 8)
 layout_mode = 2
@@ -470,7 +422,7 @@ size_flags_vertical = 4
 texture = ExtResource("9_5r18x")
 expand_mode = 1
 
-[node name="Health" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox/VBoxContainer/PanelContainer2/MarginContainer/HBoxContainer2"]
+[node name="Health" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox/VBoxContainer/PanelContainer2/MarginContainer2/HBoxContainer2"]
 custom_minimum_size = Vector2(0, 9)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -484,7 +436,7 @@ layout_mode = 2
 theme_override_constants/separation = 2
 
 [node name="EquipBtn" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox/VBoxContainer2"]
-custom_minimum_size = Vector2(45, 12)
+custom_minimum_size = Vector2(45, 11)
 layout_mode = 2
 size_flags_vertical = 4
 focus_mode = 0
@@ -496,11 +448,16 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ulw2a")
 script = ExtResource("7_sjsia")
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox/VBoxContainer2/EquipBtn"]
-layout_mode = 2
-offset_left = 14.0
-offset_top = 2.0
-offset_right = 30.0
-offset_bottom = 10.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -4.0
+offset_right = 8.0
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -516,7 +473,7 @@ time = 0.08
 metadata/_custom_type_script = "uid://bg6u48nolcgmh"
 
 [node name="DelBtn" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox/VBoxContainer2"]
-custom_minimum_size = Vector2(45, 12)
+custom_minimum_size = Vector2(45, 11)
 layout_mode = 2
 size_flags_vertical = 4
 focus_mode = 0

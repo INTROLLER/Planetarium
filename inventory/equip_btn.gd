@@ -13,22 +13,20 @@ func click():
 		equip()
 	else:
 		unequip()
-	print(player.loadout.items)
-	
+	upd_visuals()
+	player.loadout.sort()
+	player.upd_loadout()
+	player.find_child("HotbarContainer").load_hotbar()
 	
 func unequip():
 	item.equiped = false
 	find_child("Label").text = "Equip"
 	player.loadout.unequip(item)
-	player.upd_loadout()
-	upd_visuals()
 	
 func equip():
 	item.equiped = true
 	find_child("Label").text = "Unequip"
 	player.loadout.equip(item)
-	player.upd_loadout()
-	upd_visuals()
 	
 func upd_visuals():
 	if item.equiped == true:

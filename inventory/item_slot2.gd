@@ -1,7 +1,7 @@
 extends PanelContainer
 
-var stylebox_def = preload("res://inventory/slot_default.tres")
-var stylebox_foc = preload("res://inventory/slot_focused.tres")
+var stylebox_def = preload("res://inventory/inv_slot_default.tres")
+var stylebox_foc = preload("res://inventory/inv_slot_focused.tres")
 
 @onready var parent = get_parent()
 
@@ -14,6 +14,7 @@ func _gui_input(event: InputEvent) -> void:
 		invUi.find_child("Damage").text = str(int(get_parent().item.data.damage))
 		invUi.find_child("Health").text = str(int(get_parent().item.data.health))
 		invUi.find_child("Rarity").text = get_parent().item.data.rarity
+		invUi.find_child("RarityOut").text = get_parent().item.data.rarity
 		invUi.find_child("EquipBtn").item = parent.item
 		invUi.find_child("DelBtn").item = parent.item
 		if parent.item.equiped:
