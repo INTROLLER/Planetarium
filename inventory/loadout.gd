@@ -6,18 +6,18 @@ class_name Loadout
 
 func equip(item):
 	for i in items.size():
-		var slot = items[i]
-		if slot == null:
+		if items[i] == null:
 			items[i] = item
-			return
+			return true
+	return false
 
 func unequip(item):
 	for i in items.size():
 		var slot = items[i]
 		if slot == item:
 			items[i] = null
-			return
-
+			return true
+	return false
 
 func sort():
 	for i in range(0, items.size() - 1):

@@ -31,8 +31,6 @@ func _on_target_gui_input(event: InputEvent) -> void:
 func connect_signals():
 	target.mouse_entered.connect(on_hover)
 	target.mouse_exited.connect(off_hover)
-	#target.button_down.connect(on_click)
-	#target.button_up.connect(off_click)
 	
 func setup():
 	if from_center:

@@ -9,6 +9,7 @@ var orbit_center := Vector2.ZERO
 var current_radius : float
 
 @export var index: int
+@export var item: Item
 
 @onready var parent = get_parent()
 @onready var parent_col_shape = parent.get_node("Hitbox")
@@ -17,6 +18,7 @@ var current_radius : float
 func _ready() -> void:
 	current_radius = RADIUS
 	orbit_center = parent.global_position
+	find_child("Texture").texture = item.data.texture
 	upd()
 
 func upd():

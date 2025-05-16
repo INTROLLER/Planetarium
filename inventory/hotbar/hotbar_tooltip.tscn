@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://c3y8x5jyw7whx" path="res://inventory/hotbar/tooltip_close_btn.gd" id="5_id2pe"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6bi4o"]
-bg_color = Color(0, 0, 0, 0.407843)
+bg_color = Color(0.258824, 0.258824, 0.258824, 0.407843)
 border_color = Color(1, 1, 1, 0.313726)
 corner_radius_top_left = 3
 corner_radius_top_right = 3

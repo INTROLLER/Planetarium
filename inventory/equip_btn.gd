@@ -8,25 +8,31 @@ func _ready() -> void:
 	pressed.connect(click)
 	
 func click():
+	var sucess: bool
 	if !item: return
 	if item.equiped == false:
-		equip()
+		sucess = equip()
 	else:
-		unequip()
-	upd_visuals()
-	player.loadout.sort()
-	player.upd_loadout()
-	player.find_child("HotbarContainer").load_hotbar()
-	
-func unequip():
-	item.equiped = false
-	find_child("Label").text = "Equip"
-	player.loadout.unequip(item)
+		sucess = unequip()
+	if sucess:
+		upd_visuals()
+		player.loadout.sort()
+		player.upd_loadout()
+		player.find_child("HotbarContainer").load_hotbar()
 	
 func equip():
-	item.equiped = true
-	find_child("Label").text = "Unequip"
-	player.loadout.equip(item)
+	var equiped = player.loadout.equip(item)
+	if equiped:
+		item.equiped = true
+		find_child("Label").text = "Unequip"
+	return equiped
+	
+func unequip():
+	var unequiped = player.loadout.unequip(item)
+	if unequiped:
+		item.equiped = false
+		find_child("Label").text = "Equip"
+	return unequiped
 	
 func upd_visuals():
 	if item.equiped == true:

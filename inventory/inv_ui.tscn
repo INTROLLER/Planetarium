@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://gme3ac4yxmxd"]
+[gd_scene load_steps=39 format=3 uid="uid://gme3ac4yxmxd"]
 
 [ext_resource type="FontFile" uid="uid://be36mubdtlm2a" path="res://textures/CalSans-Regular.ttf" id="1_qwu3r"]
 [ext_resource type="Script" uid="uid://ij6j54anp6sf" path="res://inventory/close_button.gd" id="2_r1b7r"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://bg6u48nolcgmh" path="res://animation_component.gd" id="8_rjf2a"]
 [ext_resource type="Script" uid="uid://c4121kwpk3cx3" path="res://inventory/del_btn.gd" id="8_ye6km"]
 [ext_resource type="Texture2D" uid="uid://c3l0lcml4c53h" path="res://textures/health.png" id="9_5r18x"]
+[ext_resource type="Script" uid="uid://5o5y1rrs7ota" path="res://inventory/inv_container.gd" id="10_5r18x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r1b7r"]
 content_margin_left = 0.0
@@ -27,7 +28,7 @@ PanelContainer/styles/panel = SubResource("StyleBoxFlat_r1b7r")
 VBoxContainer/constants/separation = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qwu3r"]
-bg_color = Color(0, 0, 0, 0.407843)
+bg_color = Color(0.129558, 0.129558, 0.129558, 0.407843)
 border_color = Color(1, 1, 1, 0.0666667)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
@@ -513,9 +514,12 @@ metadata/_custom_type_script = "uid://bg6u48nolcgmh"
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_ye6km")
+horizontal_scroll_mode = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/margin_left = 3
 theme_override_constants/margin_top = 3
 theme_override_constants/margin_right = 3
@@ -523,8 +527,7 @@ theme_override_constants/margin_bottom = 3
 
 [node name="InvContainer" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 theme_override_constants/h_separation = 28
-theme_override_constants/v_separation = 6
+theme_override_constants/v_separation = 28
 columns = 7
+script = ExtResource("10_5r18x")

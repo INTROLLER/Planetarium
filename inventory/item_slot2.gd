@@ -7,6 +7,7 @@ var stylebox_foc = preload("res://inventory/inv_slot_focused.tres")
 
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
+		size = Vector2(22.0, 22.0)
 		var player = find_parent("Player")
 		var invUi = find_parent("InvUi")
 		invUi.find_child("Title").text = get_parent().item.data.name

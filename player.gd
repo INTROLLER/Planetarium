@@ -7,8 +7,11 @@ const FRICTION = 300
 
 var orbitables := []
 
+@export var health: float
+@export var experience: float
 @export var inv: Inv
 @export var loadout: Loadout
+
 @onready var planet_sprite = get_node("Sprite")
 @onready var orbitable_scene = preload("res://orbitable.tscn")
 @onready var item_slot_scene = preload("res://inventory/item_slot.tscn")
@@ -34,8 +37,8 @@ func upd_loadout():
 		if item == null:
 			continue
 		var orbitable = orbitable_scene.instantiate()
-		orbitable.get_node("Sprite").texture = item.data.texture
 		orbitable.index = i
+		orbitable.item = item
 		add_child(orbitable)
 		orbitables.append(orbitable)
 	for o in orbitables:
