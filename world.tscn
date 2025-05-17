@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bc24yxgjcdudu"]
+[gd_scene load_steps=9 format=3 uid="uid://bc24yxgjcdudu"]
 
 [ext_resource type="PackedScene" uid="uid://ctfxvyae31vua" path="res://player.tscn" id="1_f3sb7"]
+[ext_resource type="PackedScene" uid="uid://bs4k85s5v7btw" path="res://inventory/drops/loot.tscn" id="3_aqk2v"]
 [ext_resource type="Shader" uid="uid://c83lg7d23cw6n" path="res://starfield.gdshader" id="3_tlwt5"]
+[ext_resource type="Resource" uid="uid://mhofp38wljwk" path="res://inventory/items/earth.tres" id="4_aqk2v"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_tlwt5"]
 noise_type = 0
@@ -26,7 +28,7 @@ glow_blend_mode = 1
 glow_hdr_threshold = 0.31
 adjustment_enabled = true
 
-[node name="Node2D" type="Node2D"]
+[node name="World" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_f3sb7")]
 
@@ -44,3 +46,7 @@ offset_bottom = 225.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_fj7yv")
+
+[node name="Loot" parent="." instance=ExtResource("3_aqk2v")]
+position = Vector2(261, 63)
+item_data = ExtResource("4_aqk2v")

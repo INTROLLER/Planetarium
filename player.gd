@@ -5,7 +5,10 @@ const JUMP_VELOCITY = 400
 const ACCELERATION = 2000
 const FRICTION = 300
 
+var next_id = 1
 var orbitables := []
+
+var inv_container: Node
 
 @export var health: float
 @export var experience: float
@@ -14,18 +17,14 @@ var orbitables := []
 
 @onready var planet_sprite = get_node("Sprite")
 @onready var orbitable_scene = preload("res://orbitable.tscn")
-@onready var item_slot_scene = preload("res://inventory/item_slot.tscn")
  
 func _ready():
+	inv_container = get_node("CanvasLayer/InvUi").find_child("InvContainer")
 	upd_loadout()
-	var next_id = 1
 	for i in inv.items.size():
 		var item = inv.items[i]
-		var item_slot = item_slot_scene.instantiate()
 		item.id = next_id
-		item_slot.item = item
-		item_slot.find_child("Texture").texture = item.data.texture
-		get_node("CanvasLayer/InvUi").find_child("InvContainer").add_child(item_slot)
+		inv_container.add(item)
 		next_id += 1
 		
 func upd_loadout():
@@ -44,10 +43,19 @@ func upd_loadout():
 	for o in orbitables:
 		o.upd()
 
-func player_movement(input, delta):
-	if input: velocity = velocity.move_toward(input * SPEED , delta * ACCELERATION)
+func add_item(item_data: ItemData):
+	var item = Item.new()
+	item.data = item_data
+	item.id = next_id
+	inv.items.append(item)
+	inv_container.add(item)
+	next_id += 1
 
-	else: velocity = velocity.move_toward(Vector2(0,0), delta * FRICTION)
+func player_movement(input, delta):
+	if input:
+		velocity = velocity.move_toward(input * SPEED , delta * ACCELERATION)
+	else:
+		velocity = velocity.move_toward(Vector2(0,0), delta * FRICTION)
 
 
 func _physics_process(delta):

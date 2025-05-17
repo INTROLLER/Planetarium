@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://bs4k85s5v7btw"]
+
+[ext_resource type="Script" uid="uid://bi84bnkus70di" path="res://inventory/drops/loot.gd" id="1_bmw8o"]
+[ext_resource type="Texture2D" uid="uid://dphxovtr4etll" path="res://textures/earth.png" id="2_bmw8o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6fbvm"]
+radius = 13.9706
+
+[node name="Loot" type="Area2D"]
+modulate = Color(1.5, 1.5, 1.5, 1)
+script = ExtResource("1_bmw8o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.36, 1.36)
+shape = SubResource("CircleShape2D_6fbvm")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+clip_contents = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.5
+offset_top = -12.5
+offset_right = 12.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="Texture" type="TextureRect" parent="PanelContainer/MarginContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_bmw8o")
+expand_mode = 1
