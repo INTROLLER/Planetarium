@@ -10,11 +10,11 @@ radius = 13.9706
 modulate = Color(1.5, 1.5, 1.5, 1)
 script = ExtResource("1_bmw8o")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Hitbox" type="CollisionShape2D" parent="."]
 scale = Vector2(1.36, 1.36)
 shape = SubResource("CircleShape2D_6fbvm")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="TextureContainer" type="PanelContainer" parent="."]
 clip_contents = true
 anchors_preset = 8
 anchor_left = 0.5
@@ -30,7 +30,7 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="TextureContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -39,7 +39,7 @@ theme_override_constants/margin_top = 3
 theme_override_constants/margin_right = 3
 theme_override_constants/margin_bottom = 3
 
-[node name="Texture" type="TextureRect" parent="PanelContainer/MarginContainer"]
+[node name="Texture" type="TextureRect" parent="TextureContainer/MarginContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(15, 15)
 layout_mode = 2

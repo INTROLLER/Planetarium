@@ -1,25 +1,31 @@
 extends CharacterBody2D
 
+class_name Player
+
 const SPEED = 130
 const JUMP_VELOCITY = 400
 const ACCELERATION = 2000
 const FRICTION = 300
 
+var orbitable_scene = load("res://orbitable.tscn")
+
 var next_id = 1
 var orbitables := []
 
 var inv_container: Node
+var hitbox: Node
+var sprite: Node
 
 @export var health: float
 @export var experience: float
 @export var inv: Inv
 @export var loadout: Loadout
-
-@onready var planet_sprite = get_node("Sprite")
-@onready var orbitable_scene = preload("res://orbitable.tscn")
  
 func _ready():
+	sprite = $Sprite
+	hitbox = $Hitbox
 	inv_container = get_node("CanvasLayer/InvUi").find_child("InvContainer")
+	hitbox.shape.radius = (sprite.texture.get_size().x / 2.0) * sprite.scale[0]
 	upd_loadout()
 	for i in inv.items.size():
 		var item = inv.items[i]
@@ -62,5 +68,5 @@ func _physics_process(delta):
 	var input = Input.get_vector("ui_left","ui_right","ui_up","ui_down")
 
 	player_movement(input, delta)
-	planet_sprite.rotation += delta * 0.5
+	sprite.rotation += delta * 0.5
 	move_and_slide()

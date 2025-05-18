@@ -1,7 +1,45 @@
-[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://br1unkkkia70h"]
+[gd_resource type="Resource" script_class="Enemy" load_steps=11 format=3 uid="uid://br1unkkkia70h"]
 
+[ext_resource type="Script" uid="uid://c763nowd41mh3" path="res://drop_entry.gd" id="1_xnn58"]
 [ext_resource type="Script" uid="uid://c4rxhpffsfwjw" path="res://enemy_data.gd" id="1_xpcnw"]
 [ext_resource type="Texture2D" uid="uid://dphxovtr4etll" path="res://textures/earth.png" id="2_1iaft"]
+[ext_resource type="Resource" uid="uid://mhofp38wljwk" path="res://inventory/items/earth.tres" id="2_4vi7c"]
+
+[sub_resource type="Resource" id="Resource_xnn58"]
+script = ExtResource("1_xnn58")
+data = ExtResource("2_4vi7c")
+probability = 0.5
+metadata/_custom_type_script = "uid://c763nowd41mh3"
+
+[sub_resource type="Resource" id="Resource_4vi7c"]
+script = ExtResource("1_xnn58")
+data = ExtResource("2_4vi7c")
+probability = 0.8
+metadata/_custom_type_script = "uid://c763nowd41mh3"
+
+[sub_resource type="Resource" id="Resource_xfatg"]
+script = ExtResource("1_xnn58")
+data = ExtResource("2_4vi7c")
+probability = 0.8
+metadata/_custom_type_script = "uid://c763nowd41mh3"
+
+[sub_resource type="Resource" id="Resource_toexc"]
+script = ExtResource("1_xnn58")
+data = ExtResource("2_4vi7c")
+probability = 0.8
+metadata/_custom_type_script = "uid://c763nowd41mh3"
+
+[sub_resource type="Resource" id="Resource_et3yi"]
+script = ExtResource("1_xnn58")
+data = ExtResource("2_4vi7c")
+probability = 0.4
+metadata/_custom_type_script = "uid://c763nowd41mh3"
+
+[sub_resource type="Resource" id="Resource_l6ps7"]
+script = ExtResource("1_xnn58")
+data = ExtResource("2_4vi7c")
+probability = 0.7
+metadata/_custom_type_script = "uid://c763nowd41mh3"
 
 [resource]
 script = ExtResource("1_xpcnw")
@@ -9,5 +47,5 @@ name = "Earth"
 health = 100.0
 damage = 20.0
 texture = ExtResource("2_1iaft")
-drops = null
+drops = Array[ExtResource("1_xnn58")]([SubResource("Resource_xnn58"), SubResource("Resource_4vi7c"), SubResource("Resource_xfatg"), SubResource("Resource_toexc"), SubResource("Resource_et3yi"), SubResource("Resource_l6ps7")])
 metadata/_custom_type_script = "uid://c4rxhpffsfwjw"
