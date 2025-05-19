@@ -3,6 +3,27 @@ extends PanelContainer
 var stylebox_def = preload("res://inventory/inv_slot_default.tres")
 var stylebox_foc = preload("res://inventory/inv_slot_focused.tres")
 
+var rarity_map = {
+	"common": {
+		"gradient": load("res://inventory/gradient_common.tres")
+	},
+	"uncommon": {
+		"gradient": load("res://inventory/gradient_uncommon.tres")
+	},
+	"rare": {
+		"gradient": load("res://inventory/gradient_rare.tres")
+	},
+	"epic": {
+		"gradient": load("res://inventory/gradient_epic.tres")
+	},
+	"mythic": {
+		"gradient": load("res://inventory/gradient_mythic.tres")
+	},
+	"legendary": {
+		"gradient": load("res://inventory/gradient_legendary.tres")
+	}
+}
+
 @onready var parent = get_parent()
 
 func _gui_input(event: InputEvent) -> void:
@@ -13,8 +34,8 @@ func _gui_input(event: InputEvent) -> void:
 		invUi.find_child("Title").text = get_parent().item.data.name
 		invUi.find_child("Texture").texture = get_parent().item.data.texture
 		invUi.find_child("Damage").text = str(int(get_parent().item.data.damage))
-		invUi.find_child("Health").text = str(int(get_parent().item.data.health))
 		invUi.find_child("Rarity").text = get_parent().item.data.rarity
+		invUi.find_child("Rarity").find_child("Gradient").texture = rarity_map[get_parent().item.data.rarity.to_lower()]["gradient"]
 		invUi.find_child("RarityOut").text = get_parent().item.data.rarity
 		invUi.find_child("EquipBtn").item = parent.item
 		invUi.find_child("DelBtn").item = parent.item

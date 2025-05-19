@@ -1,14 +1,26 @@
 extends Button
 
+var player: Node
+var hotbar_container: Node
+var inv_container: Node
+
 @export var item: Item
 
 func _ready() -> void:
+	player = find_parent("Player")
+	hotbar_container = player.find_child("HotbarContainer")
+	inv_container = find_parent("InvUi").find_child("InvContainer")
 	pressed.connect(delete)
 	
 func delete():
 	if !item: return
-	find_parent("Player").inv.delete_item(item.id)
-	var slots = find_parent("InvUi").find_child("InvContainer").get_children()
+	if item.equiped:
+		player.loadout.unequip(item)
+		player.loadout.sort()
+		player.upd_loadout()
+		hotbar_container.load_hotbar()
+	player.inv.delete_item(item.id)
+	var slots = inv_container.get_children()
 	for slot in slots:
 		if slot.item.id == item.id:
-			find_parent("InvUi").find_child("InvContainer").remove_child(slot)
+			inv_container.remove_child(slot)

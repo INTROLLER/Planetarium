@@ -1,14 +1,15 @@
-[gd_scene load_steps=19 format=3 uid="uid://ctfxvyae31vua"]
+[gd_scene load_steps=21 format=3 uid="uid://ctfxvyae31vua"]
 
 [ext_resource type="Script" uid="uid://d16boak2hqf2b" path="res://player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://dphxovtr4etll" path="res://textures/earth.png" id="2_i3pqv"]
 [ext_resource type="Script" uid="uid://32xkpygcdxnt" path="res://inventory/item.gd" id="2_sweqy"]
 [ext_resource type="Script" uid="uid://dyvbg107h4ufy" path="res://inventory/inv.gd" id="3_2hs0m"]
 [ext_resource type="Resource" uid="uid://mhofp38wljwk" path="res://inventory/items/earth.tres" id="3_n7ghd"]
+[ext_resource type="Resource" uid="uid://nbf2mrm3ettv" path="res://inventory/items/Temp.tres" id="4_nvl01"]
 [ext_resource type="Script" uid="uid://c3vquimqfc68" path="res://inventory/loadout.gd" id="5_1jxqw"]
 [ext_resource type="PackedScene" uid="uid://gme3ac4yxmxd" path="res://inventory/inv_ui.tscn" id="7_1jxqw"]
-[ext_resource type="PackedScene" uid="uid://8vt1sje368pq" path="res://inventory/inv_btn.tscn" id="9_b26j0"]
 [ext_resource type="PackedScene" uid="uid://wjfubbekevf7" path="res://inventory/hotbar/hotbar_ui.tscn" id="10_n7ghd"]
+[ext_resource type="PackedScene" uid="uid://33bi8fshlm2b" path="res://inventory/active_ui.tscn" id="10_nvl01"]
 [ext_resource type="PackedScene" uid="uid://cvexah02vnv8b" path="res://inventory/hotbar/hotbar_tooltip.tscn" id="11_nvl01"]
 
 [sub_resource type="Resource" id="Resource_nvl01"]
@@ -46,9 +47,16 @@ data = ExtResource("3_n7ghd")
 equiped = false
 metadata/_custom_type_script = "uid://32xkpygcdxnt"
 
+[sub_resource type="Resource" id="Resource_606se"]
+script = ExtResource("2_sweqy")
+id = 0
+data = ExtResource("4_nvl01")
+equiped = false
+metadata/_custom_type_script = "uid://32xkpygcdxnt"
+
 [sub_resource type="Resource" id="Resource_1jxqw"]
 script = ExtResource("3_2hs0m")
-items = Array[ExtResource("2_sweqy")]([SubResource("Resource_nvl01"), SubResource("Resource_n7ghd"), SubResource("Resource_ivps1"), SubResource("Resource_urp6f"), SubResource("Resource_bwjto")])
+items = Array[ExtResource("2_sweqy")]([SubResource("Resource_nvl01"), SubResource("Resource_n7ghd"), SubResource("Resource_ivps1"), SubResource("Resource_urp6f"), SubResource("Resource_bwjto"), SubResource("Resource_606se")])
 metadata/_custom_type_script = "uid://dyvbg107h4ufy"
 
 [sub_resource type="Resource" id="Resource_b26j0"]
@@ -59,12 +67,14 @@ metadata/_custom_type_script = "uid://c3vquimqfc68"
 [sub_resource type="CircleShape2D" id="CircleShape2D_n7ghd"]
 
 [node name="Player" type="CharacterBody2D"]
-modulate = Color(1.5, 1.5, 1.5, 1)
+modulate = Color(1.4, 1.4, 1.4, 1)
+collision_mask = 5
 script = ExtResource("1_onrkg")
 inv = SubResource("Resource_1jxqw")
 loadout = SubResource("Resource_b26j0")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_n7ghd")
 
 [node name="Sprite" type="Sprite2D" parent="."]
@@ -80,9 +90,10 @@ zoom = Vector2(0.5, 0.5)
 
 [node name="InvUi" parent="CanvasLayer" instance=ExtResource("7_1jxqw")]
 
-[node name="UiLayout" parent="CanvasLayer" instance=ExtResource("9_b26j0")]
-
 [node name="HotbarUi" parent="CanvasLayer" instance=ExtResource("10_n7ghd")]
+z_index = 5
 
 [node name="HotbarTooltip" parent="CanvasLayer" instance=ExtResource("11_nvl01")]
 visible = false
+
+[node name="ActiveUi" parent="CanvasLayer" instance=ExtResource("10_nvl01")]

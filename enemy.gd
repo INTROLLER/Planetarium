@@ -8,24 +8,24 @@ var vanish_particle_scene = load("res://vanish_particle.tscn")
 var sprite: Node
 var hitbox: Node
 var world: Node
+var tween: Tween
 
-@export var enemy: EnemyData
+@export var data: EnemyData
 @export var health: float
 @export var damage: float
 
-@onready var tween = get_tree().create_tween()
-
 func _ready() -> void:
 	world = find_parent("World")
-	health = enemy.health
-	damage = enemy.damage
+	health = data.health
+	damage = data.damage
 	sprite = $Sprite
 	hitbox = $Hitbox
-	connect("area_entered", take_damage)
-	sprite.texture = enemy.texture
+	area_entered.connect(take_damage)
+	sprite.texture = data.texture
 	hitbox.shape.radius = (sprite.texture.get_size().x / 2.0) * sprite.scale[0]
 	
 func take_damage(area):
+	print("lol")
 	if area is Orbitable:
 		health -= area.item.data.damage
 		flash_damage()
@@ -35,22 +35,28 @@ func take_damage(area):
 			particle.global_position = global_position
 			world.add_child(particle)
 			drop_loot()
+			if tween:
+				tween.kill()
+			tween = get_tree().create_tween()
+			tween.tween_property(sprite, "scale", Vector2(0.0, 0.0), 0.1)
+			await tween.finished
 			queue_free()
 
 func flash_damage():
-	# Set to fully red
-	sprite.material.set_shader_parameter("damage_flash", 0.7)
-	
-	# Animate fade back to 0 over 0.3 seconds
-	tween.kill()  # Kill any existing tween first
+	# Set to a red-tinted color (you can adjust alpha too if needed)
+	modulate = Color(3.8, 1.0, 1.0)  # Light red flash
+
+	# Animate back to normal (white means "no tint")
+	if tween:
+		tween.kill()
 	tween = get_tree().create_tween()
-	tween.tween_property(sprite.material, "shader_parameter/damage_flash", 0.0, 0.3)
+	tween.tween_property(self, "modulate", Color(1.4, 1.4, 1.4), 0.3)
 
 func drop_loot():
 	var spawned_loot = []
 
 	# Determine which items will spawn
-	for drop in enemy.drops:
+	for drop in data.drops:
 		if randf() < drop.probability:
 			spawned_loot.append(drop)
 

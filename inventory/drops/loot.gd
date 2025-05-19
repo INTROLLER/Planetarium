@@ -3,12 +3,30 @@ extends Node2D
 class_name Loot
 
 var rarity_map = {
-	"common": load("res://inventory/drops/loot_common.tres"),
-	"uncommon": load("res://inventory/drops/loot_uncommon.tres"),
-	"rare": load("res://inventory/drops/loot_rare.tres"),
-	"epic": load("res://inventory/drops/loot_epic.tres"),
-	"mythic": load("res://inventory/drops/loot_mythic.tres"),
-	"legendary": load("res://inventory/drops/loot_legendary.tres")
+	"common": {
+		"stylebox": load("res://inventory/drops/loot_common.tres"),
+		"particle_color": "#ffffff"
+	},
+	"uncommon": {
+		"stylebox": load("res://inventory/drops/loot_uncommon.tres"),
+		"particle_color": "#74ff00"
+	},
+	"rare": {
+		"stylebox": load("res://inventory/drops/loot_rare.tres"),
+		"particle_color": "#1db2ff"
+	},
+	"epic": {
+		"stylebox": load("res://inventory/drops/loot_epic.tres"),
+		"particle_color": "#a792ff"
+	},
+	"mythic": {
+		"stylebox": load("res://inventory/drops/loot_mythic.tres"),
+		"particle_color": "#ff604f"
+	},
+	"legendary": {
+		"stylebox": load("res://inventory/drops/loot_legendary.tres"),
+		"particle_color": "#fefe00"
+	}
 }
 
 var hitbox_multi = 1.5
@@ -16,6 +34,7 @@ var hitbox_multi = 1.5
 var texture_node: Node
 var texture_container: Node
 var hitbox: Node
+var particles: Node
 
 var following_player: Player
 var fading_out := false
@@ -25,10 +44,13 @@ var fading_out := false
 func _ready() -> void:
 	hitbox = $Hitbox
 	texture_container = $TextureContainer
+	particles = $ShineParticles
 	texture_node = $TextureContainer/MarginContainer/Texture
-	texture_container.add_theme_stylebox_override("panel", rarity_map[item_data.rarity.to_lower()])
+	texture_container.add_theme_stylebox_override("panel", rarity_map[item_data.rarity.to_lower()]["stylebox"])
 	texture_node.texture = item_data.texture
 	hitbox.shape.radius = (texture_container.size.x / 2.0) * texture_container.scale[0] * hitbox_multi
+	particles.emission_rect_extents = (texture_container.size / 2.0) * texture_container.scale[0]
+	particles.color = rarity_map[item_data.rarity.to_lower()]["particle_color"]
 	connect("body_entered", pickup)
 	
 	# Start invisible and scaled down

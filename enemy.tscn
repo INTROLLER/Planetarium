@@ -1,23 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://kncrysrxer8b"]
+[gd_scene load_steps=4 format=3 uid="uid://kncrysrxer8b"]
 
 [ext_resource type="Script" uid="uid://c664klwak33" path="res://enemy.gd" id="1_7k104"]
-[ext_resource type="Shader" uid="uid://b441gqn4k6i38" path="res://damage.gdshader" id="2_qi2p4"]
 [ext_resource type="Texture2D" uid="uid://dphxovtr4etll" path="res://textures/earth.png" id="3_iifgy"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_epg4t"]
-shader = ExtResource("2_qi2p4")
-shader_parameter/damage_flash = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7xaro"]
 
 [node name="Enemy" type="Area2D"]
+modulate = Color(1.4, 1.4, 1.4, 1)
+collision_layer = 4
+collision_mask = 5
 script = ExtResource("1_7k104")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
-material = SubResource("ShaderMaterial_epg4t")
-scale = Vector2(0.997, 1)
+position = Vector2(-9.53674e-07, -9.53674e-07)
 texture = ExtResource("3_iifgy")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_7xaro")

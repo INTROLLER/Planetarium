@@ -1,0 +1,86 @@
+[gd_scene load_steps=10 format=3 uid="uid://33bi8fshlm2b"]
+
+[ext_resource type="Script" uid="uid://cj8uf0x4j7hbp" path="res://inventory/inv_button.gd" id="2_untw4"]
+[ext_resource type="Shader" uid="uid://ym80c5l2cd57" path="res://outline.gdshader" id="3_tbiex"]
+[ext_resource type="Texture2D" uid="uid://cs6j4h4rs1s52" path="res://textures/backpack2.png" id="4_ryh8g"]
+[ext_resource type="Script" uid="uid://bg6u48nolcgmh" path="res://animation_component.gd" id="6_hhcyd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ax334"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ou6ds"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gjxww"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xs056"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g48bh"]
+shader = ExtResource("3_tbiex")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 10.0
+shader_parameter/pattern = 2
+shader_parameter/inside = true
+shader_parameter/add_margins = false
+
+[node name="ActiveUi" type="Control"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+size_flags_horizontal = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -26.0
+offset_right = 26.0
+grow_vertical = 0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+alignment = 1
+
+[node name="InvBtn" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ax334")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ou6ds")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_gjxww")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xs056")
+script = ExtResource("2_untw4")
+
+[node name="Texture" type="TextureRect" parent="MarginContainer/VBoxContainer/InvBtn"]
+material = SubResource("ShaderMaterial_g48bh")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_ryh8g")
+expand_mode = 1
+
+[node name="AnimationComponent" type="Node" parent="MarginContainer/VBoxContainer/InvBtn"]
+script = ExtResource("6_hhcyd")
+from_center = true
+hover_scale = Vector2(1.05, 1.05)
+click_scale = Vector2(0.95, 0.95)
+time = 0.08
+metadata/_custom_type_script = "uid://bg6u48nolcgmh"

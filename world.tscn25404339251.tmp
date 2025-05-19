@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bc24yxgjcdudu"]
+[gd_scene load_steps=10 format=3 uid="uid://bc24yxgjcdudu"]
 
 [ext_resource type="Script" uid="uid://cc7r8ht8sd866" path="res://world.gd" id="1_036b0"]
 [ext_resource type="PackedScene" uid="uid://ctfxvyae31vua" path="res://player.tscn" id="1_f3sb7"]
+[ext_resource type="PackedScene" uid="uid://kncrysrxer8b" path="res://enemy.tscn" id="3_aqk2v"]
 [ext_resource type="Shader" uid="uid://c83lg7d23cw6n" path="res://starfield.gdshader" id="3_tlwt5"]
+[ext_resource type="Resource" uid="uid://br1unkkkia70h" path="res://enemies/earth.tres" id="4_036b0"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_tlwt5"]
 noise_type = 0
@@ -29,7 +31,10 @@ adjustment_enabled = true
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_036b0")
-spawn_enemies = true
+
+[node name="Enemy" parent="." instance=ExtResource("3_aqk2v")]
+position = Vector2(369, 52)
+enemy = ExtResource("4_036b0")
 
 [node name="Player" parent="." instance=ExtResource("1_f3sb7")]
 

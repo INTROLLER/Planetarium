@@ -7,9 +7,8 @@ point_count = 2
 [node name="VanishParticle" type="CPUParticles2D"]
 emitting = false
 amount = 50
-lifetime = 1.3
 one_shot = true
-speed_scale = 2.0
+speed_scale = 2.4
 explosiveness = 1.0
 spread = 169.49
 gravity = Vector2(0, 0)
