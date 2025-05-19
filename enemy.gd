@@ -10,6 +10,11 @@ var hitbox: Node
 var world: Node
 var tween: Tween
 
+var velocity := Vector2.ZERO
+var friction := 1000.0
+var knockback_force := 300.0
+var knockback_threshold := 5.0
+
 @export var data: EnemyData
 @export var health: float
 @export var damage: float
@@ -21,11 +26,11 @@ func _ready() -> void:
 	sprite = $Sprite
 	hitbox = $Hitbox
 	area_entered.connect(take_damage)
+	body_entered.connect(deal_damage)
 	sprite.texture = data.texture
 	hitbox.shape.radius = (sprite.texture.get_size().x / 2.0) * sprite.scale[0]
 	
 func take_damage(area):
-	print("lol")
 	if area is Orbitable:
 		health -= area.item.data.damage
 		flash_damage()
@@ -41,10 +46,18 @@ func take_damage(area):
 			tween.tween_property(sprite, "scale", Vector2(0.0, 0.0), 0.1)
 			await tween.finished
 			queue_free()
+			
+func deal_damage(body):
+	if body is Player:
+		body.health -= damage
+
+		# Apply knockback away from player
+		var direction = (global_position - body.global_position).normalized()
+		velocity = direction * knockback_force
 
 func flash_damage():
 	# Set to a red-tinted color (you can adjust alpha too if needed)
-	modulate = Color(3.8, 1.0, 1.0)  # Light red flash
+	modulate = Color(3.314, 1.0, 1.0)  # Light red flash
 
 	# Animate back to normal (white means "no tint")
 	if tween:
@@ -93,3 +106,10 @@ func drop_loot():
 		loot.item_data = spawned_loot[i].data
 		loot.global_position = global_position + offset
 		find_parent("World").add_child(loot)
+
+func _process(delta: float) -> void:
+	if velocity.length() > knockback_threshold:
+		global_position += velocity * delta
+		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
+	else:
+		velocity = Vector2.ZERO

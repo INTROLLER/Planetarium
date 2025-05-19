@@ -8,7 +8,7 @@
 [node name="Enemy" type="Area2D"]
 modulate = Color(1.4, 1.4, 1.4, 1)
 collision_layer = 4
-collision_mask = 5
+collision_mask = 7
 script = ExtResource("1_7k104")
 
 [node name="Sprite" type="Sprite2D" parent="."]
