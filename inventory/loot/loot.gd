@@ -1,45 +1,43 @@
-extends Node2D
-
 class_name Loot
 
-var rarity_map = {
-	"common": {
-		"stylebox": load("res://inventory/drops/loot_common.tres"),
-		"particle_color": "#ffffff"
-	},
-	"uncommon": {
-		"stylebox": load("res://inventory/drops/loot_uncommon.tres"),
-		"particle_color": "#74ff00"
-	},
-	"rare": {
-		"stylebox": load("res://inventory/drops/loot_rare.tres"),
-		"particle_color": "#1db2ff"
-	},
-	"epic": {
-		"stylebox": load("res://inventory/drops/loot_epic.tres"),
-		"particle_color": "#a792ff"
-	},
-	"mythic": {
-		"stylebox": load("res://inventory/drops/loot_mythic.tres"),
-		"particle_color": "#ff604f"
-	},
-	"legendary": {
-		"stylebox": load("res://inventory/drops/loot_legendary.tres"),
-		"particle_color": "#fefe00"
-	}
-}
-
-var hitbox_multi = 1.5
+extends Area2D
 
 var texture_node: Node
 var texture_container: Node
 var hitbox: Node
 var particles: Node
-
 var following_player: Player
-var fading_out := false
 
 @export var item_data: ItemData
+
+var hitbox_multi = 1.5
+var fading_out := false
+var rarity_map = {
+	"common": {
+		"stylebox": load("res://inventory/loot/loot_common.tres"),
+		"particle_color": "#ffffff"
+	},
+	"uncommon": {
+		"stylebox": load("res://inventory/loot/loot_uncommon.tres"),
+		"particle_color": "#74ff00"
+	},
+	"rare": {
+		"stylebox": load("res://inventory/loot/loot_rare.tres"),
+		"particle_color": "#1db2ff"
+	},
+	"epic": {
+		"stylebox": load("res://inventory/loot/loot_epic.tres"),
+		"particle_color": "#a792ff"
+	},
+	"mythic": {
+		"stylebox": load("res://inventory/loot/loot_mythic.tres"),
+		"particle_color": "#ff604f"
+	},
+	"legendary": {
+		"stylebox": load("res://inventory/loot/loot_legendary.tres"),
+		"particle_color": "#fefe00"
+	}
+}
 
 func _ready() -> void:
 	hitbox = $Hitbox
@@ -67,15 +65,6 @@ func _ready() -> void:
 	appear_tween.tween_property(self, "modulate:a", 1.0, 0.3)
 
 	connect("body_entered", pickup)
-	
-	
-func pickup(body):
-	if body is Player:
-		hitbox.disabled = true
-		set_process(true)
-		following_player = body
-		fading_out = true
-
 
 func _physics_process(delta: float) -> void:
 	if fading_out and following_player:
@@ -92,3 +81,11 @@ func _physics_process(delta: float) -> void:
 		if global_position.distance_to(following_player.global_position) < 10:
 			following_player.add_item(item_data)
 			queue_free()
+
+	
+func pickup(body):
+	if body is Player:
+		hitbox.disabled = true
+		set_process(true)
+		following_player = body
+		fading_out = true

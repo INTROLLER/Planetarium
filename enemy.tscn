@@ -13,7 +13,6 @@ script = ExtResource("1_7k104")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(-9.53674e-07, -9.53674e-07)
 texture = ExtResource("3_iifgy")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]

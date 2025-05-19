@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://8w8cg4joy8m3"]
+[gd_scene load_steps=5 format=3 uid="uid://8w8cg4joy8m3"]
 
 [ext_resource type="Script" uid="uid://dcdbx5fnsf6eb" path="res://inventory/hotbar/hotbar_slot1.gd" id="1_u7jrc"]
 [ext_resource type="StyleBox" uid="uid://bc5e0nk8miujb" path="res://inventory/hotbar/hotbar_slot_default.tres" id="2_81nxa"]
 [ext_resource type="Script" uid="uid://c6nvg1oslk8sf" path="res://inventory/hotbar/hotbar_slot2.gd" id="3_v82vl"]
-[ext_resource type="Texture2D" uid="uid://cx7k4ol2r57ip" path="res://textures/temp.png" id="4_of6yh"]
 [ext_resource type="Script" uid="uid://bg6u48nolcgmh" path="res://animation_component.gd" id="5_08e16"]
 
 [node name="HotbarSlot" type="Control"]
@@ -39,7 +38,6 @@ theme_override_constants/margin_bottom = 3
 texture_filter = 1
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
-texture = ExtResource("4_of6yh")
 expand_mode = 1
 
 [node name="AnimationComponent" type="Node" parent="PanelContainer"]

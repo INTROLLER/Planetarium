@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bs4k85s5v7btw"]
 
-[ext_resource type="Script" uid="uid://bi84bnkus70di" path="res://inventory/drops/loot.gd" id="1_bmw8o"]
+[ext_resource type="Script" uid="uid://bi84bnkus70di" path="res://inventory/loot/loot.gd" id="1_bmw8o"]
 [ext_resource type="Texture2D" uid="uid://dphxovtr4etll" path="res://textures/earth.png" id="2_bmw8o"]
 [ext_resource type="Texture2D" uid="uid://t8eelrqavcg3" path="res://textures/sparkle.png" id="3_bmw8o"]
 
@@ -63,4 +63,3 @@ emission_rect_extents = Vector2(15, 15)
 gravity = Vector2(0, 0)
 scale_amount_min = 0.0
 scale_amount_curve = SubResource("Curve_jnycc")
-color = Color(0.997933, 0.997933, 1.6942e-05, 1)

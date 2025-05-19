@@ -8,13 +8,13 @@
 noise_type = 0
 frequency = 0.3219
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_aqk2v"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tlwt5"]
 noise = SubResource("FastNoiseLite_tlwt5")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_aqk2v"]
 shader = ExtResource("3_tlwt5")
 shader_parameter/resolution = Vector2(600, 400)
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_aqk2v")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_tlwt5")
 shader_parameter/density = 20.0
 shader_parameter/blink_speed = 2.0
 
@@ -27,9 +27,10 @@ glow_blend_mode = 1
 glow_hdr_threshold = 0.31
 adjustment_enabled = true
 
-[node name="World" type="Node2D"]
+[node name="World" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_036b0")
 spawn_enemies = true
+player = NodePath("Player")
 
 [node name="Player" parent="." instance=ExtResource("1_f3sb7")]
 

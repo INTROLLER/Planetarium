@@ -1,28 +1,32 @@
+class_name Player
+
 extends CharacterBody2D
 
-class_name Player
+signal health_changed(health)
 
 const SPEED = 130
 const JUMP_VELOCITY = 400
 const ACCELERATION = 2000
 const FRICTION = 300
 
-var orbitable_scene = load("res://orbitable.tscn")
-
-var next_id = 1
-var orbitables := []
-
 var inv_container: Node
 var hitbox: Node
 var sprite: Node
+var tween: Tween
+var world: World
 
 @export var health: float
-@export var experience: float
 @export var body_damage: float
+@export var main_menu: Control
 @export var inv: Inv
 @export var loadout: Loadout
+
+var orbitable_scene = load("res://orbitable.tscn")
+var next_id = 1
+var orbitables := []
  
 func _ready():
+	world = find_parent("World")
 	sprite = $Sprite
 	hitbox = $Hitbox
 	inv_container = get_node("CanvasLayer/InvUi").find_child("InvContainer")
@@ -33,6 +37,13 @@ func _ready():
 		item.id = next_id
 		inv_container.add(item)
 		next_id += 1
+
+func _physics_process(delta):
+	var input = Input.get_vector("ui_left","ui_right","ui_up","ui_down")
+
+	player_movement(input, delta)
+	sprite.rotation += delta * 0.5
+	move_and_slide()
 		
 func upd_loadout():
 	for o in orbitables:
@@ -58,16 +69,18 @@ func add_item(item_data: ItemData):
 	inv_container.add(item)
 	next_id += 1
 
+func flash_damage():
+	# Set to a red-tinted color (you can adjust alpha too if needed)
+	modulate = Color(3.314, 1.0, 1.0)  # Light red flash
+
+	# Animate back to normal (white means "no tint")
+	if tween:
+		tween.kill()
+	tween = get_tree().create_tween()
+	tween.tween_property(self, "modulate", Color(1.4, 1.4, 1.4), 0.3)
+
 func player_movement(input, delta):
 	if input:
 		velocity = velocity.move_toward(input * SPEED , delta * ACCELERATION)
 	else:
 		velocity = velocity.move_toward(Vector2(0,0), delta * FRICTION)
-
-
-func _physics_process(delta):
-	var input = Input.get_vector("ui_left","ui_right","ui_up","ui_down")
-
-	player_movement(input, delta)
-	sprite.rotation += delta * 0.5
-	move_and_slide()

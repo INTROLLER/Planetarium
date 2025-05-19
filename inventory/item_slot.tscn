@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://df0f3mehsoh1y"]
+[gd_scene load_steps=5 format=3 uid="uid://df0f3mehsoh1y"]
 
 [ext_resource type="Script" uid="uid://dd2r4thv2cni5" path="res://inventory/item_slot1.gd" id="1_32yy5"]
-[ext_resource type="Texture2D" uid="uid://cx7k4ol2r57ip" path="res://textures/temp.png" id="1_xs2ts"]
 [ext_resource type="Script" uid="uid://ccs3lahd54dvl" path="res://inventory/item_slot2.gd" id="2_32yy5"]
 [ext_resource type="StyleBox" uid="uid://d35o0bykj1vq7" path="res://inventory/inv_slot_default.tres" id="2_qlayk"]
 [ext_resource type="Script" uid="uid://bg6u48nolcgmh" path="res://animation_component.gd" id="5_2xwh8"]
@@ -41,7 +40,6 @@ custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
-texture = ExtResource("1_xs2ts")
 expand_mode = 1
 
 [node name="AnimationComponent" type="Node" parent="PanelContainer"]

@@ -1,4 +1,8 @@
-[gd_scene format=3 uid="uid://bseyu5wr756fx"]
+[gd_scene load_steps=2 format=3 uid="uid://bseyu5wr756fx"]
+
+[sub_resource type="Curve" id="Curve_rhts7"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -8,10 +12,25 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 225.0
+color = Color(0, 0, 0, 1)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+self_modulate = Color(100, 100, 100, 1)
+z_index = 100
+position = Vector2(200, 238)
+amount = 200
+lifetime = 4.0
+speed_scale = 0.7
+emission_shape = 3
+emission_rect_extents = Vector2(200, 0)
+spread = 180.0
+gravity = Vector2(0, -45)
+initial_velocity_min = 3.0
+initial_velocity_max = 27.78
+linear_accel_min = 3.7
+linear_accel_max = 22.22
+scale_amount_curve = SubResource("Curve_rhts7")

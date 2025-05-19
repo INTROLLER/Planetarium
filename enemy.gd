@@ -1,25 +1,24 @@
-extends Area2D
-
 class_name Enemy
 
-var loot_scene = load("res://inventory/drops/loot.tscn")
-var vanish_particle_scene = load("res://vanish_particle.tscn")
+extends Area2D
 
 var sprite: Node
 var hitbox: Node
-var world: Node
+var world: World
 var tween: Tween
-
-var velocity := Vector2.ZERO
-var friction := 1000.0
-var knockback_force := 300.0
-var knockback_threshold := 5.0
-var move_speed := 80.0
 var player: Player
 
 @export var data: EnemyData
 @export var health: float
 @export var damage: float
+
+var loot_scene = load("res://inventory/loot/loot.tscn")
+var vanish_particle_scene = load("res://vanish_particle.tscn")
+var velocity := Vector2.ZERO
+var friction := 1000.0
+var knockback_force := 300.0
+var knockback_threshold := 5.0
+var move_speed := 80.0
 
 func _ready() -> void:
 	world = find_parent("World")
@@ -28,28 +27,31 @@ func _ready() -> void:
 	damage = data.damage
 	sprite = $Sprite
 	hitbox = $Hitbox
-	area_entered.connect(take_damage)
+	area_entered.connect(get_hit)
 	body_entered.connect(hit)
 	sprite.texture = data.texture
 	hitbox.shape.radius = (sprite.texture.get_size().x / 2.0) * sprite.scale[0]
 	add_to_group("enemies")
-	
-func take_damage(area):
+
+func _physics_process(delta: float) -> void:
+	separate_from_enemies()
+
+	if velocity.length() > knockback_threshold:
+		global_position += velocity * delta
+		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
+	else:
+		velocity = Vector2.ZERO
+
+		if player:
+			var direction = (player.global_position - global_position).normalized()
+			global_position += direction * move_speed * delta
+
+
+func get_hit(area):
 	if area is Orbitable:
 		health -= area.item.data.damage
 		flash_damage()
-		if health <= 0:
-			var particle = vanish_particle_scene.instantiate()
-			particle.emitting = true
-			particle.global_position = global_position
-			world.add_child(particle)
-			drop_loot()
-			if tween:
-				tween.kill()
-			tween = get_tree().create_tween()
-			tween.tween_property(sprite, "scale", Vector2(0.0, 0.0), 0.1)
-			await tween.finished
-			queue_free()
+		check_death()
 			
 func hit(body):
 	if body is Player:
@@ -59,19 +61,26 @@ func hit(body):
 		# Apply knockback away from player
 		var direction = (global_position - body.global_position).normalized()
 		velocity += direction * knockback_force
-		
-		if health <= 0:
-			var particle = vanish_particle_scene.instantiate()
-			particle.emitting = true
-			particle.global_position = global_position
-			world.add_child(particle)
-			drop_loot()
-			if tween:
-				tween.kill()
-			tween = get_tree().create_tween()
-			tween.tween_property(sprite, "scale", Vector2(0.0, 0.0), 0.1)
-			await tween.finished
-			queue_free()
+		flash_damage()
+		body.flash_damage()
+		body.health_changed.emit(body.health)
+		check_death()
+		if body.health <= 0:
+			world.game_over()
+
+func check_death():
+	if health <= 0:
+		var particle = vanish_particle_scene.instantiate()
+		particle.emitting = true
+		particle.global_position = global_position
+		world.add_child(particle)
+		drop_loot()
+		if tween:
+			tween.kill()
+		tween = get_tree().create_tween()
+		tween.tween_property(sprite, "scale", Vector2(0.0, 0.0), 0.1)
+		await tween.finished
+		queue_free()
 
 func flash_damage():
 	# Set to a red-tinted color (you can adjust alpha too if needed)
@@ -134,27 +143,14 @@ func separate_from_enemies():
 			continue
 		
 		var distance = global_position.distance_to(other.global_position)
-		var min_distance = hitbox.shape.radius + other.hitbox.shape.radius
+		var min_distance = (hitbox.shape.radius + other.hitbox.shape.radius)
 
 		if distance < min_distance and distance > 0:
 			var push_direction = (global_position - other.global_position).normalized()
 			var overlap = min_distance - distance
 			
 			# Apply minimum push force to avoid stuck behavior
-			var push_strength = max(overlap * 10, 100)  # 100 is minimum force value; adjust as needed
+			var push_strength = max(overlap * 10, 200)  # 100 is minimum force value; adjust as needed
 			separation_force += push_direction * push_strength
 
 	velocity += separation_force
-
-func _process(delta: float) -> void:
-	separate_from_enemies()
-
-	if velocity.length() > knockback_threshold:
-		global_position += velocity * delta
-		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
-	else:
-		velocity = Vector2.ZERO
-
-		if player:
-			var direction = (player.global_position - global_position).normalized()
-			global_position += direction * move_speed * delta
