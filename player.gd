@@ -18,6 +18,7 @@ var sprite: Node
 
 @export var health: float
 @export var experience: float
+@export var body_damage: float
 @export var inv: Inv
 @export var loadout: Loadout
  

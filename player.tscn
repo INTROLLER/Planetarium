@@ -70,6 +70,8 @@ metadata/_custom_type_script = "uid://c3vquimqfc68"
 modulate = Color(1.4, 1.4, 1.4, 1)
 collision_mask = 5
 script = ExtResource("1_onrkg")
+health = 100.0
+body_damage = 20.0
 inv = SubResource("Resource_1jxqw")
 loadout = SubResource("Resource_b26j0")
 
