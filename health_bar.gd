@@ -5,11 +5,10 @@ var tween: Tween
 
 func _ready() -> void:
 	player = find_parent("Player")
-	max_value = player.health
-	value = player.health
-	player.health_changed.connect(update_value)
+	player.health_changed.connect(update)
 
-func update_value(health):
+func update(health):
+	max_value = player.max_health
 	if tween:
 		tween.kill()
 

@@ -1,9 +1,10 @@
-[gd_scene load_steps=34 format=3 uid="uid://gme3ac4yxmxd"]
+[gd_scene load_steps=35 format=3 uid="uid://gme3ac4yxmxd"]
 
 [ext_resource type="FontFile" uid="uid://be36mubdtlm2a" path="res://textures/CalSans-Regular.ttf" id="1_qwu3r"]
 [ext_resource type="Script" uid="uid://ij6j54anp6sf" path="res://inventory/close_button.gd" id="2_r1b7r"]
 [ext_resource type="Texture2D" uid="uid://daakno4rkhack" path="res://textures/close_80dp_FFFFFF_FILL1_wght700_GRAD0_opsz48.png" id="3_r1b7r"]
 [ext_resource type="Texture2D" uid="uid://1et435lscxmc" path="res://textures/no_image.png" id="5_rjf2a"]
+[ext_resource type="Texture2D" uid="uid://c6ixbutk5td8h" path="res://inventory/gradient_common.tres" id="6_7can1"]
 [ext_resource type="Texture2D" uid="uid://c6vs4saceh6pn" path="res://textures/damage.png" id="7_5r18x"]
 [ext_resource type="Script" uid="uid://ifconsgttwtb" path="res://inventory/equip_btn.gd" id="7_sjsia"]
 [ext_resource type="Script" uid="uid://bg6u48nolcgmh" path="res://animation_component.gd" id="8_rjf2a"]
@@ -334,6 +335,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("6_7can1")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox"]
 layout_mode = 2

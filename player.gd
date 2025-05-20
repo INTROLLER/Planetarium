@@ -3,6 +3,7 @@ class_name Player
 extends CharacterBody2D
 
 signal health_changed(health)
+signal loot_collected(item_data)
 
 const SPEED = 130
 const JUMP_VELOCITY = 400
@@ -16,19 +17,23 @@ var tween: Tween
 var world: World
 
 @export var health: float
+@export var max_health: float
 @export var body_damage: float
 @export var main_menu: Node
 @export var inv: Inv
 @export var loadout: Loadout
+@export var playing: bool
 
 var orbitable_scene = load("res://orbitable.tscn")
 var next_id = 1
 var orbitables := []
- 
+var health_stat := 100.0
+
 func _ready():
 	world = find_parent("World")
 	sprite = $Sprite
 	hitbox = $Hitbox
+	world.game_started.connect(setup)
 	inv_container = get_node("CanvasLayer/InvUi").find_child("InvContainer")
 	hitbox.shape.radius = (sprite.texture.get_size().x / 2.0) * sprite.scale[0]
 	upd_loadout()
@@ -39,6 +44,7 @@ func _ready():
 		next_id += 1
 
 func _physics_process(delta):
+	if not playing: return
 	var input = Input.get_vector("ui_left","ui_right","ui_up","ui_down")
 
 	player_movement(input, delta)
@@ -70,6 +76,7 @@ func add_item(item_data: ItemData):
 	next_id += 1
 
 func flash_damage():
+	health_changed.emit(health)
 	# Set to a red-tinted color (you can adjust alpha too if needed)
 	modulate = Color(3.314, 1.0, 1.0)  # Light red flash
 
@@ -84,3 +91,8 @@ func player_movement(input, delta):
 		velocity = velocity.move_toward(input * SPEED , delta * ACCELERATION)
 	else:
 		velocity = velocity.move_toward(Vector2(0,0), delta * FRICTION)
+
+func setup():
+	health = health_stat
+	max_health = health
+	health_changed.emit(health)

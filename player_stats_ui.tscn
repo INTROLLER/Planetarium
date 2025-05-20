@@ -1,22 +1,22 @@
-[gd_scene load_steps=10 format=3 uid="uid://cb18a317vm61e"]
+[gd_scene load_steps=21 format=3 uid="uid://cb18a317vm61e"]
 
 [ext_resource type="Script" uid="uid://bhc2dwai0s436" path="res://health_bar.gd" id="1_idp5u"]
+[ext_resource type="Texture2D" uid="uid://1et435lscxmc" path="res://textures/no_image.png" id="1_jm1dh"]
 [ext_resource type="Script" uid="uid://5x2qmqg3j5yh" path="res://skin_display.gd" id="1_ly2pe"]
 [ext_resource type="FontFile" uid="uid://be36mubdtlm2a" path="res://textures/CalSans-Regular.ttf" id="2_620t4"]
 [ext_resource type="Script" uid="uid://cl7qktmp4mvny" path="res://wave_nr.gd" id="3_m83lp"]
+[ext_resource type="Script" uid="uid://dcyysmsc3vfut" path="res://max_enemies.gd" id="6_04pip"]
+[ext_resource type="Script" uid="uid://qtf3340ghetk" path="res://enemies_left.gd" id="6_uk186"]
+[ext_resource type="Script" uid="uid://bakhfqrwuxtvu" path="res://enemy_bar.gd" id="8_nova0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_620t4"]
 bg_color = Color(0.258824, 0.258824, 0.258824, 0.407843)
 corner_radius_top_left = 13
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
-corner_radius_bottom_left = 13
+corner_radius_bottom_left = 3
 
-[sub_resource type="LabelSettings" id="LabelSettings_m83lp"]
-font = ExtResource("2_620t4")
-font_size = 8
-
-[sub_resource type="LabelSettings" id="LabelSettings_jm1dh"]
+[sub_resource type="LabelSettings" id="LabelSettings_04pip"]
 font = ExtResource("2_620t4")
 font_size = 8
 
@@ -35,6 +35,48 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m83lp"]
+bg_color = Color(0.258824, 0.258824, 0.258824, 0.407843)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="LabelSettings" id="LabelSettings_m83lp"]
+font = ExtResource("2_620t4")
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_jm1dh"]
+font = ExtResource("2_620t4")
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_uk186"]
+font = ExtResource("2_620t4")
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_nova0"]
+font = ExtResource("2_620t4")
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_2v3rg"]
+font = ExtResource("2_620t4")
+font_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_04pip"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uk186"]
+bg_color = Color(1, 1, 1, 1)
+border_color = Color(0.461862, 1.05888e-06, 2.64719e-07, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
 [node name="PlayerStatsUi" type="Control"]
 layout_mode = 3
 anchors_preset = 0
@@ -46,56 +88,116 @@ offset_bottom = 26.0
 theme_override_constants/margin_left = 3
 theme_override_constants/margin_top = 3
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_620t4")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 3
 theme_override_constants/margin_top = 3
 theme_override_constants/margin_right = 3
 theme_override_constants/margin_bottom = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="SkinDisplay" type="TextureRect" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+[node name="SkinDisplay" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+texture = ExtResource("1_jm1dh")
 expand_mode = 1
 script = ExtResource("1_ly2pe")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 2
+theme_override_constants/separation = 1
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 2
+text = "Health"
+label_settings = SubResource("LabelSettings_04pip")
 
-[node name="Wave" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Wave"
-label_settings = SubResource("LabelSettings_m83lp")
-
-[node name="WaveNr" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "0"
-label_settings = SubResource("LabelSettings_jm1dh")
-script = ExtResource("3_m83lp")
-
-[node name="HealthBar" type="ProgressBar" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(70, 5)
+[node name="HealthBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(70, 6)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/background = SubResource("StyleBoxFlat_idp5u")
 theme_override_styles/fill = SubResource("StyleBoxFlat_ly2pe")
-value = 100.0
 show_percentage = false
 script = ExtResource("1_idp5u")
+
+[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_m83lp")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/PanelContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer2/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 2
+
+[node name="Wave" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Wave"
+label_settings = SubResource("LabelSettings_m83lp")
+
+[node name="WaveNr" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_jm1dh")
+script = ExtResource("3_m83lp")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 1
+
+[node name="EnemiesLeft" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer2"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_uk186")
+script = ExtResource("6_uk186")
+
+[node name="Divider" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer2"]
+layout_mode = 2
+text = "/"
+label_settings = SubResource("LabelSettings_nova0")
+
+[node name="MaxEnemies" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer2"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_2v3rg")
+script = ExtResource("6_04pip")
+
+[node name="EnemyBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(70, 6)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_04pip")
+theme_override_styles/fill = SubResource("StyleBoxFlat_uk186")
+show_percentage = false
+script = ExtResource("8_nova0")

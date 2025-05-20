@@ -2,24 +2,23 @@ class_name  World
 
 extends Node2D
 
-signal new_wave(wave)
+signal new_wave()
+signal enemy_killed()
+signal game_started()
 
 @export var spawn_enemies := false
 @export var active_enemies: Array[Enemy]
 @export var max_enemy_count := 5
+@export var killed_enemies := 0
 @export var spawn_radius := 400.0 # distance around player
 @export var spawn_interval := 0 # seconds between spawns
 @export var player: Player
-@export var wave := 1
+@export var wave := 0
 
 var enemy_scene = load("res://enemy.tscn")
 var current_wave_config = {}
 var _spawn_timer := 0.0
 var enemies_spawned_in_wave := 0
-
-func _ready():
-	current_wave_config = get_wave_config()
-	set_wave(wave)
 
 func _physics_process(delta: float) -> void:
 	if not spawn_enemies or player == null:
@@ -39,8 +38,7 @@ func _physics_process(delta: float) -> void:
 
 	# When all enemies are dead and we spawned all for this wave, move to next wave
 	if enemies_spawned_in_wave >= max_enemy_count and active_enemies.is_empty():
-		set_wave(wave + 1)
-		new_wave.emit(wave)
+		set_wave(wave + 1, true)
 
 func get_wave_config():
 	var config := {}
@@ -69,14 +67,17 @@ func get_wave_config():
 
 	return config
 
-func set_wave(wave_num: int) -> void:
+func set_wave(wave_num: int, notify := false) -> void:
 	wave = wave_num
 	enemies_spawned_in_wave = 0
+	killed_enemies = 0
 
 	current_wave_config = get_wave_config()
 
 	max_enemy_count = current_wave_config["max_enemies"]
 	spawn_interval = current_wave_config["interval"]
+
+	new_wave.emit(notify)
 
 func spawn_enemy() -> void:
 	var max_attempts := 10
@@ -121,9 +122,23 @@ func spawn_enemy() -> void:
 
 	print("Failed to spawn enemy: no space found after %d attempts" % max_attempts)
 
-func game_over():
+func stop_game():
 	spawn_enemies = false
 	for enemy in active_enemies:
 		enemy.queue_free()
 	active_enemies.clear()
 	player.main_menu.visible = true
+	var tween = player.main_menu.get_child(0).get_tree().create_tween()
+	tween.tween_property(player.main_menu.get_child(0), "modulate", Color(1.0, 1.0, 1.0, 1.0), 0.5)
+	player.playing = false
+
+func start_game():
+	current_wave_config = get_wave_config()
+	set_wave(1)
+	var tween = player.main_menu.get_child(0).get_tree().create_tween()
+	tween.tween_property(player.main_menu.get_child(0), "modulate", Color(1.0, 1.0, 1.0, 0.0), 0.5)
+	await tween.finished
+	player.main_menu.visible = false
+	spawn_enemies = true
+	player.playing = true
+	game_started.emit()

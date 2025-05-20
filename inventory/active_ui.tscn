@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://33bi8fshlm2b"]
 
+[ext_resource type="Texture2D" uid="uid://64ykjae4bb6" path="res://textures/backpack.png" id="2_iif85"]
 [ext_resource type="Script" uid="uid://cj8uf0x4j7hbp" path="res://inventory/inv_button.gd" id="2_untw4"]
-[ext_resource type="Texture2D" uid="uid://cs6j4h4rs1s52" path="res://textures/backpack2.png" id="4_ryh8g"]
 [ext_resource type="Script" uid="uid://bg6u48nolcgmh" path="res://animation_component.gd" id="6_hhcyd"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ax334"]
@@ -78,9 +78,10 @@ theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
 [node name="Texture" type="TextureRect" parent="MarginContainer/VBoxContainer/InvBtn/MarginContainer"]
+texture_filter = 1
 material = SubResource("ShaderMaterial_g48bh")
 layout_mode = 2
-texture = ExtResource("4_ryh8g")
+texture = ExtResource("2_iif85")
 expand_mode = 1
 
 [node name="AnimationComponent" type="Node" parent="MarginContainer/VBoxContainer/InvBtn"]

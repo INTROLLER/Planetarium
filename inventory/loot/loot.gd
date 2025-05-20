@@ -89,3 +89,4 @@ func pickup(body):
 		set_process(true)
 		following_player = body
 		fading_out = true
+		body.loot_collected.emit(item_data)

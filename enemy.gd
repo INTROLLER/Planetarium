@@ -63,10 +63,9 @@ func hit(body):
 		velocity += direction * knockback_force
 		flash_damage()
 		body.flash_damage()
-		body.health_changed.emit(body.health)
 		check_death()
 		if body.health <= 0:
-			world.game_over()
+			world.stop_game()
 
 func check_death():
 	if health <= 0:
@@ -81,6 +80,8 @@ func check_death():
 		tween.tween_property(sprite, "scale", Vector2(0.0, 0.0), 0.1)
 		await tween.finished
 		queue_free()
+		world.killed_enemies += 1
+		world.enemy_killed.emit()
 
 func flash_damage():
 	# Set to a red-tinted color (you can adjust alpha too if needed)
@@ -110,7 +111,7 @@ func drop_loot():
 	var rows = int(ceil(float(total) / cols))
 
 	for i in range(total):
-		var row = int(i / cols)
+		var row = i / float(cols)
 		var col = i % cols
 
 		# Determine how many items are in this row

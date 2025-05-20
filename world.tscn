@@ -30,7 +30,6 @@ adjustment_enabled = true
 
 [node name="World" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_036b0")
-spawn_enemies = true
 player = NodePath("Player")
 
 [node name="Player" parent="." instance=ExtResource("1_f3sb7")]

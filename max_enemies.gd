@@ -7,4 +7,4 @@ func _ready() -> void:
 	world.new_wave.connect(update)
 
 func update(_notify = false):
-	text = str(world.wave)
+	text = str(world.max_enemy_count)
