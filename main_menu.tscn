@@ -19,7 +19,6 @@ offset_bottom = 225.0
 color = Color(0, 0, 0, 1)
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-self_modulate = Color(100, 100, 100, 1)
 z_index = 100
 position = Vector2(200, 238)
 amount = 200

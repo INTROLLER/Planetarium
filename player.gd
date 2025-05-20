@@ -17,7 +17,7 @@ var world: World
 
 @export var health: float
 @export var body_damage: float
-@export var main_menu: Control
+@export var main_menu: Node
 @export var inv: Inv
 @export var loadout: Loadout
 
