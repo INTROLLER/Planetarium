@@ -1,8 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://bseyu5wr756fx"]
+[gd_scene load_steps=6 format=3 uid="uid://bseyu5wr756fx"]
+
+[ext_resource type="FontFile" uid="uid://be36mubdtlm2a" path="res://textures/CalSans-Regular.ttf" id="1_06t4h"]
+[ext_resource type="FontFile" uid="uid://dm3ws3pnl1qh" path="res://textures/LilitaOne-Regular.ttf" id="1_7vrkn"]
 
 [sub_resource type="Curve" id="Curve_rhts7"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_7vrkn"]
+font = ExtResource("1_7vrkn")
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_fu7sn"]
+font = ExtResource("1_06t4h")
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -12,13 +22,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect2" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 400.0
-offset_bottom = 225.0
-color = Color(0, 0, 0, 1)
-
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+modulate = Color(100, 100, 100, 1)
 z_index = 100
 position = Vector2(200, 238)
 amount = 200
@@ -33,3 +38,62 @@ initial_velocity_max = 27.78
 linear_accel_min = 3.7
 linear_accel_max = 22.22
 scale_amount_curve = SubResource("Curve_rhts7")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 225.0
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+modulate = Color(1.1, 1.1, 1.1, 1)
+layout_mode = 2
+text = "PLANETARIUM"
+label_settings = SubResource("LabelSettings_7vrkn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_constants/separation = 5
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Continue"
+label_settings = SubResource("LabelSettings_fu7sn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Settings"
+label_settings = SubResource("LabelSettings_fu7sn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+label_settings = SubResource("LabelSettings_fu7sn")
+horizontal_alignment = 1
+vertical_alignment = 1
