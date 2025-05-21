@@ -65,7 +65,7 @@ func hit(body):
 		body.flash_damage()
 		check_death()
 		if body.health <= 0:
-			world.stop_game()
+			world.stop_game(player.death_screen)
 
 func check_death():
 	if health <= 0:

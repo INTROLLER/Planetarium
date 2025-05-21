@@ -9,4 +9,4 @@ func _ready() -> void:
 	pressed.connect(play)
 
 func play():
-	world.start_game(player.main_menu)
+	world.start_game(player.death_screen)

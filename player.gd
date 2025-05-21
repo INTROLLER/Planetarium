@@ -20,6 +20,7 @@ var world: World
 @export var max_health: float
 @export var body_damage: float
 @export var main_menu: Node
+@export var death_screen: Node
 @export var inv: Inv
 @export var loadout: Loadout
 @export var playing: bool

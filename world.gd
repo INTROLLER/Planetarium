@@ -122,23 +122,23 @@ func spawn_enemy() -> void:
 
 	print("Failed to spawn enemy: no space found after %d attempts" % max_attempts)
 
-func stop_game():
+func stop_game(_window = null):
 	spawn_enemies = false
 	for enemy in active_enemies:
 		enemy.queue_free()
 	active_enemies.clear()
-	player.main_menu.visible = true
-	var tween = player.main_menu.get_child(0).get_tree().create_tween()
-	tween.tween_property(player.main_menu.get_child(0), "modulate", Color(1.0, 1.0, 1.0, 1.0), 0.5)
+	_window.visible = true
+	var tween = _window.get_child(0).get_tree().create_tween()
+	tween.tween_property(_window.get_child(0), "modulate", Color(1.0, 1.0, 1.0, 1.0), 0.5)
 	player.playing = false
 
-func start_game():
+func start_game(_window = null):
 	current_wave_config = get_wave_config()
 	set_wave(1)
-	var tween = player.main_menu.get_child(0).get_tree().create_tween()
-	tween.tween_property(player.main_menu.get_child(0), "modulate", Color(1.0, 1.0, 1.0, 0.0), 0.5)
+	var tween = _window.get_child(0).get_tree().create_tween()
+	tween.tween_property(_window.get_child(0), "modulate", Color(1.0, 1.0, 1.0, 0.0), 0.5)
 	await tween.finished
-	player.main_menu.visible = false
+	_window.visible = false
 	spawn_enemies = true
 	player.playing = true
 	game_started.emit()

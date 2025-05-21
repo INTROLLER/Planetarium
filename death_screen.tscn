@@ -1,18 +1,16 @@
-[gd_scene load_steps=14 format=3 uid="uid://bseyu5wr756fx"]
+[gd_scene load_steps=13 format=3 uid="uid://xkeoif2qh3hj"]
 
-[ext_resource type="FontFile" uid="uid://be36mubdtlm2a" path="res://textures/CalSans-Regular.ttf" id="1_06t4h"]
-[ext_resource type="FontFile" uid="uid://dm3ws3pnl1qh" path="res://textures/LilitaOne-Regular.ttf" id="1_7vrkn"]
-[ext_resource type="Script" uid="uid://cl2xj5cljaixo" path="res://play_btn.gd" id="2_jix8l"]
-[ext_resource type="Script" uid="uid://bg6u48nolcgmh" path="res://animation_component.gd" id="3_fu7sn"]
-[ext_resource type="Script" uid="uid://b8sykvi3qfti7" path="res://quit_btn.gd" id="5_glbon"]
+[ext_resource type="Script" uid="uid://ct0kldd4ahn14" path="res://try_again_btn.gd" id="2_6bi5g"]
+[ext_resource type="FontFile" uid="uid://be36mubdtlm2a" path="res://textures/CalSans-Regular.ttf" id="3_s44ck"]
+[ext_resource type="Script" uid="uid://bg6u48nolcgmh" path="res://animation_component.gd" id="4_nus4h"]
+[ext_resource type="Script" uid="uid://h0fh4wkbcocj" path="res://main_menu_btn.gd" id="4_y0ggs"]
 
 [sub_resource type="Gradient" id="Gradient_fu7sn"]
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_jix8l"]
 gradient = SubResource("Gradient_fu7sn")
 width = 400
-height = 225
-fill_from = Vector2(0.5, 0.8)
+fill_from = Vector2(0.5, 0)
 fill_to = Vector2(0.5, 1)
 
 [sub_resource type="Curve" id="Curve_rhts7"]
@@ -20,20 +18,22 @@ _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="LabelSettings" id="LabelSettings_7vrkn"]
-font = ExtResource("1_7vrkn")
-font_size = 20
+font = ExtResource("3_s44ck")
+font_size = 25
+font_color = Color(1, 0, 0, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jix8l"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fu7sn"]
-font = ExtResource("1_06t4h")
+font = ExtResource("3_s44ck")
 font_size = 14
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_glbon"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nlkkf"]
 
-[node name="MainMenu" type="Control"]
+[node name="DeathScreen" type="Control"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -42,7 +42,8 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Light" type="PointLight2D" parent="."]
-position = Vector2(200, 113)
+position = Vector2(200, 193)
+color = Color(1, 0, 0, 1)
 texture = SubResource("GradientTexture2D_jix8l")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
@@ -61,12 +62,13 @@ initial_velocity_max = 27.78
 linear_accel_min = 3.7
 linear_accel_max = 22.22
 scale_amount_curve = SubResource("Curve_rhts7")
+color = Color(1, 0, 0, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 layout_mode = 0
 offset_right = 400.0
 offset_bottom = 225.0
-color = Color(0.0338533, 0.0338533, 0.0338533, 1)
+color = Color(0.101961, 0.101961, 0.101961, 0.72549)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -91,7 +93,7 @@ alignment = 1
 modulate = Color(100, 100, 100, 1)
 layout_mode = 2
 size_flags_horizontal = 4
-text = "PLANETARIUM"
+text = "GAME OVER"
 label_settings = SubResource("LabelSettings_7vrkn")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -103,16 +105,16 @@ size_flags_vertical = 4
 mouse_filter = 2
 theme_override_constants/separation = 5
 
-[node name="PlayBtn" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="TryAgainBtn" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(150, 20)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_default_cursor_shape = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_jix8l")
-script = ExtResource("2_jix8l")
+script = ExtResource("2_6bi5g")
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/PlayBtn"]
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/TryAgainBtn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -126,13 +128,13 @@ offset_bottom = 10.5
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
-text = "Play"
+text = "Try again"
 label_settings = SubResource("LabelSettings_fu7sn")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AnimationComponent" type="Node" parent="MarginContainer/VBoxContainer/VBoxContainer/PlayBtn"]
-script = ExtResource("3_fu7sn")
+[node name="AnimationComponent" type="Node" parent="MarginContainer/VBoxContainer/VBoxContainer/TryAgainBtn"]
+script = ExtResource("4_nus4h")
 from_center = true
 hover_scale = Vector2(1.04, 1.04)
 click_scale = Vector2(0.96, 0.96)
@@ -168,23 +170,23 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="AnimationComponent" type="Node" parent="MarginContainer/VBoxContainer/VBoxContainer/SettingsBtn"]
-script = ExtResource("3_fu7sn")
+script = ExtResource("4_nus4h")
 from_center = true
 hover_scale = Vector2(1.04, 1.04)
 click_scale = Vector2(0.96, 0.96)
 time = 0.08
 metadata/_custom_type_script = "uid://bg6u48nolcgmh"
 
-[node name="QuitBtn" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="MainMenuBtn" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(150, 20)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_default_cursor_shape = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_nlkkf")
-script = ExtResource("5_glbon")
+script = ExtResource("4_y0ggs")
 
-[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/QuitBtn"]
+[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/MainMenuBtn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -199,13 +201,13 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 mouse_default_cursor_shape = 2
-text = "Quit"
+text = "Main menu"
 label_settings = SubResource("LabelSettings_fu7sn")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AnimationComponent" type="Node" parent="MarginContainer/VBoxContainer/VBoxContainer/QuitBtn"]
-script = ExtResource("3_fu7sn")
+[node name="AnimationComponent" type="Node" parent="MarginContainer/VBoxContainer/VBoxContainer/MainMenuBtn"]
+script = ExtResource("4_nus4h")
 from_center = true
 hover_scale = Vector2(1.04, 1.04)
 click_scale = Vector2(0.96, 0.96)

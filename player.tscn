@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ctfxvyae31vua"]
+[gd_scene load_steps=28 format=3 uid="uid://ctfxvyae31vua"]
 
 [ext_resource type="Script" uid="uid://d16boak2hqf2b" path="res://player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://dphxovtr4etll" path="res://textures/earth.png" id="2_i3pqv"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cb18a317vm61e" path="res://player_stats_ui.tscn" id="12_ivps1"]
 [ext_resource type="PackedScene" uid="uid://bcfxe0sahc4qu" path="res://loot_popup.tscn" id="14_606se"]
 [ext_resource type="PackedScene" uid="uid://l406is6p6f3v" path="res://wave_popup.tscn" id="14_bwjto"]
+[ext_resource type="PackedScene" uid="uid://xkeoif2qh3hj" path="res://death_screen.tscn" id="14_u1c27"]
 
 [sub_resource type="Resource" id="Resource_nvl01"]
 script = ExtResource("2_sweqy")
@@ -76,11 +77,12 @@ environment = SubResource("Environment_urp6f")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bwjto"]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("main_menu")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("main_menu", "death_screen")]
 modulate = Color(1.4, 1.4, 1.4, 1)
 collision_mask = 5
 script = ExtResource("1_onrkg")
 main_menu = NodePath("CanvasLayer/MainMenuWin")
+death_screen = NodePath("CanvasLayer/GameOverWin")
 inv = SubResource("Resource_1jxqw")
 loadout = SubResource("Resource_b26j0")
 
@@ -127,5 +129,22 @@ theme_override_styles/embedded_border = SubResource("StyleBoxEmpty_urp6f")
 theme_override_styles/embedded_unfocused_border = SubResource("StyleBoxEmpty_bwjto")
 
 [node name="MainMenu" parent="CanvasLayer/MainMenuWin" instance=ExtResource("8_urp6f")]
+
+[node name="GameOverWin" type="Window" parent="CanvasLayer"]
+auto_translate_mode = 1
+disable_3d = true
+own_world_3d = true
+world_3d = SubResource("World3D_bwjto")
+transparent_bg = true
+gui_snap_controls_to_pixels = false
+mode = 2
+initial_position = 1
+size = Vector2i(400, 225)
+visible = false
+transparent = true
+theme_override_styles/embedded_border = SubResource("StyleBoxEmpty_urp6f")
+theme_override_styles/embedded_unfocused_border = SubResource("StyleBoxEmpty_bwjto")
+
+[node name="DeathScreen" parent="CanvasLayer/GameOverWin" instance=ExtResource("14_u1c27")]
 
 [node name="LootPopup" parent="CanvasLayer" instance=ExtResource("14_606se")]
