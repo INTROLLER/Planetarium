@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://b5q4w5n5v2dla"]
+
+[ext_resource type="Script" uid="uid://bt8rljbrigpwk" path="res://inventory/item_data.gd" id="1_1hril"]
+[ext_resource type="Texture2D" uid="uid://lyjruu887w16" path="res://textures/energy_cluster.png" id="2_of1vt"]
+
+[resource]
+script = ExtResource("1_1hril")
+name = "Energy Cluster"
+damage = 100.0
+rarity = "Legendary"
+texture = ExtResource("2_of1vt")
+metadata/_custom_type_script = "uid://bt8rljbrigpwk"

@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=8 format=3 uid="uid://cx6omyd6yjmo3"]
+
+[ext_resource type="Script" uid="uid://c763nowd41mh3" path="res://drop_entry.gd" id="1_p4nlb"]
+[ext_resource type="Script" uid="uid://c4rxhpffsfwjw" path="res://enemy_data.gd" id="2_et4ep"]
+[ext_resource type="Resource" uid="uid://cvce3ulou2ej0" path="res://inventory/items/frozen_core.tres" id="2_pfgou"]
+[ext_resource type="Resource" uid="uid://wbvk0fr0keci" path="res://inventory/items/ice_fragment.tres" id="2_qbk6d"]
+[ext_resource type="Texture2D" uid="uid://0hsrfhlhekts" path="res://textures/ice_planet.png" id="3_pfgou"]
+
+[sub_resource type="Resource" id="Resource_2a62a"]
+script = ExtResource("1_p4nlb")
+data = ExtResource("2_qbk6d")
+probability = 0.4
+metadata/_custom_type_script = "uid://c763nowd41mh3"
+
+[sub_resource type="Resource" id="Resource_qbk6d"]
+script = ExtResource("1_p4nlb")
+data = ExtResource("2_pfgou")
+probability = 0.1
+metadata/_custom_type_script = "uid://c763nowd41mh3"
+
+[resource]
+script = ExtResource("2_et4ep")
+name = "Ice Planet"
+health = 200.0
+damage = 30.0
+texture = ExtResource("3_pfgou")
+drops = Array[ExtResource("1_p4nlb")]([SubResource("Resource_2a62a"), SubResource("Resource_qbk6d")])
+metadata/_custom_type_script = "uid://c4rxhpffsfwjw"

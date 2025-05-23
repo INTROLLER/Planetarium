@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://dg00pv1g4t8io"]
+
+[ext_resource type="Script" uid="uid://bt8rljbrigpwk" path="res://inventory/item_data.gd" id="1_3q1hy"]
+[ext_resource type="Texture2D" uid="uid://c25r2x0osq06u" path="res://textures/solar_core.png" id="2_83k1p"]
+
+[resource]
+script = ExtResource("1_3q1hy")
+name = "Solar Core"
+damage = 25.0
+rarity = "Rare"
+texture = ExtResource("2_83k1p")
+metadata/_custom_type_script = "uid://bt8rljbrigpwk"

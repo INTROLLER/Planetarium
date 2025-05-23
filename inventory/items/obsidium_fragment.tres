@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://b7u0wi7hlffki"]
+
+[ext_resource type="Script" uid="uid://bt8rljbrigpwk" path="res://inventory/item_data.gd" id="1_dgc4y"]
+[ext_resource type="Texture2D" uid="uid://n1xm6fln317k" path="res://textures/obsidium_fragment.png" id="2_0tr5i"]
+
+[resource]
+script = ExtResource("1_dgc4y")
+name = "Obsidium Fragment"
+damage = 25.0
+rarity = "Epic"
+texture = ExtResource("2_0tr5i")
+metadata/_custom_type_script = "uid://bt8rljbrigpwk"

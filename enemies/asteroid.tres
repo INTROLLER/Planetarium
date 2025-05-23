@@ -1,14 +1,28 @@
-[gd_resource type="Resource" script_class="EnemyData" load_steps=6 format=3 uid="uid://dt3ygrrhjryjw"]
+[gd_resource type="Resource" script_class="EnemyData" load_steps=10 format=3 uid="uid://dt3ygrrhjryjw"]
 
 [ext_resource type="Script" uid="uid://c763nowd41mh3" path="res://drop_entry.gd" id="1_6afra"]
 [ext_resource type="Script" uid="uid://c4rxhpffsfwjw" path="res://enemy_data.gd" id="2_au6g2"]
 [ext_resource type="Resource" uid="uid://swvyx7c40uqg" path="res://inventory/items/meteorite.tres" id="2_vfa3q"]
+[ext_resource type="Resource" uid="uid://b7u0wi7hlffki" path="res://inventory/items/obsidium_fragment.tres" id="3_57siq"]
 [ext_resource type="Texture2D" uid="uid://uuxnnn122ker" path="res://textures/asteroid.png" id="3_vfa3q"]
+[ext_resource type="Resource" uid="uid://dmcll0on0odpv" path="res://inventory/items/meteorite_core.tres" id="4_mirqo"]
 
 [sub_resource type="Resource" id="Resource_57siq"]
 script = ExtResource("1_6afra")
 data = ExtResource("2_vfa3q")
 probability = 0.3
+metadata/_custom_type_script = "uid://c763nowd41mh3"
+
+[sub_resource type="Resource" id="Resource_d3jro"]
+script = ExtResource("1_6afra")
+data = ExtResource("3_57siq")
+probability = 0.075
+metadata/_custom_type_script = "uid://c763nowd41mh3"
+
+[sub_resource type="Resource" id="Resource_h7eb3"]
+script = ExtResource("1_6afra")
+data = ExtResource("4_mirqo")
+probability = 0.01
 metadata/_custom_type_script = "uid://c763nowd41mh3"
 
 [resource]
@@ -17,5 +31,5 @@ name = "Asteroid"
 health = 70.0
 damage = 15.0
 texture = ExtResource("3_vfa3q")
-drops = Array[ExtResource("1_6afra")]([SubResource("Resource_57siq")])
+drops = Array[ExtResource("1_6afra")]([SubResource("Resource_57siq"), SubResource("Resource_d3jro"), SubResource("Resource_h7eb3")])
 metadata/_custom_type_script = "uid://c4rxhpffsfwjw"

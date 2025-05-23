@@ -296,6 +296,7 @@ size_flags_horizontal = 4
 text = "..."
 label_settings = SubResource("LabelSettings_dn3an")
 horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="Texture" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/InfoBox"]
 texture_filter = 1
@@ -454,7 +455,6 @@ time = 0.08
 metadata/_custom_type_script = "uid://bg6u48nolcgmh"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-clip_contents = false
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_ye6km")

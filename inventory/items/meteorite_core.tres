@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://dmcll0on0odpv"]
+
+[ext_resource type="Script" uid="uid://bt8rljbrigpwk" path="res://inventory/item_data.gd" id="1_l6hys"]
+[ext_resource type="Texture2D" uid="uid://h7j4aq1yyly4" path="res://textures/meteorite_core.png" id="2_ip5yu"]
+
+[resource]
+script = ExtResource("1_l6hys")
+name = "Meteorite Core"
+damage = 50.0
+rarity = "Legendary"
+texture = ExtResource("2_ip5yu")
+metadata/_custom_type_script = "uid://bt8rljbrigpwk"

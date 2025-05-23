@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=8 format=3 uid="uid://cwnuxatkjddec"]
+
+[ext_resource type="Script" uid="uid://c763nowd41mh3" path="res://drop_entry.gd" id="1_4xib8"]
+[ext_resource type="Script" uid="uid://c4rxhpffsfwjw" path="res://enemy_data.gd" id="2_4vpl3"]
+[ext_resource type="Resource" uid="uid://dg00pv1g4t8io" path="res://inventory/items/solar_core.tres" id="2_ifly2"]
+[ext_resource type="Texture2D" uid="uid://c2v3odnhv1hvq" path="res://textures/sun.png" id="3_ifly2"]
+[ext_resource type="Resource" uid="uid://b5q4w5n5v2dla" path="res://inventory/items/energy_cluster.tres" id="3_xd0gx"]
+
+[sub_resource type="Resource" id="Resource_xd0gx"]
+script = ExtResource("1_4xib8")
+data = ExtResource("2_ifly2")
+probability = 0.3
+metadata/_custom_type_script = "uid://c763nowd41mh3"
+
+[sub_resource type="Resource" id="Resource_i7ey7"]
+script = ExtResource("1_4xib8")
+data = ExtResource("3_xd0gx")
+probability = 0.05
+metadata/_custom_type_script = "uid://c763nowd41mh3"
+
+[resource]
+script = ExtResource("2_4vpl3")
+name = "Sun"
+health = 300.0
+damage = 50.0
+texture = ExtResource("3_ifly2")
+drops = Array[ExtResource("1_4xib8")]([SubResource("Resource_xd0gx"), SubResource("Resource_i7ey7")])
+metadata/_custom_type_script = "uid://c4rxhpffsfwjw"
