@@ -51,8 +51,8 @@ func get_wave_config():
 
 	# 3. Enemy type probabilities
 	var enemy_chances = {
-		"earth": clamp(1.0 - wave * 0.05, 0.2, 1.0), # decreases from 1.0 to 0.2
-		#"fire": clamp(0.0 + wave * 0.05, 0.0, 0.8),  # increases from 0.0 to 0.8
+		"asteroid": clamp(1.0 - wave * 0.05, 0.2, 1.0), # decreases from 1.0 to 0.2
+		"saturados": clamp(0.0 + wave * 0.05, 0.0, 0.8),  # increases from 0.0 to 0.8
 		#"ice":  clamp((wave - 5) * 0.05, 0.0, 0.5)   # unlocks at wave 5
 	}
 
@@ -122,23 +122,23 @@ func spawn_enemy() -> void:
 
 	print("Failed to spawn enemy: no space found after %d attempts" % max_attempts)
 
-func stop_game(_window = null):
+func stop_game(menu = null):
 	spawn_enemies = false
 	for enemy in active_enemies:
 		enemy.queue_free()
 	active_enemies.clear()
-	_window.visible = true
-	var tween = _window.get_child(0).get_tree().create_tween()
-	tween.tween_property(_window.get_child(0), "modulate", Color(1.0, 1.0, 1.0, 1.0), 0.5)
+	menu.visible = true
+	var tween = menu.get_tree().create_tween()
+	tween.tween_property(menu, "modulate", Color(1.0, 1.0, 1.0, 1.0), 0.5)
 	player.playing = false
 
-func start_game(_window = null):
+func start_game(menu = null):
 	current_wave_config = get_wave_config()
 	set_wave(1)
-	var tween = _window.get_child(0).get_tree().create_tween()
-	tween.tween_property(_window.get_child(0), "modulate", Color(1.0, 1.0, 1.0, 0.0), 0.5)
+	var tween = menu.get_tree().create_tween()
+	tween.tween_property(menu, "modulate", Color(1.0, 1.0, 1.0, 0.0), 0.5)
 	await tween.finished
-	_window.visible = false
+	menu.visible = false
 	spawn_enemies = true
 	player.playing = true
 	game_started.emit()

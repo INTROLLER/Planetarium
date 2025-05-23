@@ -30,6 +30,8 @@ func _ready() -> void:
 	area_entered.connect(get_hit)
 	body_entered.connect(hit)
 	sprite.texture = data.texture
+	sprite.scale.x = 50 / sprite.texture.get_size().x
+	sprite.scale.y = 50 / sprite.texture.get_size().y
 	hitbox.shape.radius = (sprite.texture.get_size().x / 2.0) * sprite.scale[0]
 	add_to_group("enemies")
 

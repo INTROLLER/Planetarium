@@ -34,6 +34,8 @@ func _ready():
 	world = find_parent("World")
 	sprite = $Sprite
 	hitbox = $Hitbox
+	sprite.scale.x = 50 / sprite.texture.get_size().x
+	sprite.scale.y = 50 / sprite.texture.get_size().y
 	world.game_started.connect(setup)
 	inv_container = get_node("CanvasLayer/InvUi").find_child("InvContainer")
 	hitbox.shape.radius = (sprite.texture.get_size().x / 2.0) * sprite.scale[0]

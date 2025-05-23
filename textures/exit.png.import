@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://daakno4rkhack"
-path="res://.godot/imported/close_80dp_FFFFFF_FILL1_wght700_GRAD0_opsz48.png-b2b3f614e33c3410558d4e6199dc2db9.ctex"
+uid="uid://b24xeiylk7lt2"
+path="res://.godot/imported/exit.png-6f1947ca824cd9d956820b9fde796391.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/close_80dp_FFFFFF_FILL1_wght700_GRAD0_opsz48.png"
-dest_files=["res://.godot/imported/close_80dp_FFFFFF_FILL1_wght700_GRAD0_opsz48.png-b2b3f614e33c3410558d4e6199dc2db9.ctex"]
+source_file="res://textures/exit.png"
+dest_files=["res://.godot/imported/exit.png-6f1947ca824cd9d956820b9fde796391.ctex"]
 
 [params]
 

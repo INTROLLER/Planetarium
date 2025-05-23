@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://swvyx7c40uqg"]
+
+[ext_resource type="Script" uid="uid://bt8rljbrigpwk" path="res://inventory/item_data.gd" id="1_cbxqj"]
+[ext_resource type="Texture2D" uid="uid://cdmsa01psewgq" path="res://textures/meteorite.png" id="2_cbxqj"]
+
+[resource]
+script = ExtResource("1_cbxqj")
+name = "Meteorite"
+damage = 10.0
+rarity = "Common"
+texture = ExtResource("2_cbxqj")
+metadata/_custom_type_script = "uid://bt8rljbrigpwk"

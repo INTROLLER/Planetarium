@@ -25,11 +25,13 @@ func _ready() -> void:
 	player_hitbox = player.get_node("Hitbox")
 	hitbox = $Hitbox
 	sprite = $Sprite
+	sprite.texture = item.data.texture
+	sprite.scale.x = 25 / sprite.texture.get_size().x
+	sprite.scale.y = 25 / sprite.texture.get_size().y
 	hitbox.shape.radius = (sprite.texture.get_size().x / 2.0) * sprite.scale[0]
 	base_radius = player_hitbox.shape.radius * player_hitbox.scale[0] + hitbox.shape.radius * hitbox.scale[0] * 3
 	current_radius = base_radius
 	orbit_center = player.global_position
-	sprite.texture = item.data.texture
 	upd()
 
 func _physics_process(delta):
@@ -45,8 +47,8 @@ func _physics_process(delta):
 
 func upd():
 	for i in player.loadout.items.size():
-		var item = player.loadout.items[i]
-		if item == null:
+		var current_item = player.loadout.items[i]
+		if current_item == null:
 			continue
 		max_amount += 1
 		

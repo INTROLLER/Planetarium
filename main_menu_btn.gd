@@ -7,11 +7,11 @@ func _ready() -> void:
 	pressed.connect(open_main_menu)
 
 func open_main_menu():
-	var tween = player.death_screen.get_child(0).get_tree().create_tween()
-	tween.tween_property(player.death_screen.get_child(0), "modulate", Color(1.0, 1.0, 1.0, 0.0), 0.5)
+	var tween = player.death_screen.get_tree().create_tween()
+	tween.tween_property(player.death_screen, "modulate", Color(1.0, 1.0, 1.0, 0.0), 0.5)
 	await tween.finished
 	player.death_screen.visible = false
 
 	player.main_menu.visible = true
-	var tween2 = player.main_menu.get_child(0).get_tree().create_tween()
-	tween2.tween_property(player.main_menu.get_child(0), "modulate", Color(1.0, 1.0, 1.0, 1.0), 0.5)
+	var tween2 = player.main_menu.get_tree().create_tween()
+	tween2.tween_property(player.main_menu, "modulate", Color(1.0, 1.0, 1.0, 1.0), 0.5)

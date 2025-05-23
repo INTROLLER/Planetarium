@@ -1,27 +1,43 @@
-[gd_scene load_steps=14 format=3 uid="uid://bseyu5wr756fx"]
+[gd_scene load_steps=26 format=3 uid="uid://bseyu5wr756fx"]
 
 [ext_resource type="FontFile" uid="uid://be36mubdtlm2a" path="res://textures/CalSans-Regular.ttf" id="1_06t4h"]
 [ext_resource type="FontFile" uid="uid://dm3ws3pnl1qh" path="res://textures/LilitaOne-Regular.ttf" id="1_7vrkn"]
+[ext_resource type="Shader" uid="uid://c83lg7d23cw6n" path="res://starfield.gdshader" id="1_qe12f"]
 [ext_resource type="Script" uid="uid://cl2xj5cljaixo" path="res://play_btn.gd" id="2_jix8l"]
 [ext_resource type="Script" uid="uid://bg6u48nolcgmh" path="res://animation_component.gd" id="3_fu7sn"]
+[ext_resource type="Texture2D" uid="uid://i48e1yqjwh84" path="res://textures/play_arrow.png" id="4_0o4t1"]
 [ext_resource type="Script" uid="uid://b8sykvi3qfti7" path="res://quit_btn.gd" id="5_glbon"]
-
-[sub_resource type="Gradient" id="Gradient_fu7sn"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_jix8l"]
-gradient = SubResource("Gradient_fu7sn")
-width = 400
-height = 225
-fill_from = Vector2(0.5, 0.8)
-fill_to = Vector2(0.5, 1)
+[ext_resource type="Script" uid="uid://coe0hhiicdtbk" path="res://settings_btn.gd" id="6_8qtwp"]
+[ext_resource type="Texture2D" uid="uid://cjqrfw820assn" path="res://textures/settings.png" id="8_0k4wn"]
+[ext_resource type="Script" uid="uid://ci46rt4hciei0" path="res://fullscreen_check.gd" id="8_dy7ct"]
+[ext_resource type="Script" uid="uid://df1ygmlajq21k" path="res://back_btn.gd" id="9_dy7ct"]
+[ext_resource type="Texture2D" uid="uid://b24xeiylk7lt2" path="res://textures/exit.png" id="10_j5v2v"]
+[ext_resource type="Texture2D" uid="uid://domtus30yawp1" path="res://textures/undo_100dp_FFFFFF_FILL1_wght400_GRAD200_opsz48.png" id="13_iotk1"]
 
 [sub_resource type="Curve" id="Curve_rhts7"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qe12f"]
+noise_type = 0
+frequency = 0.3219
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8qtwp"]
+noise = SubResource("FastNoiseLite_qe12f")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dy7ct"]
+shader = ExtResource("1_qe12f")
+shader_parameter/resolution = Vector2(600, 400)
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_8qtwp")
+shader_parameter/density = 20.0
+shader_parameter/blink_speed = 1.192
+shader_parameter/background_opacity = 1.0
+shader_parameter/star_opacity = 1.0
+shader_parameter/color = Color(0, 0, 0, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_7vrkn"]
 font = ExtResource("1_7vrkn")
-font_size = 20
+font_size = 40
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jix8l"]
 
@@ -33,6 +49,16 @@ font_size = 14
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nlkkf"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_nlkkf"]
+font = ExtResource("1_06t4h")
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_8qtwp"]
+font = ExtResource("1_06t4h")
+font_size = 14
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8qtwp"]
+
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -41,11 +67,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Light" type="PointLight2D" parent="."]
-position = Vector2(200, 113)
-texture = SubResource("GradientTexture2D_jix8l")
-
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+visible = false
 modulate = Color(100, 100, 100, 1)
 z_index = 100
 position = Vector2(200, 238)
@@ -62,13 +85,13 @@ linear_accel_min = 3.7
 linear_accel_max = 22.22
 scale_amount_curve = SubResource("Curve_rhts7")
 
-[node name="ColorRect2" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_dy7ct")
 layout_mode = 0
 offset_right = 400.0
 offset_bottom = 225.0
-color = Color(0.0338533, 0.0338533, 0.0338533, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MenuContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -81,13 +104,13 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="RegularMenu" type="VBoxContainer" parent="MenuContainer"]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 15
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MenuContainer/RegularMenu"]
 modulate = Color(100, 100, 100, 1)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -96,14 +119,14 @@ label_settings = SubResource("LabelSettings_7vrkn")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuContainer/RegularMenu"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
 theme_override_constants/separation = 5
 
-[node name="PlayBtn" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="PlayBtn" type="Button" parent="MenuContainer/RegularMenu/VBoxContainer"]
 custom_minimum_size = Vector2(150, 20)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -112,26 +135,33 @@ mouse_default_cursor_shape = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_jix8l")
 script = ExtResource("2_jix8l")
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/PlayBtn"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuContainer/RegularMenu/VBoxContainer/PlayBtn"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -32.5
-offset_top = -10.5
-offset_right = 32.5
-offset_bottom = 10.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MenuContainer/RegularMenu/VBoxContainer/PlayBtn/HBoxContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_0o4t1")
+expand_mode = 1
+
+[node name="Label2" type="Label" parent="MenuContainer/RegularMenu/VBoxContainer/PlayBtn/HBoxContainer"]
+layout_mode = 2
 size_flags_horizontal = 4
 text = "Play"
 label_settings = SubResource("LabelSettings_fu7sn")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AnimationComponent" type="Node" parent="MarginContainer/VBoxContainer/VBoxContainer/PlayBtn"]
+[node name="AnimationComponent" type="Node" parent="MenuContainer/RegularMenu/VBoxContainer/PlayBtn"]
 script = ExtResource("3_fu7sn")
 from_center = true
 hover_scale = Vector2(1.04, 1.04)
@@ -139,27 +169,34 @@ click_scale = Vector2(0.96, 0.96)
 time = 0.08
 metadata/_custom_type_script = "uid://bg6u48nolcgmh"
 
-[node name="SettingsBtn" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="SettingsBtn" type="Button" parent="MenuContainer/RegularMenu/VBoxContainer"]
 custom_minimum_size = Vector2(150, 20)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_default_cursor_shape = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_glbon")
+script = ExtResource("6_8qtwp")
 
-[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/SettingsBtn"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuContainer/RegularMenu/VBoxContainer/SettingsBtn"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -29.0
-offset_top = -10.5
-offset_right = 29.0
-offset_bottom = 10.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MenuContainer/RegularMenu/VBoxContainer/SettingsBtn/HBoxContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("8_0k4wn")
+expand_mode = 1
+
+[node name="Label3" type="Label" parent="MenuContainer/RegularMenu/VBoxContainer/SettingsBtn/HBoxContainer"]
+layout_mode = 2
 size_flags_horizontal = 4
 mouse_default_cursor_shape = 2
 text = "Settings"
@@ -167,7 +204,7 @@ label_settings = SubResource("LabelSettings_fu7sn")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AnimationComponent" type="Node" parent="MarginContainer/VBoxContainer/VBoxContainer/SettingsBtn"]
+[node name="AnimationComponent" type="Node" parent="MenuContainer/RegularMenu/VBoxContainer/SettingsBtn"]
 script = ExtResource("3_fu7sn")
 from_center = true
 hover_scale = Vector2(1.04, 1.04)
@@ -175,7 +212,7 @@ click_scale = Vector2(0.96, 0.96)
 time = 0.08
 metadata/_custom_type_script = "uid://bg6u48nolcgmh"
 
-[node name="QuitBtn" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="QuitBtn" type="Button" parent="MenuContainer/RegularMenu/VBoxContainer"]
 custom_minimum_size = Vector2(150, 20)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -184,19 +221,26 @@ mouse_default_cursor_shape = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_nlkkf")
 script = ExtResource("5_glbon")
 
-[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/QuitBtn"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuContainer/RegularMenu/VBoxContainer/QuitBtn"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -15.5
-offset_top = -10.5
-offset_right = 15.5
-offset_bottom = 10.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 3
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MenuContainer/RegularMenu/VBoxContainer/QuitBtn/HBoxContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("10_j5v2v")
+expand_mode = 1
+
+[node name="Label4" type="Label" parent="MenuContainer/RegularMenu/VBoxContainer/QuitBtn/HBoxContainer"]
+layout_mode = 2
 size_flags_horizontal = 4
 mouse_default_cursor_shape = 2
 text = "Quit"
@@ -204,10 +248,103 @@ label_settings = SubResource("LabelSettings_fu7sn")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AnimationComponent" type="Node" parent="MarginContainer/VBoxContainer/VBoxContainer/QuitBtn"]
+[node name="AnimationComponent" type="Node" parent="MenuContainer/RegularMenu/VBoxContainer/QuitBtn"]
 script = ExtResource("3_fu7sn")
 from_center = true
 hover_scale = Vector2(1.04, 1.04)
 click_scale = Vector2(0.96, 0.96)
 time = 0.08
 metadata/_custom_type_script = "uid://bg6u48nolcgmh"
+
+[node name="SettingsMenu" type="VBoxContainer" parent="MenuContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MenuContainer/SettingsMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TextureRect" type="TextureRect" parent="MenuContainer/SettingsMenu/HBoxContainer2"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("8_0k4wn")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="MenuContainer/SettingsMenu/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Settings"
+label_settings = SubResource("LabelSettings_nlkkf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuContainer/SettingsMenu"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuContainer/SettingsMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="Label" type="Label" parent="MenuContainer/SettingsMenu/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Fullscreen"
+label_settings = SubResource("LabelSettings_8qtwp")
+
+[node name="FullscreenCheck" type="CheckButton" parent="MenuContainer/SettingsMenu/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8qtwp")
+script = ExtResource("8_dy7ct")
+
+[node name="AnimationComponent" type="Node" parent="MenuContainer/SettingsMenu/VBoxContainer/HBoxContainer/FullscreenCheck"]
+script = ExtResource("3_fu7sn")
+from_center = true
+hover_scale = Vector2(1.04, 1.04)
+click_scale = Vector2(0.96, 0.96)
+time = 0.08
+metadata/_custom_type_script = "uid://bg6u48nolcgmh"
+
+[node name="BackBtn" type="Button" parent="MenuContainer/SettingsMenu/VBoxContainer"]
+custom_minimum_size = Vector2(150, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jix8l")
+script = ExtResource("9_dy7ct")
+
+[node name="AnimationComponent" type="Node" parent="MenuContainer/SettingsMenu/VBoxContainer/BackBtn"]
+script = ExtResource("3_fu7sn")
+from_center = true
+hover_scale = Vector2(1.04, 1.04)
+click_scale = Vector2(0.96, 0.96)
+time = 0.08
+metadata/_custom_type_script = "uid://bg6u48nolcgmh"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuContainer/SettingsMenu/VBoxContainer/BackBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MenuContainer/SettingsMenu/VBoxContainer/BackBtn/HBoxContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("13_iotk1")
+expand_mode = 1
+
+[node name="Label2" type="Label" parent="MenuContainer/SettingsMenu/VBoxContainer/BackBtn/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Back"
+label_settings = SubResource("LabelSettings_fu7sn")
+horizontal_alignment = 1
+vertical_alignment = 1

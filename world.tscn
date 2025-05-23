@@ -8,15 +8,18 @@
 noise_type = 0
 frequency = 0.3219
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tlwt5"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_aqk2v"]
 noise = SubResource("FastNoiseLite_tlwt5")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_aqk2v"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_036b0"]
 shader = ExtResource("3_tlwt5")
 shader_parameter/resolution = Vector2(600, 400)
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_tlwt5")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_aqk2v")
 shader_parameter/density = 20.0
 shader_parameter/blink_speed = 2.0
+shader_parameter/background_opacity = 1.0
+shader_parameter/star_opacity = 1.0
+shader_parameter/color = Color(0.0129681, 0.0374357, 0.0623486, 1)
 
 [sub_resource type="Environment" id="Environment_fj7yv"]
 background_mode = 3
@@ -42,7 +45,7 @@ z_index = 1
 motion_mirroring = Vector2(400, 225)
 
 [node name="ColorRect" type="ColorRect" parent="ParallaxBackground/ParallaxLayer"]
-material = SubResource("ShaderMaterial_aqk2v")
+material = SubResource("ShaderMaterial_036b0")
 offset_right = 400.0
 offset_bottom = 225.0
 

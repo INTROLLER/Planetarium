@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ddv5yudm0moyn"]
 
 [ext_resource type="Script" uid="uid://vbt7pnni7qq5" path="res://orbitable.gd" id="1_guwr3"]
-[ext_resource type="Texture2D" uid="uid://cx7k4ol2r57ip" path="res://textures/temp.png" id="2_t5pkl"]
+[ext_resource type="Texture2D" uid="uid://dphxovtr4etll" path="res://textures/earth.png" id="2_guwr3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_46egq"]
 radius = 8.0
@@ -15,7 +15,7 @@ script = ExtResource("1_guwr3")
 [node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(0.333672, 0.333672)
-texture = ExtResource("2_t5pkl")
+texture = ExtResource("2_guwr3")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 visible = false

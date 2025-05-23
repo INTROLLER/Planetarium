@@ -1,21 +1,23 @@
-[gd_scene load_steps=13 format=3 uid="uid://xkeoif2qh3hj"]
+[gd_scene load_steps=14 format=3 uid="uid://xkeoif2qh3hj"]
 
 [ext_resource type="Script" uid="uid://ct0kldd4ahn14" path="res://try_again_btn.gd" id="2_6bi5g"]
+[ext_resource type="Texture2D" uid="uid://dudqcve6i7mgi" path="res://textures/replay.png" id="3_f562y"]
 [ext_resource type="FontFile" uid="uid://be36mubdtlm2a" path="res://textures/CalSans-Regular.ttf" id="3_s44ck"]
 [ext_resource type="Script" uid="uid://bg6u48nolcgmh" path="res://animation_component.gd" id="4_nus4h"]
 [ext_resource type="Script" uid="uid://h0fh4wkbcocj" path="res://main_menu_btn.gd" id="4_y0ggs"]
-
-[sub_resource type="Gradient" id="Gradient_fu7sn"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_jix8l"]
-gradient = SubResource("Gradient_fu7sn")
-width = 400
-fill_from = Vector2(0.5, 0)
-fill_to = Vector2(0.5, 1)
+[ext_resource type="Texture2D" uid="uid://hjhp2yfagquj" path="res://textures/home.png" id="8_b1ui3"]
 
 [sub_resource type="Curve" id="Curve_rhts7"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_y0ggs"]
+colors = PackedColorArray(0, 0, 0, 1, 0.699195, 2.08165e-06, 6.73831e-07, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hhlqb"]
+gradient = SubResource("Gradient_y0ggs")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="LabelSettings" id="LabelSettings_7vrkn"]
 font = ExtResource("3_s44ck")
@@ -28,8 +30,6 @@ font_color = Color(1, 0, 0, 1)
 font = ExtResource("3_s44ck")
 font_size = 14
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_glbon"]
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nlkkf"]
 
 [node name="DeathScreen" type="Control"]
@@ -40,11 +40,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Light" type="PointLight2D" parent="."]
-position = Vector2(200, 193)
-color = Color(1, 0, 0, 1)
-texture = SubResource("GradientTexture2D_jix8l")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 modulate = Color(100, 100, 100, 1)
@@ -64,13 +59,17 @@ linear_accel_max = 22.22
 scale_amount_curve = SubResource("Curve_rhts7")
 color = Color(1, 0, 0, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 400.0
-offset_bottom = 225.0
-color = Color(0.101961, 0.101961, 0.101961, 0.72549)
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.545098)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_hhlqb")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MenuContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -83,29 +82,29 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="RegularMenu" type="VBoxContainer" parent="MenuContainer"]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 15
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MenuContainer/RegularMenu"]
 modulate = Color(100, 100, 100, 1)
 layout_mode = 2
 size_flags_horizontal = 4
-text = "GAME OVER"
+text = "YOU DIED"
 label_settings = SubResource("LabelSettings_7vrkn")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuContainer/RegularMenu"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
 theme_override_constants/separation = 5
 
-[node name="TryAgainBtn" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="TryAgainBtn" type="Button" parent="MenuContainer/RegularMenu/VBoxContainer"]
 custom_minimum_size = Vector2(150, 20)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -114,26 +113,32 @@ mouse_default_cursor_shape = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_jix8l")
 script = ExtResource("2_6bi5g")
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/TryAgainBtn"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuContainer/RegularMenu/VBoxContainer/TryAgainBtn"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -32.5
-offset_top = -10.5
-offset_right = 32.5
-offset_bottom = 10.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MenuContainer/RegularMenu/VBoxContainer/TryAgainBtn/HBoxContainer"]
+custom_minimum_size = Vector2(14, 14)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_f562y")
+expand_mode = 1
+
+[node name="Label2" type="Label" parent="MenuContainer/RegularMenu/VBoxContainer/TryAgainBtn/HBoxContainer"]
+layout_mode = 2
 size_flags_horizontal = 4
 text = "Try again"
 label_settings = SubResource("LabelSettings_fu7sn")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AnimationComponent" type="Node" parent="MarginContainer/VBoxContainer/VBoxContainer/TryAgainBtn"]
+[node name="AnimationComponent" type="Node" parent="MenuContainer/RegularMenu/VBoxContainer/TryAgainBtn"]
 script = ExtResource("4_nus4h")
 from_center = true
 hover_scale = Vector2(1.04, 1.04)
@@ -141,43 +146,7 @@ click_scale = Vector2(0.96, 0.96)
 time = 0.08
 metadata/_custom_type_script = "uid://bg6u48nolcgmh"
 
-[node name="SettingsBtn" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(150, 20)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-mouse_default_cursor_shape = 2
-theme_override_styles/focus = SubResource("StyleBoxEmpty_glbon")
-
-[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/SettingsBtn"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -29.0
-offset_top = -10.5
-offset_right = 29.0
-offset_bottom = 10.5
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-mouse_default_cursor_shape = 2
-text = "Settings"
-label_settings = SubResource("LabelSettings_fu7sn")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="AnimationComponent" type="Node" parent="MarginContainer/VBoxContainer/VBoxContainer/SettingsBtn"]
-script = ExtResource("4_nus4h")
-from_center = true
-hover_scale = Vector2(1.04, 1.04)
-click_scale = Vector2(0.96, 0.96)
-time = 0.08
-metadata/_custom_type_script = "uid://bg6u48nolcgmh"
-
-[node name="MainMenuBtn" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="MainMenuBtn" type="Button" parent="MenuContainer/RegularMenu/VBoxContainer"]
 custom_minimum_size = Vector2(150, 20)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -186,30 +155,36 @@ mouse_default_cursor_shape = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_nlkkf")
 script = ExtResource("4_y0ggs")
 
-[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/MainMenuBtn"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -15.5
-offset_top = -10.5
-offset_right = 15.5
-offset_bottom = 10.5
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-mouse_default_cursor_shape = 2
-text = "Main menu"
-label_settings = SubResource("LabelSettings_fu7sn")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="AnimationComponent" type="Node" parent="MarginContainer/VBoxContainer/VBoxContainer/MainMenuBtn"]
+[node name="AnimationComponent" type="Node" parent="MenuContainer/RegularMenu/VBoxContainer/MainMenuBtn"]
 script = ExtResource("4_nus4h")
 from_center = true
 hover_scale = Vector2(1.04, 1.04)
 click_scale = Vector2(0.96, 0.96)
 time = 0.08
 metadata/_custom_type_script = "uid://bg6u48nolcgmh"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuContainer/RegularMenu/VBoxContainer/MainMenuBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MenuContainer/RegularMenu/VBoxContainer/MainMenuBtn/HBoxContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("8_b1ui3")
+expand_mode = 1
+
+[node name="Label4" type="Label" parent="MenuContainer/RegularMenu/VBoxContainer/MainMenuBtn/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
+text = "Main menu"
+label_settings = SubResource("LabelSettings_fu7sn")
+horizontal_alignment = 1
+vertical_alignment = 1

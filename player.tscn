@@ -1,10 +1,10 @@
-[gd_scene load_steps=28 format=3 uid="uid://ctfxvyae31vua"]
+[gd_scene load_steps=24 format=3 uid="uid://ctfxvyae31vua"]
 
 [ext_resource type="Script" uid="uid://d16boak2hqf2b" path="res://player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://dphxovtr4etll" path="res://textures/earth.png" id="2_i3pqv"]
 [ext_resource type="Script" uid="uid://32xkpygcdxnt" path="res://inventory/item.gd" id="2_sweqy"]
 [ext_resource type="Script" uid="uid://dyvbg107h4ufy" path="res://inventory/inv.gd" id="3_2hs0m"]
-[ext_resource type="Resource" uid="uid://mhofp38wljwk" path="res://inventory/items/earth.tres" id="3_n7ghd"]
+[ext_resource type="Resource" uid="uid://swvyx7c40uqg" path="res://inventory/items/meteorite.tres" id="3_606se"]
 [ext_resource type="Script" uid="uid://c3vquimqfc68" path="res://inventory/loadout.gd" id="5_1jxqw"]
 [ext_resource type="PackedScene" uid="uid://gme3ac4yxmxd" path="res://inventory/inv_ui.tscn" id="7_1jxqw"]
 [ext_resource type="PackedScene" uid="uid://bseyu5wr756fx" path="res://main_menu.tscn" id="8_urp6f"]
@@ -16,44 +16,44 @@
 [ext_resource type="PackedScene" uid="uid://l406is6p6f3v" path="res://wave_popup.tscn" id="14_bwjto"]
 [ext_resource type="PackedScene" uid="uid://xkeoif2qh3hj" path="res://death_screen.tscn" id="14_u1c27"]
 
-[sub_resource type="Resource" id="Resource_nvl01"]
+[sub_resource type="Resource" id="Resource_u1c27"]
 script = ExtResource("2_sweqy")
 id = 0
-data = ExtResource("3_n7ghd")
+data = ExtResource("3_606se")
 equiped = false
 metadata/_custom_type_script = "uid://32xkpygcdxnt"
 
-[sub_resource type="Resource" id="Resource_n7ghd"]
+[sub_resource type="Resource" id="Resource_op7ga"]
 script = ExtResource("2_sweqy")
 id = 0
-data = ExtResource("3_n7ghd")
+data = ExtResource("3_606se")
 equiped = false
 metadata/_custom_type_script = "uid://32xkpygcdxnt"
 
-[sub_resource type="Resource" id="Resource_ivps1"]
+[sub_resource type="Resource" id="Resource_q13i1"]
 script = ExtResource("2_sweqy")
 id = 0
-data = ExtResource("3_n7ghd")
+data = ExtResource("3_606se")
 equiped = false
 metadata/_custom_type_script = "uid://32xkpygcdxnt"
 
-[sub_resource type="Resource" id="Resource_urp6f"]
+[sub_resource type="Resource" id="Resource_pylmc"]
 script = ExtResource("2_sweqy")
 id = 0
-data = ExtResource("3_n7ghd")
+data = ExtResource("3_606se")
 equiped = false
 metadata/_custom_type_script = "uid://32xkpygcdxnt"
 
-[sub_resource type="Resource" id="Resource_bwjto"]
+[sub_resource type="Resource" id="Resource_pbfsw"]
 script = ExtResource("2_sweqy")
 id = 0
-data = ExtResource("3_n7ghd")
+data = ExtResource("3_606se")
 equiped = false
 metadata/_custom_type_script = "uid://32xkpygcdxnt"
 
 [sub_resource type="Resource" id="Resource_1jxqw"]
 script = ExtResource("3_2hs0m")
-items = Array[ExtResource("2_sweqy")]([SubResource("Resource_nvl01"), SubResource("Resource_n7ghd"), SubResource("Resource_ivps1"), SubResource("Resource_urp6f"), SubResource("Resource_bwjto")])
+items = Array[ExtResource("2_sweqy")]([SubResource("Resource_u1c27"), SubResource("Resource_op7ga"), SubResource("Resource_q13i1"), SubResource("Resource_pylmc"), SubResource("Resource_pbfsw")])
 metadata/_custom_type_script = "uid://dyvbg107h4ufy"
 
 [sub_resource type="Resource" id="Resource_b26j0"]
@@ -63,26 +63,12 @@ metadata/_custom_type_script = "uid://c3vquimqfc68"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n7ghd"]
 
-[sub_resource type="Environment" id="Environment_urp6f"]
-background_mode = 3
-glow_enabled = true
-glow_intensity = 1.1
-glow_strength = 1.2
-glow_blend_mode = 0
-
-[sub_resource type="World3D" id="World3D_bwjto"]
-environment = SubResource("Environment_urp6f")
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_urp6f"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bwjto"]
-
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("main_menu", "death_screen")]
 modulate = Color(1.4, 1.4, 1.4, 1)
 collision_mask = 5
 script = ExtResource("1_onrkg")
-main_menu = NodePath("CanvasLayer/MainMenuWin")
-death_screen = NodePath("CanvasLayer/GameOverWin")
+main_menu = NodePath("CanvasLayer/MainMenu")
+death_screen = NodePath("CanvasLayer/DeathScreen")
 inv = SubResource("Resource_1jxqw")
 loadout = SubResource("Resource_b26j0")
 
@@ -101,6 +87,13 @@ zoom = Vector2(0.5, 0.5)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="MainMenu" parent="CanvasLayer" instance=ExtResource("8_urp6f")]
+z_index = 10
+
+[node name="DeathScreen" parent="CanvasLayer" instance=ExtResource("14_u1c27")]
+visible = false
+z_index = 10
+
 [node name="InvUi" parent="CanvasLayer" instance=ExtResource("7_1jxqw")]
 
 [node name="HotbarUi" parent="CanvasLayer" instance=ExtResource("10_n7ghd")]
@@ -114,37 +107,5 @@ visible = false
 [node name="PlayerStatsUi" parent="CanvasLayer" instance=ExtResource("12_ivps1")]
 
 [node name="WavePopup" parent="CanvasLayer" instance=ExtResource("14_bwjto")]
-
-[node name="MainMenuWin" type="Window" parent="CanvasLayer"]
-disable_3d = true
-own_world_3d = true
-world_3d = SubResource("World3D_bwjto")
-transparent_bg = true
-gui_snap_controls_to_pixels = false
-mode = 2
-initial_position = 1
-size = Vector2i(400, 225)
-transparent = true
-theme_override_styles/embedded_border = SubResource("StyleBoxEmpty_urp6f")
-theme_override_styles/embedded_unfocused_border = SubResource("StyleBoxEmpty_bwjto")
-
-[node name="MainMenu" parent="CanvasLayer/MainMenuWin" instance=ExtResource("8_urp6f")]
-
-[node name="GameOverWin" type="Window" parent="CanvasLayer"]
-auto_translate_mode = 1
-disable_3d = true
-own_world_3d = true
-world_3d = SubResource("World3D_bwjto")
-transparent_bg = true
-gui_snap_controls_to_pixels = false
-mode = 2
-initial_position = 1
-size = Vector2i(400, 225)
-visible = false
-transparent = true
-theme_override_styles/embedded_border = SubResource("StyleBoxEmpty_urp6f")
-theme_override_styles/embedded_unfocused_border = SubResource("StyleBoxEmpty_bwjto")
-
-[node name="DeathScreen" parent="CanvasLayer/GameOverWin" instance=ExtResource("14_u1c27")]
 
 [node name="LootPopup" parent="CanvasLayer" instance=ExtResource("14_606se")]

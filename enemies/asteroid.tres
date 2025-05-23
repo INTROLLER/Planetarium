@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=6 format=3 uid="uid://dt3ygrrhjryjw"]
+
+[ext_resource type="Script" uid="uid://c763nowd41mh3" path="res://drop_entry.gd" id="1_6afra"]
+[ext_resource type="Script" uid="uid://c4rxhpffsfwjw" path="res://enemy_data.gd" id="2_au6g2"]
+[ext_resource type="Resource" uid="uid://swvyx7c40uqg" path="res://inventory/items/meteorite.tres" id="2_vfa3q"]
+[ext_resource type="Texture2D" uid="uid://uuxnnn122ker" path="res://textures/asteroid.png" id="3_vfa3q"]
+
+[sub_resource type="Resource" id="Resource_57siq"]
+script = ExtResource("1_6afra")
+data = ExtResource("2_vfa3q")
+probability = 0.3
+metadata/_custom_type_script = "uid://c763nowd41mh3"
+
+[resource]
+script = ExtResource("2_au6g2")
+name = "Asteroid"
+health = 70.0
+damage = 15.0
+texture = ExtResource("3_vfa3q")
+drops = Array[ExtResource("1_6afra")]([SubResource("Resource_57siq")])
+metadata/_custom_type_script = "uid://c4rxhpffsfwjw"
