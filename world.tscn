@@ -1,8 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://bc24yxgjcdudu"]
+[gd_scene load_steps=13 format=3 uid="uid://bc24yxgjcdudu"]
 
 [ext_resource type="Script" uid="uid://cc7r8ht8sd866" path="res://world.gd" id="1_036b0"]
 [ext_resource type="PackedScene" uid="uid://ctfxvyae31vua" path="res://player.tscn" id="1_f3sb7"]
 [ext_resource type="Shader" uid="uid://c83lg7d23cw6n" path="res://starfield.gdshader" id="3_tlwt5"]
+[ext_resource type="AudioStream" uid="uid://sqhn6w5jcesb" path="res://sfx/level_up_notification.mp3" id="4_pkg7o"]
+[ext_resource type="AudioStream" uid="uid://6uwcpnk5a204" path="res://sfx/notification.mp3" id="5_dwbse"]
+[ext_resource type="AudioStream" uid="uid://bfp1hm31in3yq" path="res://sfx/cinematic_hit.mp3" id="7_gbfbk"]
+[ext_resource type="AudioStream" uid="uid://bdi1haky5uyi3" path="res://sfx/ambience_music.mp3" id="7_pkg7o"]
+[ext_resource type="AudioStream" uid="uid://daelo1shptd41" path="res://sfx/cinematic_hit2.mp3" id="8_gbfbk"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_tlwt5"]
 noise_type = 0
@@ -51,3 +56,19 @@ offset_bottom = 225.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_fj7yv")
+
+[node name="WaveCompleted" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_pkg7o")
+
+[node name="LootPickup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_dwbse")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_pkg7o")
+parameters/looping = true
+
+[node name="GameOver" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_gbfbk")
+
+[node name="GameStart" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_gbfbk")

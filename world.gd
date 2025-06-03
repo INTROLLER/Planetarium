@@ -22,6 +22,9 @@ var current_wave_config = {}
 var _spawn_timer := 0.0
 var enemies_spawned_in_wave := 0
 
+func _ready() -> void:
+	$BackgroundMusic.play()
+
 # Called every frame (physics step)
 func _physics_process(delta: float) -> void:
 	if not spawn_enemies or player == null:
@@ -41,6 +44,7 @@ func _physics_process(delta: float) -> void:
 
 	# If all wave enemies are dead, start the next wave
 	if enemies_spawned_in_wave >= max_enemy_count and active_enemies.is_empty():
+		$WaveCompleted.play()
 		set_wave(wave + 1, true)
 
 # Generate configuration for the current wave
@@ -135,6 +139,7 @@ func spawn_enemy() -> void:
 
 # Stops the game and shows the main menu
 func stop_game(menu = null):
+	$GameOver.play()
 	spawn_enemies = false
 
 	# Remove all enemies
@@ -151,6 +156,7 @@ func stop_game(menu = null):
 
 # Starts the game from the menu
 func start_game(menu = null):
+	$GameStart.play()
 	current_wave_config = get_wave_config()
 	set_wave(1)
 

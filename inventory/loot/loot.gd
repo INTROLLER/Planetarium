@@ -135,3 +135,4 @@ func pickup(body):
 
 		# Emit a custom signal on the player to notify that this loot was collected
 		body.loot_collected.emit(item_data)
+		find_parent("World").find_child("LootPickup").play()
